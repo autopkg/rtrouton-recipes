@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Remove existing copy of TextWrangler
+# from /Applications
+
+if [ -d "$3/Applications/TextWrangler.app" ]; then
+   rm -rf "$3/Applications/TextWrangler.app"
+fi
