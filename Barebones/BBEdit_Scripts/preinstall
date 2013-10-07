@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Remove existing copy of BBEdit
+# from /Applications
+
+if [ -d "$3/Applications/BBEdit.app" ]; then
+   rm -rf "$3/Applications/BBEdit.app"
+fi
