@@ -1,0 +1,10 @@
+#!/bin/sh
+
+#################################################################
+##         REMOVE PREVIOUS CHROME FROM /APPLICATIONS	       ##
+################################################################# 
+
+if [ -d "$3/Applications/Google Chrome.app" ]; then
+   rm -rf "$3/Applications/Google Chrome.app"
+fi
+
