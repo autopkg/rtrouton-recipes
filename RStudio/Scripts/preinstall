@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Remove previous version of RStudio from /Applications
+
+if [ -d "$3/Applications/RStudio.app" ]; then
+   rm -rf "$3/Applications/RStudio.app"
+fi
+
