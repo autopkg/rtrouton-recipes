@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads latest stable Fiji disk image and builds a package.</string>
+    <string>Downloads latest stable Fiji zip file and builds a package.</string>
     <key>Identifier</key>
     <string>com.github.rtrouton.pkg.Fiji</string>
     <key>Input</key>
