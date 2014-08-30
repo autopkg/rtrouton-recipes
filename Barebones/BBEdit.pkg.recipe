@@ -5,7 +5,7 @@
     <key>Description</key>
     <string>Downloads the latest BBEdit and creates a package.</string>
     <key>Identifier</key>
-    <string>com.github.rtrouton.pkg.BBEdit</string>
+    <string>com.github.rtrouton.pkg.bbedit</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
