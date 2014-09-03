@@ -30,7 +30,7 @@
             <key>Arguments</key>
             <dict>
                 <key>filename</key>
-                <string>%NAME%.pkg</string>
+                <string>%NAME%-%version%.pkg</string>
             </dict>
         </dict>
         <dict>
