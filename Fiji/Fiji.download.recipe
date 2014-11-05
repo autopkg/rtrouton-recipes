@@ -25,7 +25,7 @@
 				<key>url</key>
 				<string>http://rsbweb.nih.gov/ij/notes.html</string>
 				<key>re_pattern</key>
-				<string>Version (?P&lt;version&gt;[0-9\.]*)</string>
+				<string>Version (?P&lt;version&gt;[0-9a-z\.]*)</string>
 			</dict>
 		</dict>
         <dict>
