@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>Description</key>
+        <string>Downloads the latest Oracle Java 8 JRE and builds a new package
+with correct version information.
+
+All Oracle JRE install packages have a version number of 1, so the actual
+plugin version is used to replace the installer version, taken from the
+CFBundleVersion of the bundle at /Library/Internet
+Plug-Ins/JavaAppletPlugin.plugin.</string>
+        <key>Identifier</key>
+        <string>com.github.rtrouton.jss.OracleJava8</string>
+        <key>Input</key>
+        <dict>
+            <key>NAME</key>
+            <string>OracleJava7</string>
+            <key>PKG_ID</key>
+            <string>com.oracle.jre</string>
+            <key>CATEGORY</key>
+            <string>Media Plugins and Viewers</string>
+            <key>POLICY_CATEGORY</key>
+            <string>Testing</string>
+            <!--PlistReader w/o variable injection in AutoPkg requires this-->
+            <key>version</key>
+            <string/>
+            <key>POLICY_TEMPLATE</key>
+            <string>%RECIPE_DIR%/PolicyTemplate.xml</string>
+            <key>ICON</key>
+            <string>%RECIPE_DIR%/OracleJava8.png</string>
+            <key>GROUP_NAME</key>
+            <string>%NAME%-update-smart</string>
+            <key>GROUP_TEMPLATE</key>
+            <string>%RECIPE_DIR%/OracleJavaSmartGroupTemplate.xml</string>
+            <key>DESCRIPTION</key>
+            <string/>
+        </dict>
+        <key>MinimumVersion</key>
+        <string>0.4.0</string>
+        <key>ParentRecipe</key>
+        <string>com.github.autopkg.pkg.OracleJava8</string>
+        <key>Process</key>
+        <array>
+            <dict>
+                <key>Arguments</key>
+                <dict>
+                    <key>prod_name</key>
+                    <string>%NAME%</string>
+                    <key>category</key>
+                    <string>%CATEGORY%</string>
+                    <key>policy_category</key>
+                    <string>%POLICY_CATEGORY%</string>
+                    <key>policy_template</key>
+                    <string>%POLICY_TEMPLATE%</string>
+                    <key>self_service_icon</key>
+                    <string>%ICON%</string>
+                    <key>self_service_description</key>
+                    <string>%DESCRIPTION%</string>
+                    <key>groups</key>
+                    <array>
+                        <dict>
+                            <key>name</key>
+                            <string>%GROUP_NAME%</string>
+                            <key>smart</key>
+                            <true/>
+                            <key>template_path</key>
+                            <string>%GROUP_TEMPLATE%</string>
+                        </dict>
+                    </array>
+                    <key>extension_attributes</key>
+                    <array>
+                        <dict>
+                            <key>name</key>
+                            <string>OracleJavaVersion</string>
+                            <key>ext_attribute_path</key>
+                            <string>%RECIPE_DIR%/OracleJava8ExtensionAttribute.xml</string>
+                        </dict>
+                    </array>
+                </dict>
+                <key>Processor</key>
+                <string>JSSImporter</string>
+            </dict>
+        </array>
+    </dict>
+</plist>

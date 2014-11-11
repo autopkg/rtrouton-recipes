@@ -1,0 +1,18 @@
+<computer_extension_attribute>
+    <name>OracleJavaVersion</name>
+    <description />
+    <data_type>String</data_type>
+    <input_type>
+        <type>script</type>
+        <platform>Mac</platform>
+        <script>#!/bin/bash
+
+JavaVersion=$(defaults read /Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Info.plist CFBundleVersion)
+
+echo "&lt;result&gt;$JavaVersion&lt;/result&gt;"
+
+exit 0</script>
+    </input_type>
+    <inventory_display>Extension Attributes</inventory_display>
+    <recon_display>Extension Attributes</recon_display>
+</computer_extension_attribute>
