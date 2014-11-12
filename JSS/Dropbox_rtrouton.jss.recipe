@@ -13,7 +13,7 @@
             <key>JSS_INVENTORY_NAME</key>
             <string>Dropbox.app</string>
             <key>CATEGORY</key>
-            <string>Image Processing</string>
+            <string>Dropbox</string>
             <key>POLICY_CATEGORY</key>
             <string>Testing</string>
             <key>POLICY_TEMPLATE</key>
