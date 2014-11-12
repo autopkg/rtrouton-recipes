@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Change permissions so that both root and members of the admin group
+# have read and write permissions to the application. This is needed
+# to allow the built-in update mechanism to work.
+
+if [ -d "$3/Applications/ImageJ.app" ]; then
+   chmod -R 775 "$3/Applications/ImageJ.app"
+fi
+

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Remove previous version of ImageJ from /Applications
+
+if [ -d "$3/Applications/ImageJ.app" ]; then
+   rm -rf "$3/Applications/ImageJ.app"
+fi
+
