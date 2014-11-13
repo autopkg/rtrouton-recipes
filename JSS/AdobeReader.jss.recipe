@@ -9,11 +9,11 @@
         <key>Input</key>
         <dict>
             <key>NAME</key>
-            <string>AdobeReader</string>
+            <string>Adobe Reader</string>
             <key>JSS_INVENTORY_NAME</key>
             <string>Adobe Reader.app</string>
             <key>CATEGORY</key>
-            <string>Development</string>
+            <string>Adobe</string>
             <key>POLICY_CATEGORY</key>
             <string>Testing</string>
             <key>POLICY_TEMPLATE</key>
@@ -25,7 +25,7 @@
             <key>GROUP_TEMPLATE</key>
             <string>%RECIPE_DIR%/SmartGroupTemplate.xml</string>
             <key>DESCRIPTION</key>
-            <string>Adobe Reader is Adobe's official application for reliably viewing, printing, and annotating PDF documents.</string>
+            <string>Adobe Reader is Adobe's official application for viewing, printing, and annotating PDF documents.</string>
         </dict>
         <key>MinimumVersion</key>
         <string>0.4.0</string>
@@ -37,7 +37,7 @@
                 <key>Arguments</key>
                 <dict>
                     <key>version</key>
-                    <string>%version%</string>
+                    <string>11</string>
                     <key>prod_name</key>
                     <string>%NAME%</string>
                     <key>jss_inventory_name</key>
