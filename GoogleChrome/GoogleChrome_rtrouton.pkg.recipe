@@ -3,20 +3,27 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads latest stable Fiji zip file and builds a package.</string>
+    <string>Downloads latest Google Chrome disk image and builds a package.</string>
     <key>Identifier</key>
-    <string>com.github.rtrouton.pkg.Fiji</string>
+    <string>com.github.rtrouton.pkg.googlechrome_rtrouton</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>Fiji</string>
+        <string>GoogleChrome</string>
     </dict>
     <key>ParentRecipe</key>
-    <string>com.github.rtrouton.download.Fiji</string>
-    <key>MinimumVersion</key>
-    <string>0.2.0</string>
+    <string>com.github.rtrouton.download.googlechrome_rtrouton</string>
     <key>Process</key>
     <array>
+        <dict>
+            <key>Processor</key>
+            <string>AppDmgVersioner</string>
+            <key>Arguments</key>
+            <dict>
+                <key>dmg_path</key>
+                <string>%pathname%</string>
+            </dict>
+        </dict>
         <dict>
             <key>Processor</key>
             <string>PkgRootCreator</string>
@@ -33,15 +40,13 @@
         </dict>
         <dict>
             <key>Processor</key>
-            <string>Unarchiver</string>
+            <string>Copier</string>
             <key>Arguments</key>
             <dict>
-                <key>archive_path</key>
-                <string>%pathname%</string>
+                <key>source_path</key>
+                <string>%pathname%/%app_name%</string>
                 <key>destination_path</key>
-                <string>%pkgroot%/Applications</string>
-                <key>purge_destination</key>
-                <true/>
+                <string>%pkgroot%/Applications/%app_name%</string>
             </dict>
         </dict>
         <dict>
@@ -56,7 +61,7 @@
                     <key>version</key>
                     <string>%version%</string>
                     <key>id</key>
-                    <string>org.fiji</string>
+                    <string>%bundleid%</string>
                     <key>options</key>
                     <string>purge_ds_store</string>
                     <key>scripts</key>

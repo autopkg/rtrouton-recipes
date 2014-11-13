@@ -30,7 +30,7 @@
         <key>MinimumVersion</key>
         <string>0.4.0</string>
         <key>ParentRecipe</key>
-        <string>com.github.rtrouton.pkg.googlechrome</string>
+        <string>com.github.rtrouton.pkg.googlechrome_rtrouton</string>
         <key>Process</key>
         <array>
             <dict>

@@ -5,14 +5,14 @@
     <key>Description</key>
     <string>Downloads latest stable ImageJ zip file and builds a package.</string>
     <key>Identifier</key>
-    <string>com.github.rtrouton.pkg.ImageJ</string>
+    <string>com.github.rtrouton.pkg.ImageJ_rtrouton</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
         <string>ImageJ</string>
     </dict>
     <key>ParentRecipe</key>
-    <string>com.github.rtrouton.download.ImageJ</string>
+    <string>com.github.rtrouton.download.ImageJ_rtrouton</string>
     <key>MinimumVersion</key>
     <string>0.2.0</string>
     <key>Process</key>

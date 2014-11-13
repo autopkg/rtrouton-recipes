@@ -5,7 +5,7 @@
     <key>Description</key>
     <string>Download recipe for BBEdit. Finds and downloads the latest BBEdit release.</string>
     <key>Identifier</key>
-    <string>com.github.rtrouton.download.bbedit</string>
+    <string>com.github.rtrouton.download.bbedit_rtrouton</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>

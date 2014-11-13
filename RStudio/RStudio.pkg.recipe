@@ -5,7 +5,7 @@
     <key>Description</key>
     <string>Downloads the latest RStudio disk image and builds a package.</string>
     <key>Identifier</key>
-    <string>com.github.rtrouton.pkg.RStudio</string>
+    <string>com.github.rtrouton.pkg.RStudio_rtrouton</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
@@ -14,7 +14,7 @@
     <key>MinimumVersion</key>
     <string>0.2.9</string>
     <key>ParentRecipe</key>
-    <string>com.github.rtrouton.download.RStudio</string>
+    <string>com.github.rtrouton.download.RStudio_rtrouton</string>
     <key>Process</key>
     <array>
         <dict>

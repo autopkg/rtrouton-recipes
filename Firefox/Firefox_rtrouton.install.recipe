@@ -11,7 +11,7 @@ Examples include 'en-US', 'de', 'ja-JP-mac', 'sv-SE', and 'zh-TW'
 No idea if all Firefox releases are available in all the same localizations, so you may need to verify that any particular
 combination is offered.</string>
     <key>Identifier</key>
-    <string>com.github.rtrouton.install.Firefox_EN</string>
+    <string>com.github.rtrouton.install.Firefox_rtrouton</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
@@ -20,7 +20,7 @@ combination is offered.</string>
     <key>MinimumVersion</key>
     <string>0.4.0</string>
     <key>ParentRecipe</key>
-    <string>com.github.rtrouton.pkg.Firefox_EN</string>
+    <string>com.github.rtrouton.pkg.Firefox_rtrouton</string>
     <key>Process</key>
     <array>
         <dict>

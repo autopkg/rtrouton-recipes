@@ -3,18 +3,18 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the latest TextWrangler, builds a package and installs it.</string>
+    <string>Downloads the latest BBEdit, builds a package and installs it.</string>
     <key>Identifier</key>
-    <string>com.github.rtrouton.install.TextWrangler</string>
+    <string>com.github.rtrouton.install.bbedit_rtrouton</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>TextWrangler</string>
+        <string>BBEdit</string>
     </dict>
     <key>MinimumVersion</key>
     <string>0.4.0</string>
     <key>ParentRecipe</key>
-    <string>com.github.rtrouton.pkg.TextWrangler</string>
+    <string>com.github.rtrouton.pkg.bbedit_rtrouton</string>
     <key>Process</key>
     <array>
         <dict>

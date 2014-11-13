@@ -3,29 +3,20 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the latest TextWrangler and creates a package.</string>
+    <string>Downloads latest stable Fiji zip file and builds a package.</string>
     <key>Identifier</key>
-    <string>com.github.rtrouton.pkg.TextWrangler</string>
+    <string>com.github.rtrouton.pkg.Fiji_rtrouton</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>TextWrangler</string>
+        <string>Fiji</string>
     </dict>
+    <key>ParentRecipe</key>
+    <string>com.github.rtrouton.download.Fiji_rtrouton</string>
     <key>MinimumVersion</key>
     <string>0.2.0</string>
-    <key>ParentRecipe</key>
-    <string>com.github.rtrouton.download.textwrangler</string>
     <key>Process</key>
     <array>
-        <dict>
-            <key>Processor</key>
-            <string>AppDmgVersioner</string>
-            <key>Arguments</key>
-            <dict>
-                <key>dmg_path</key>
-                <string>%pathname%</string>
-            </dict>
-        </dict>
         <dict>
             <key>Processor</key>
             <string>PkgRootCreator</string>
@@ -42,13 +33,15 @@
         </dict>
         <dict>
             <key>Processor</key>
-            <string>Copier</string>
+            <string>Unarchiver</string>
             <key>Arguments</key>
             <dict>
-                <key>source_path</key>
-                <string>%pathname%/TextWrangler.app</string>
+                <key>archive_path</key>
+                <string>%pathname%</string>
                 <key>destination_path</key>
-                <string>%pkgroot%/Applications/TextWrangler.app</string>
+                <string>%pkgroot%/Applications</string>
+                <key>purge_destination</key>
+                <true/>
             </dict>
         </dict>
         <dict>
@@ -56,18 +49,18 @@
             <string>PkgCreator</string>
             <key>Arguments</key>
             <dict>
-                <key>pkgname</key>
-                <string>%NAME%-%version%</string>
                 <key>pkg_request</key>
                 <dict>
-                    <key>pkgdir</key>
-                    <string>%RECIPE_CACHE_DIR%</string>
+                    <key>pkgname</key>
+                    <string>%NAME%-%version%</string>
+                    <key>version</key>
+                    <string>%version%</string>
                     <key>id</key>
-                    <string>com.barebones.textwrangler.pkg</string>
+                    <string>org.fiji</string>
                     <key>options</key>
                     <string>purge_ds_store</string>
                     <key>scripts</key>
-                    <string>TextWrangler_Scripts</string>
+                    <string>Scripts</string>
                     <key>chown</key>
                     <array>
                         <dict>

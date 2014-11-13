@@ -5,7 +5,7 @@
     <key>Description</key>
     <string>Downloads the latest RStudio application. Original recipe by Matt Hansen - https://github.com/autopkg/hansen-m-recipes</string>
     <key>Identifier</key>
-    <string>com.github.rtrouton.download.RStudio</string>
+    <string>com.github.rtrouton.download.RStudio_rtrouton</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>

@@ -11,7 +11,7 @@ Examples include 'en-US', 'de', 'ja-JP-mac', 'sv-SE', and 'zh-TW'
 No idea if all Firefox builds are available in all the same localizations, so you may need to verify that any particular
 combination is offered.</string>
     <key>Identifier</key>
-    <string>com.github.rtrouton.download.firefox-rc-en_US</string>
+    <string>com.github.rtrouton.download.Firefox_rtrouton</string>
     <key>Input</key>
     <dict>
         <key>RELEASE</key>

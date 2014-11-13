@@ -3,15 +3,15 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Download recipe for ImageJ, which downloads a zip file containing the latest stable version of ImageJ for Mac OS X. ImageJ is an image processing package which display, edit, analyze, process, save and print 8-bit, 16-bit and 32-bit images.</string>
+    <string>Download recipe for Fiji, which downloads a zip file containing the latest stable version of Fiji for Mac OS X. Fiji is an image processing package and can be described as a distribution of ImageJ (and ImageJ2) together with Java, Java3D and a lot of plugins organized into a coherent menu structure.</string>
     <key>Identifier</key>
-    <string>com.github.rtrouton.download.ImageJ</string>
+    <string>com.github.rtrouton.download.Fiji_rtrouton</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>ImageJ</string>
+        <string>Fiji</string>
         <key>DOWNLOAD_URL</key>
-        <string>http://jenkins.imagej.net/job/ImageJ/lastSuccessfulBuild/artifact/target/imagej-latest.zip</string>
+        <string>http://jenkins.imagej.net/job/Stable-Fiji/lastSuccessfulBuild/artifact/fiji-macosx.zip</string>
     </dict>
     <key>MinimumVersion</key>
     <string>0.2.0</string>
