@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Remove previous version of Cyberduck from /Applications
+
+if [ -d "$3/Applications/Cyberduck.app" ]; then
+   rm -rf "$3/Applications/Cyberduck.app"
+fi
+
