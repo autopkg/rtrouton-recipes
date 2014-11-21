@@ -23,7 +23,7 @@
             <key>GROUP_NAME</key>
             <string>%NAME%-update-smart</string>
             <key>DESCRIPTION</key>
-            <string>Web Browser.</string>
+            <string>Cyberduck is a open-source and easy to use FTP/FTP-TLS/SFTP browser for the Mac.</string>
         </dict>
         <key>MinimumVersion</key>
         <string>0.4.0</string>
