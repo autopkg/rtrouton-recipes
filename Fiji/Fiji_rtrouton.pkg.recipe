@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads latest stable Fiji zip file and builds a package.</string>
+    <string>Downloads latest stable Fiji zip file and builds a package. The installer package includes a preinstall script that will check for an existing Fiji.app in /Applications and remove it if found.</string>
     <key>Identifier</key>
     <string>com.github.rtrouton.pkg.Fiji_rtrouton</string>
     <key>Input</key>

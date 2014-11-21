@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the current release version of Cyberduck and builds a package.</string>
+    <string>Downloads the current release version of Cyberduck and builds a package. The installer package includes a preinstall script that will check for an existing Cyberduck.app in /Applications and remove it if found.</string>
     <key>Identifier</key>
     <string>com.github.rtrouton.pkg.Cyberduck_rtrouton</string>
     <key>Input</key>

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the latest BBEdit and creates a package.</string>
+    <string>Downloads the latest BBEdit and creates a package. The installer package includes a preinstall script that will check for an existing BBEdit.app in /Applications and remove it if found.</string>
     <key>Identifier</key>
     <string>com.github.rtrouton.pkg.bbedit_rtrouton</string>
     <key>Input</key>
