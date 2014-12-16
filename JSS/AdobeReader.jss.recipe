@@ -41,7 +41,7 @@
                 <key>Arguments</key>
                 <dict>
                     <key>version</key>
-                    <string>11</string>
+                    <string>%VERSION%</string>
                     <key>prod_name</key>
                     <string>%NAME%</string>
                     <key>jss_inventory_name</key>
