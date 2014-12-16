@@ -8,10 +8,6 @@
         <string>com.github.rtrouton.jss.AdobeReader</string>
         <key>Input</key>
         <dict>
-            <key>MAJOR_VERSION</key>
-            <string>11</string>
-            <key>VERSION</key>
-            <string>latest</string>
             <key>NAME</key>
             <string>Adobe Reader</string>
             <key>JSS_INVENTORY_NAME</key>
@@ -41,7 +37,7 @@
                 <key>Arguments</key>
                 <dict>
                     <key>version</key>
-                    <string>%VERSION%</string>
+                    <string>11</string>
                     <key>prod_name</key>
                     <string>%NAME%</string>
                     <key>jss_inventory_name</key>
