@@ -1,4 +1,4 @@
-AutoPkg
-=======
+rtrouton-recipes
+================
 
-Recipes for AutoPkg
+AutoPkg recipes which anyone can use.
