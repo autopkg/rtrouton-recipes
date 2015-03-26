@@ -23,7 +23,7 @@
             <key>GROUP_NAME</key>
             <string>%NAME%-update-smart</string>
             <key>DESCRIPTION</key>
-            <string>AdMedic is a simple to use application for Mac OS X designed to remove all known adware from your computer.</string>
+            <string>AdwareMedic is a simple to use application for Mac OS X which is designed to remove all known adware from your computer.</string>
         </dict>
         <key>MinimumVersion</key>
         <string>0.4.0</string>
