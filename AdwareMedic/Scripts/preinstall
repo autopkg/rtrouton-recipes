@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Remove previous version of AdwareMedic from /Applications
+
+if [ -d "$3/Applications/AdwareMedic.app" ]; then
+   rm -rf "$3/Applications/AdwareMedic.app"
+fi
+
