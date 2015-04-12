@@ -23,7 +23,7 @@
             <key>GROUP_NAME</key>
             <string>%NAME%-update-smart</string>
             <key>DESCRIPTION</key>
-            <string>Packages lets you create distribution and installation packages. With Packages, you can define which applications, bundles, documents or folders should be part of the payload of your installation packages and where they should be installed and with which permissions.</string>
+            <string>Packages lets you create distribution and installation packages. With Packages, you can define which applications, bundles, documents or folders should be part of the payload of your installation packages, where they should be installed, and with which permissions.</string>
         </dict>
         <key>MinimumVersion</key>
         <string>0.4.0</string>
