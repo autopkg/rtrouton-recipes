@@ -9,7 +9,7 @@
         <key>Input</key>
         <dict>
             <key>NAME</key>
-            <string>Adobe Reader DC</string>
+            <string>%NAME%</string>
             <key>CATEGORY</key>
             <string>Adobe</string>
             <key>POLICY_CATEGORY</key>
