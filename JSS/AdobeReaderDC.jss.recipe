@@ -35,7 +35,7 @@
                 <key>Arguments</key>
                 <dict>
                     <key>prod_name</key>
-                    <string>AdobeReaderDC</string>
+                    <string>%NAME%</string>
                     <key>category</key>
                     <string>%CATEGORY%</string>
                     <key>policy_category</key>
