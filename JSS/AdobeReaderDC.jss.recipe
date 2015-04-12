@@ -23,7 +23,7 @@
             <key>GROUP_NAME</key>
             <string>%NAME%-update-smart</string>
             <key>DESCRIPTION</key>
-            <string>Adobe Reader is Adobe's official application for viewing, printing, and annotating PDF documents on OS X 10.9 and later.</string>
+            <string>Adobe Reader DC is Adobe's official application for viewing, printing, and annotating PDF documents on OS X 10.9 and later.</string>
         </dict>
         <key>MinimumVersion</key>
         <string>0.4.0</string>
