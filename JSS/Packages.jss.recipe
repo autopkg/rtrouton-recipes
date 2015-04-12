@@ -28,7 +28,7 @@
         <key>MinimumVersion</key>
         <string>0.4.0</string>
         <key>ParentRecipe</key>
-        <string>io.github.hjuutilainen.pkg.Packages</string>
+        <string>com.github.rtrouton.pkg.Packages</string>
         <key>Process</key>
         <array>
             <dict>
