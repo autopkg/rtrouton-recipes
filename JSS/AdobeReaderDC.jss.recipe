@@ -9,7 +9,7 @@
         <key>Input</key>
         <dict>
             <key>NAME</key>
-            <string>%NAME%</string>
+            <string>Adobe Reader DC</string>
             <key>CATEGORY</key>
             <string>Adobe</string>
             <key>POLICY_CATEGORY</key>
@@ -35,7 +35,7 @@
                 <key>Arguments</key>
                 <dict>
                     <key>prod_name</key>
-                    <string>%NAME%</string>
+                    <string>AdobeReaderDC</string>
                     <key>category</key>
                     <string>%CATEGORY%</string>
                     <key>policy_category</key>
