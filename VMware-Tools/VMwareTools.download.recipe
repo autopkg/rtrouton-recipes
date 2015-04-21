@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Identifier</key>
-	<string>com.github.rtrouton.download.VMwareToolsISO</string>
+	<string>com.github.rtrouton.download.VMwareTools</string>
 	<key>Description</key>
 	<string>Downloads VMware Darwin ISO. Adapted from Jesse Peterson's VMwareTools.munki recipe</string>
 	<key>Process</key>
@@ -64,7 +64,7 @@
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>VMwareTools-7</string>
+		<string>VMwareTools</string>
 	</dict>
 </dict>
 </plist>
