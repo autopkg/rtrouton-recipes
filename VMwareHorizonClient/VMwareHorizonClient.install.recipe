@@ -3,18 +3,18 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the current release version of RStudio, builds a package and installs it.</string>
+    <string>Downloads the current release version of VMware Horizon Client, builds a package and installs it.</string>
     <key>Identifier</key>
-    <string>com.github.rtrouton.install.RStudio</string>
+    <string>com.github.rtrouton.install.VMwareHorizonClient</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>RStudio</string>
+        <string>VMwareHorizonClient</string>
     </dict>
     <key>MinimumVersion</key>
-    <string>0.4.0</string>
+    <string>0.4.2</string>
     <key>ParentRecipe</key>
-    <string>com.github.rtrouton.pkg.RStudio</string>
+    <string>com.github.rtrouton.pkg.VMwareHorizonClient</string>
     <key>Process</key>
     <array>
         <dict>
