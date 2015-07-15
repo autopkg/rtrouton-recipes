@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the current release version of AdwareMedia</string>
+    <string>Downloads the current release version of AdwareMedic</string>
     <key>Identifier</key>
     <string>com.github.rtrouton.download.AdwareMedic</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>Cyberduck</string>
+        <string>AdwareMedic</string>
         <key>SPARKLE_FEED_URL</key>
         <string>http://www.adwaremedic.com/versions/updates.xml</string>
     </dict>
