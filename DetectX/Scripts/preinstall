@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Remove previous version of DetectX from /Applications
+
+if [ -d "$3/Applications/DetectX.app" ]; then
+   rm -rf "$3/Applications/DetectX.app"
+fi
+

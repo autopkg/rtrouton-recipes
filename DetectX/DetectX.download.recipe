@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Download recipe for DetectX, which downloads a zip file containing the latest stable version of DetectX for Mac OS X. DetectX is an image processing package and can be described as a distribution of ImageJ (and ImageJ2) together with Java, Java3D and a lot of plugins organized into a coherent menu structure.</string>
+    <key>Identifier</key>
+    <string>com.github.rtrouton.download.DetectX</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>DetectX</string>
+        <key>DOWNLOAD_URL</key>
+        <string>https://s3.amazonaws.com/sqwarq.com/PublicZips/DetectX.app.zip</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.2.0</string>
+    <key>Process</key>
+    <array>
+		<dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>https://s3.amazonaws.com/sqwarq.com/AppCasts/updateDetectX.html</string>
+				<key>re_pattern</key>
+				<string>(?P&lt;version&gt;[0-9].*[0-9])</string>
+			</dict>
+		</dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%DOWNLOAD_URL%</string>
+                <key>filename</key>
+                <string>%NAME%.zip</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+    </array>
+</dict>
+</plist>
