@@ -23,7 +23,7 @@
                 <key>url</key>
                 <string>http://www.rstudio.com/ide/download/desktop</string>
                 <key>re_pattern</key>
-                <string>(?P&lt;url&gt;http.*?RStudio-.*\.dmg)</string>
+                <string>(?P&lt;url&gt;download.*?RStudio-.*\.dmg)</string>
             </dict>
         </dict>
         <dict>
@@ -32,7 +32,7 @@
             <key>Arguments</key>
             <dict>
                 <key>url</key>
-                <string>%url%</string>
+                <string>http://%url%</string>
                 <key>filename</key>
                 <string>%NAME%.dmg</string>
             </dict>
