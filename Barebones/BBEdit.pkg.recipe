@@ -14,7 +14,7 @@
     <key>MinimumVersion</key>
     <string>0.2.0</string>
     <key>ParentRecipe</key>
-    <string>com.github.rtrouton.download.bbedit</string>
+    <string>com.github.autopkg.download.bbedit</string>
     <key>Process</key>
     <array>
         <dict>
