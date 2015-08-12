@@ -3,7 +3,7 @@
 <plist version="1.0">
     <dict>
         <key>Description</key>
-        <string>Downloads the latest version of Github Desktop, builds an installer pkg and then uploads to the JSS.</string>
+        <string>Uses parent recipe to download the latest version of GitHub Desktop, build an installer package and then upload the package to the JSS.</string>
         <key>Identifier</key>
         <string>com.github.rtrouton.jss.GitHubDesktop</string>
         <key>Input</key>
@@ -28,7 +28,7 @@
             <key>GROUP_TEMPLATE</key>
             <string>%RECIPE_DIR%/GitHubDesktopSmartGroupTemplate.xml</string>
             <key>DESCRIPTION</key>
-            <string>Development</string>
+            <string>GitHub Desktop is an application that enables you to work with projects hosted on GitHub and GitHub Enterprise.</string>
         </dict>
         <key>MinimumVersion</key>
         <string>0.4.0</string>
