@@ -33,7 +33,7 @@
         <key>MinimumVersion</key>
         <string>0.4.0</string>
         <key>ParentRecipe</key>
-        <string>com.github.homebysix.recipes.pkg.GitHubDesktop</string>
+        <string>com.github.homebysix.pkg.GitHubDesktop</string>
         <key>Process</key>
         <array>
             <dict>
