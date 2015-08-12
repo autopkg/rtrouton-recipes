@@ -1,5 +1,5 @@
 <computer_extension_attribute>
-    <name>GitHubVersion</name>
+    <name>GitHubDesktopVersion</name>
     <description />
     <data_type>String</data_type>
     <input_type>
