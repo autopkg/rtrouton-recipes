@@ -12,7 +12,7 @@
         <string>Cyberduck</string>
     </dict>
     <key>ParentRecipe</key>
-    <string>com.github.rtrouton.download.Cyberduck</string>
+    <string>com.github.autopkg.download.Cyberduck</string>
     <key>MinimumVersion</key>
     <string>0.2.0</string>
     <key>Process</key>
