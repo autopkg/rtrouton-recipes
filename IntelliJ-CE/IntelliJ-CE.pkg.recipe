@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the latest IntelliJ Community Edition and creates a package. The installer package includes a preinstall script that will check for an existing IntelliJ.app in /Applications and remove it if found.</string>
+    <string>Downloads the latest IntelliJ Community Edition and creates a package. The installer package includes a preinstall script that will check for an existing IntelliJ IDEA CE.app in /Applications and remove it if found.</string>
     <key>Identifier</key>
     <string>com.github.rtrouton.pkg.IntelliJ-CE</string>
     <key>Input</key>
