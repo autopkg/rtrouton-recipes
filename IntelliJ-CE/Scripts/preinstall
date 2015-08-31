@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Remove existing copy of IntelliJ Community Edition
+# from /Applications
+
+if [ -d "$3/Applications/IntelliJ IDEA CE.app" ]; then
+   rm -rf "$3/Applications/IntelliJ IDEA CE.app"
+fi
