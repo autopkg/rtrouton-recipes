@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Remove previous version of Geneious from /Applications
+
+if [[ -d "$3/Applications/Geneious.app" ]]; then
+   rm -rf "$3/Applications/Geneious.app"
+fi
+
+exit 0
+
