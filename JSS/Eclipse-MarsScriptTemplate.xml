@@ -1,0 +1,10 @@
+<script>
+    <name>Eclipse-LunaPreinstall.sh</name>
+    <category>Testing</category>
+    <filename>Eclipse-LunaPreinstall.sh</filename>
+    <info />
+    <notes />
+    <priority>Before</priority>
+    <parameters />
+    <os_requirements />
+</script>
