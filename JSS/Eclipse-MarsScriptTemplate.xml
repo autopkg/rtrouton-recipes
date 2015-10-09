@@ -1,7 +1,7 @@
 <script>
-    <name>Eclipse-LunaPreinstall.sh</name>
+    <name>Eclipse-MarsPreinstall.sh</name>
     <category>Testing</category>
-    <filename>Eclipse-LunaPreinstall.sh</filename>
+    <filename>Eclipse-MarsPreinstall.sh</filename>
     <info />
     <notes />
     <priority>Before</priority>
