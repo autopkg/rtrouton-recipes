@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Remove existing copy of DbVisualizer from /Applications
+
+if [ -d "$3/Applications/DbVisualizer.app" ]; then
+   rm -rf "$3/Applications/DbVisualizer.app"
+fi
