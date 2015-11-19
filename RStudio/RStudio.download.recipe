@@ -17,11 +17,11 @@
     <array>
        <dict>
             <key>Processor</key>
-            <string>URLTextSearcher</string>
+            <string>CURLTextSearcher</string>
             <key>Arguments</key>
             <dict>
                 <key>url</key>
-                <string>http://www.rstudio.com/ide/download/desktop</string>
+                <string>https://www.rstudio.com/products/rstudio/download/</string>
                 <key>re_pattern</key>
                 <string>(?P&lt;url&gt;download.*?RStudio-.*\.dmg)</string>
             </dict>
