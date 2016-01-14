@@ -26,9 +26,9 @@
             <string>Office 2016 is a software suite for word processing, spreadsheets, presentations, graphics and more.</string>
         </dict>
         <key>MinimumVersion</key>
-        <string>0.4.0</string>
+        <string>0.4.1</string>
         <key>ParentRecipe</key>
-        <string>com.github.autopkg.arubdesu-recipes.download.Office2016Suite</string>
+        <string>com.github.rtrouton.pkg.Office2016Suite</string>
         <key>Process</key>
         <array>
             <dict>
