@@ -21,7 +21,7 @@
             <key>Arguments</key>
             <dict>
                 <key>source_pkg</key>
-                <string>%pathname%/%pkg_name%</string>
+                <string>%pathname%/Office*.*pkg</string>
             </dict>
         </dict>
     </array>
