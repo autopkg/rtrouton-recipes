@@ -9,7 +9,7 @@
 	<key>Input</key>
 	<dict>
 		<key>APP_FILENAME</key>
-		<string>Sophos Anti-Virus Home Edition</string>
+		<string>Sophos Anti-Virus</string>
 		<key>CATEGORY</key>
 		<string>Productivity</string>
 		<key>GROUP_NAME</key>
