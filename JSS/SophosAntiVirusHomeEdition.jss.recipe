@@ -52,7 +52,7 @@
 					</dict>
 				</array>
 				<key>jss_inventory_name</key>
-				<string>%APP_NAME%</string>
+				<string>%APP_NAME%.app</string>
 				<key>policy_category</key>
 				<string>%POLICY_CATEGORY%</string>
 				<key>policy_template</key>
