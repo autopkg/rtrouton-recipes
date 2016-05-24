@@ -23,7 +23,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>http://rsbweb.nih.gov/ij/notes.html</string>
+				<string>https://imagej.nih.gov/ij/notes.html</string>
 				<key>re_pattern</key>
 				<string>Version (?P&lt;version&gt;[0-9a-z\.]*)</string>
 			</dict>
