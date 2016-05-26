@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of GraphPad Prism.</string>
+	<key>Identifier</key>
+	<string>com.github.rtrouton.download.Prism</string>
+	<key>Input</key>
+	<dict>
+		<key>MAJOR_VERSION</key>
+		<string>7</string>
+		<key>APP_FILENAME</key>
+		<string>Prism %MAJOR_VERSION%</string>
+		<key>DOWNLOAD_BASE_URL</key>
+		<string>http://cdn.graphpad.com/downloads/prism</string>
+		<key>NAME</key>
+		<string>Prism</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.6.1</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>%NAME%.dmg</string>
+				<key>url</key>
+				<string>%DOWNLOAD_BASE_URL%/%MAJOR_VERSION%/InstallPrism%MAJOR_VERSION%.dmg</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%pathname%/%APP_FILENAME%.app/Contents/Info.plist</string>
+				<key>plist_version_key</key>
+				<string>CFBundleVersion</string>
+			</dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+		</dict>
+	</array>
+</dict>
+</plist>
