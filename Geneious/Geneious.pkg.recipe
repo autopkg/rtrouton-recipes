@@ -14,7 +14,7 @@
     <key>MinimumVersion</key>
     <string>0.2.0</string>
     <key>ParentRecipe</key>
-    <string>com.github.n8felton.geneious.download</string>
+    <string>com.github.rtrouton.geneious.download</string>
     <key>Process</key>
     <array>
         <dict>

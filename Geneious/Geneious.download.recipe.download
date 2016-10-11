@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Download recipe for Geneious.
+Values for RELEASE are currently 'release' and 'beta'.
+Value for MAJOR_VERSION is typically the first digit of the RELEASE version.
+See http://desktop-links.geneious.com/assets/installers/geneious/GeneiousVersions.txt for hints.</string>
+	<key>Identifier</key>
+	<string>com.github.rtrouton.geneious.download</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>Geneious</string>
+		<key>MAJOR_VERSION</key>
+		<string>10</string>
+		<key>RELEASE</key>
+		<string>release</string>
+		<key>VERSIONS_URL</key>
+		<string>http://desktop-links.geneious.com/assets/installers/geneious/GeneiousVersions.txt</string>
+		<key>DOWNLOAD_BASE_URL</key>
+		<string>http://assets.geneious.com/installers/geneious</string>
+	</dict>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%VERSIONS_URL%</string>
+				<key>re_pattern</key>
+				<string>%MAJOR_VERSION% %RELEASE% %RELEASE%.*(Geneious.*mac.*)</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%DOWNLOAD_BASE_URL%/%RELEASE%/%match%</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%pathname%/Geneious.app</string>
+				<key>requirement</key>
+				<string>identifier "com.biomatters.Geneious" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "3BTDDQD3L6"</string>
+			</dict>
+		</dict>
+	</array>
+	<key>MinimumVersion</key>
+	<string>0.2.9</string>
+</dict>
+</plist>
