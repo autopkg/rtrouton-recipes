@@ -40,9 +40,9 @@
 			<key>Arguments</key>
 			<dict>
 				<key>input_plist_path</key>
-				<string>%pathname%/%APP_FILENAME%.app/Contents/Info.plist</string>
+				<string>%pathname%/%APP_FILENAME%.app/Contents/version.plist</string>
 				<key>plist_version_key</key>
-				<string>CFBundleVersion</string>
+				<string>CFBundleShortVersionString</string>
 			</dict>
 			<key>Processor</key>
 			<string>Versioner</string>
