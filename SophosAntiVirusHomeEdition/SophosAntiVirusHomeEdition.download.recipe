@@ -11,7 +11,7 @@
 		<key>APP_FILENAME</key>
 		<string>Sophos Anti-Virus Home Edition</string>
 		<key>DOWNLOAD_URL</key>
-		<string>http://downloads.sophos.com/home-edition/savosx_he_r.zip</string>
+		<string>https://downloads.sophos.com/home-edition/savosx_he_r.zip</string>
 		<key>NAME</key>
 		<string>Sophos Anti-Virus Home Edition</string>
 	</dict>
