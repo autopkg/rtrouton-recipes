@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads latest Endnote X8 installer and uses it to create a package.</string>
 	<key>Identifier</key>
-	<string>com.github.rtrouton.download.EndNoteX8</string>
+	<string>com.github.rtrouton.pkg.EndNoteX8</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
