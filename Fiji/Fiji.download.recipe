@@ -11,7 +11,7 @@
         <key>NAME</key>
         <string>Fiji</string>
         <key>DOWNLOAD_URL</key>
-        <string>http://jenkins.imagej.net/job/Stable-Fiji/lastStableBuild/artifact/fiji-macosx.zip</string>
+        <string>https://jenkins.imagej.net/job/Stable-Fiji/lastStableBuild/artifact/fiji-macosx.zip</string>
     </dict>
     <key>MinimumVersion</key>
     <string>0.2.0</string>
