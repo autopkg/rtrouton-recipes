@@ -23,7 +23,7 @@
             <key>GROUP_NAME</key>
             <string>%NAME%-update-smart</string>
             <key>DESCRIPTION</key>
-            <string>NoMAD is a helpful replacement for Active Directory bindings, using Kerberos and other resources to provide Active Directory services without a fragile binding plugin.</string>
+            <string>NoMAD is a helpful replacement for Active Directory bindings, using Kerberos and other resources to provide Active Directory services.</string>
         </dict>
         <key>MinimumVersion</key>
         <string>0.4.0</string>
