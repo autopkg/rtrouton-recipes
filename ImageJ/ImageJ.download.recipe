@@ -10,8 +10,6 @@
     <dict>
         <key>NAME</key>
         <string>ImageJ</string>
-        <key>DOWNLOAD_URL</key>
-        <string>https://jenkins.imagej.net/job/ImageJ/lastStableBuild/artifact/target/imagej-latest.zip</string>
     </dict>
     <key>MinimumVersion</key>
     <string>0.2.0</string>
@@ -28,13 +26,24 @@
 				<string>Version (?P&lt;version&gt;[0-9a-z\.]*)</string>
 			</dict>
 		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>ImageJ2-[0-9]*.zip</string>
+				<key>url</key>
+				<string>https://downloads.imagej.net/</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
         <dict>
             <key>Processor</key>
             <string>URLDownloader</string>
             <key>Arguments</key>
             <dict>
                 <key>url</key>
-                <string>%DOWNLOAD_URL%</string>
+                <string>%url%/%match%</string>
                 <key>filename</key>
                 <string>%NAME%.zip</string>
             </dict>
