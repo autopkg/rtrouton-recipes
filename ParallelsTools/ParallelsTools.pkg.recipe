@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Parallels Desktop and extracts Parallels Tools.</string>
+	<key>Identifier</key>
+	<string>com.github.rtrouton.pkg.ParallelsTools</string>
+	<key>Input</key>
+	<dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.6.1</string>
+	<key>ParentRecipe</key>
+	<string>com.github.homebysix.download.ParallelsDesktop</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/prl-tools-mac.dmg</string>
+				<key>source_path</key>
+				<string>%pathname%/%NAME%.app/Contents/Resources/Tools/prl-tools-mac.iso</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+        <dict>
+            <key>Processor</key>
+            <string>PkgCopier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>source_pkg</key>
+                <string>%RECIPE_CACHE_DIR%/prl-tools-mac.dmg/Install.app/Contents/Resources/Install.mpkg</string>
+                <key>pkg_path</key>
+                <string>%RECIPE_CACHE_DIR%/ParallelsTools-%version%.mpkg</string>
+            </dict>
+        </dict>
+        <dict>
+        <key>Arguments</key>
+        <dict>
+            <key>path_list</key>
+            <array>
+                <string>%RECIPE_CACHE_DIR%/prl-tools-mac.dmg</string>
+            </array>
+        </dict>
+        <key>Processor</key>
+        <string>PathDeleter</string>
+	</dict>                   	      	
+	</array>
+</dict>
+</plist>
