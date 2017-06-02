@@ -8,6 +8,8 @@
 	<string>com.github.rtrouton.pkg.MicrosoftOneDrive</string>
 	<key>Input</key>
 	<dict>
+	<key>NAME</key>
+	<string>OneDrive</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.6.0</string>
