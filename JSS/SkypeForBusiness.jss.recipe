@@ -16,6 +16,8 @@
 		<string>SmartGroupTemplate.xml</string>
 		<key>NAME</key>
 		<string>SkypeForBusiness</string>
+		<key>pkg_path</key>
+		<string>%RECIPE_CACHE_DIR%/%NAME%-%version%.pkg</string>
 		<key>POLICY_CATEGORY</key>
 		<string>Testing</string>
 		<key>POLICY_TEMPLATE</key>
