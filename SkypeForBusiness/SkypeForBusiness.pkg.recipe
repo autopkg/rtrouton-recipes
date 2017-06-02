@@ -28,7 +28,7 @@
 	<key>MinimumVersion</key>
 	<string>0.6.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.rtrouton.pkg.SkypeForBusiness</string>
+	<string>com.github.autopkg.download.SkypeForBusiness</string>
 	<key>Process</key>
 	<array>
 		<dict>
