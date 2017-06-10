@@ -1,0 +1,1 @@
+AutoPkg recipes for Apple Enterprise Connect. Apple does not provide a public download URL for Enterprise Connect, so you will need to create a recipe override and enter the URL Apple sends you into the `DOWNLOAD_URL` value of the override.

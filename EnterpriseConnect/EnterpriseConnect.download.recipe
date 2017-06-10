@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Download recipe for Apple Enterprise Connect, which downloads a zip file containing the latest version of Enterprise Connect. Apple does not provide a public download URL, so you will need to create a recipe override and enter the URL Apple sends you into the DOWNLOAD_URL value of the override.</string>
+    <key>Identifier</key>
+    <string>com.github.rtrouton.download.EnterpriseConnect</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>Enterprise Connect</string>
+        <key>DOWNLOAD_URL</key>
+        <string>Put_Enterprise_Connect_download_URL_into_AutoPkg_recipe_override</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.8.0</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%DOWNLOAD_URL%</string>
+                <key>filename</key>
+                <string>%NAME%.zip</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+    </array>
+</dict>
+</plist>
