@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the current standalone Microsoft OneDrive installer, extracts version information and renames the installer package.</string>
+	<string>Downloads the current Apple Enterprise Connect installer, extracts version information and renames the installer package.</string>
 	<key>Identifier</key>
 	<string>com.github.rtrouton.pkg.EnterpriseConnect</string>
 	<key>Input</key>
