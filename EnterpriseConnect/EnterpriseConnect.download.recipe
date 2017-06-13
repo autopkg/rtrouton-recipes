@@ -17,21 +17,30 @@
     <string>0.8.0</string>
     <key>Process</key>
     <array>
-        <dict>
-            <key>Processor</key>
-            <string>URLDownloader</string>
-            <key>Arguments</key>
-            <dict>
-                <key>url</key>
-                <string>%DOWNLOAD_URL%</string>
-                <key>filename</key>
-                <string>%NAME%.zip</string>
-            </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>EndOfCheckPhase</string>
-        </dict>
+    <dict>
+    	<key>Arguments</key>
+    	<dict>
+    		<key>predicate</key>
+    		<string>DOWNLOAD_URL == "Put_Enterprise_Connect_download_URL_into_AutoPkg_recipe_override"</string>
+    	</dict>
+    	<key>Processor</key>
+    	<string>StopProcessingIf</string>
+    </dict>
+    <dict>
+    	<key>Processor</key>
+    	<string>URLDownloader</string>
+    	<key>Arguments</key>
+    	<dict>
+    		<key>url</key>
+    		<string>%DOWNLOAD_URL%</string>
+    		<key>filename</key>
+    		<string>%NAME%.zip</string>
+    	</dict>
+    </dict>
+    <dict>
+    	<key>Processor</key>
+    	<string>EndOfCheckPhase</string>
+    </dict>
     </array>
 </dict>
 </plist>
