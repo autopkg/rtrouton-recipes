@@ -16,21 +16,12 @@
 	<key>Process</key>
 	<array>
         <dict>
-        	<key>Processor</key>
-        	<string>FileFinder</string>
-        	<key>Arguments</key>
-        	<dict>
-        		<key>pattern</key>
-        		<string>%RECIPE_CACHE_DIR%/downloads/*.pkg</string>
-        	</dict>
-        </dict>
-        <dict>
             <key>Processor</key>
             <string>FlatPkgUnpacker</string>
             <key>Arguments</key>
             <dict>
                 <key>flat_pkg_path</key>
-                <string>%found_filename%</string>
+                <string>%pathname%</string>
                 <key>destination_path</key>
                 <string>%RECIPE_CACHE_DIR%/unpack</string>
             </dict>
@@ -58,21 +49,12 @@
             </dict>
         </dict>
         <dict>
-        	<key>Processor</key>
-        	<string>FileFinder</string>
-        	<key>Arguments</key>
-        	<dict>
-        		<key>pattern</key>
-        		<string>%RECIPE_CACHE_DIR%/downloads/*.pkg</string>
-        	</dict>
-        </dict>
-        <dict>
             <key>Processor</key>
             <string>PkgCopier</string>
             <key>Arguments</key>
             <dict>
                 <key>source_pkg</key>
-                <string>%found_filename%</string>
+                <string>%pathname%</string>
                 <key>pkg_path</key>
                 <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.pkg</string>
             </dict>
