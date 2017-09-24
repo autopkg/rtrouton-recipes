@@ -65,7 +65,7 @@
 				<string>#!/bin/bash
 
 # Determine working directory
-install_dir=`dirname $0`
+install_dir=$(dirname $0)
 
 # Install the Creative Cloud  application using the Install binary's silent install mode
 "${install_dir}/Creative Cloud Installer.app/Contents/MacOS/Install" --mode=silent</string>
@@ -88,8 +88,6 @@ install_dir=`dirname $0`
 					<string>com.adobe.AdobeCreativeCloudInstaller.pkg</string>
 					<key>version</key>
 					<string>%version%</string>
-					<key>chown</key>
-					<array/>
 					<key>scripts</key>
 					<string>Scripts</string>
 				</dict>
@@ -102,7 +100,7 @@ install_dir=`dirname $0`
 			<dict>
 				<key>path_list</key>
 				<array>
-					<string>%RECIPE_CACHE_DIR%/Scripts/%NAME%.app</string>
+					<string>%RECIPE_CACHE_DIR%/Scripts</string>
 				</array>
 			</dict>
 		</dict>
