@@ -10,10 +10,16 @@
 	<string>com.github.rtrouton.download.AdobeCreativeCloudInstaller</string>
 	<key>Input</key>
 	<dict>
-		<key>DOWNLOAD_URL</key>
-		<string>https://ccmdls.adobe.com/AdobeProducts/KCCC/1/osx10/CreativeCloudInstaller.dmg</string>
 		<key>NAME</key>
 		<string>Creative Cloud Installer</string>
+		<key>VENDOR</key>
+		<string>Adobe</string>
+		<key>SOFTWARETITLE</key>
+		<string>Creative Cloud Installer</string>
+		<key>NAMEWITHOUTSPACES</key>
+		<string>CreativeCloudInstaller</string>
+		<key>DOWNLOAD_URL</key>
+		<string>https://ccmdls.adobe.com/AdobeProducts/KCCC/1/osx10/%NAMEWITHOUTSPACES%.dmg</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
@@ -23,7 +29,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>filename</key>
-				<string>%NAME%.dmg</string>
+				<string>%NAMEWITHOUTSPACES%.dmg</string>
 				<key>url</key>
 				<string>%DOWNLOAD_URL%</string>
 			</dict>
@@ -38,7 +44,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>input_path</key>
-				<string>%pathname%/%NAME%.app</string>
+				<string>%pathname%/%SOFTWARETITLE%.app</string>
 				<key>requirement</key>
 				<string>identifier "com.adobe.Install" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = JQ525L2MZD</string>
 			</dict>
@@ -49,7 +55,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>input_plist_path</key>
-				<string>%pathname%/%NAME%.app/Contents/Info.plist</string>
+				<string>%pathname%/%SOFTWARETITLE%.app/Contents/Info.plist</string>
 				<key>plist_version_key</key>
 				<string>CFBundleShortVersionString</string>
 			</dict>
