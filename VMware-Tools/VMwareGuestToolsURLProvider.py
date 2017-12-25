@@ -10,7 +10,7 @@ __all__ = ["VMwareGuestToolsURLProvider"]
 
 FUSION_URL_BASE = 'http://softwareupdate.vmware.com/cds/vmw-desktop/'
 DARWIN_TOOLS_URL_APPEND = 'packages/com.vmware.fusion.tools.darwin.zip.tar'
-DEFAULT_VERSION_SERIES = '10.0.0'
+DEFAULT_VERSION_SERIES = '10.1.0'
 
 class VMwareGuestToolsURLProvider(Processor):
 	'''Provides URL to the latest Darwin ISO of the VMware Fusion tools.'''
