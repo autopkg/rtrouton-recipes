@@ -85,9 +85,9 @@ class Slacker(Processor):
             print "Category: %s" % category
             print "Policy Category: %s" % policy_category
             if jss_uploaded_package:
-                slack_text = "*New Installer Package added to Jamf Pro:*\nURL: %s\nTitle: *%s*\nCategory: *%s*\nPolicy Name: *%s*\nUploaded Package Name: *%s*" % (JSS_URL, output_title, category, jss_policy_name, jss_uploaded_package)
+                slack_text = "*New installer package added to Jamf Pro:*\nURL: %s\nTitle: *%s*\nCategory: *%s*\nPolicy Name: *%s*\nUploaded Package Name: *%s*" % (JSS_URL, output_title, category, jss_policy_name, jss_uploaded_package)
             else:
-                slack_text = "*Installer Package previously uploaded to Jamf Pro:*\nURL: %s\nTitle: *%s*\nCategory: *%s*\nPolicy Name: *%s*" % (JSS_URL, output_title, category, jss_policy_name)
+                slack_text = "*No change to current Jamf Pro installer package:*\nURL: %s\nTitle: *%s*\nCategory: *%s*\nPolicy Name: *%s*\nNo new package uploaded" % (JSS_URL, output_title, category, jss_policy_name)
 
             slack_data = {'text': slack_text}
 
