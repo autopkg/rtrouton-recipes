@@ -77,8 +77,9 @@ class Slacker(Processor):
         if jss_changed_objects:
             jss_policy_name = "%s" % jss_importer_summary_result["data"]["Policy"]
             jss_uploaded_package = "%s" % jss_importer_summary_result["data"]["Package"]
+            output_title = "%s" % (prod_name)
             print "JSS address: %s" % JSS_URL
-            print "Title: %s" % prod_name
+            print "Title: %s" % output_title
             print "Policy: %s" % jss_policy_name
             print "Package Added: %s" % jss_uploaded_package
             print "Category: %s" % category
