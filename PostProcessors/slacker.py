@@ -81,7 +81,7 @@ class Slacker(Processor):
             print "Package Added: %s" % jss_repo_updated
             print "Category: %s" % category
             print "Policy Category: %s" % policy_category
-            slack_text = "*New Item added to Jamf Pro:*\nURL: %s\nTitle: *%s*\nPackage Added: *%s*\nCategory: *%s*\nPolicy Name: *%s*" % (JSS_URL, prod_name, jss_repo_updated, category)
+            slack_text = "*New Item added to Jamf Pro:*\nURL: %s\nTitle: *%s*\nPackage Added: *%s*\nCategory: *%s*" % (JSS_URL, prod_name, jss_repo_updated, category)
 
             slack_data = {'text': slack_text}
 
