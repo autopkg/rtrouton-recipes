@@ -75,13 +75,18 @@ class Slacker(Processor):
         webhook_url = self.env.get("webhook_url")
 
         if jss_changed_objects:
-            jss_repo_updated = "%s" % jss_importer_summary_result["data"]["Package"]
+            jss_policy_name = "%s" % jss_importer_summary_result["data"]["Policy"]
+            jss_uploaded_package = "%s" % jss_importer_summary_result["data"]["Package"]
             print "JSS address: %s" % JSS_URL
             print "Title: %s" % prod_name
-            print "Package Added: %s" % jss_repo_updated
+            print "Policy: %s" % jss_policy_name
+            print "Package Added: %s" % jss_uploaded_package
             print "Category: %s" % category
             print "Policy Category: %s" % policy_category
-            slack_text = "*New Item added to Jamf Pro:*\nURL: %s\nTitle: *%s*\nPackage Added: *%s*\nCategory: *%s*" % (JSS_URL, prod_name, jss_repo_updated, category)
+            if jss_uploaded_package:
+                slack_text = "*New Installer Package added to Jamf Pro:*\nURL: %s\nTitle: *%s*\nCategory: *%s*\nPolicy Name: *%s*\nUploaded Package Name: *%s*" % (JSS_URL, output_title, category, jss_policy_name, jss_uploaded_package)
+            else:
+                slack_text = "*Installer Package previously uploaded to Jamf Pro:*\nURL: %s\nTitle: *%s*\nCategory: *%s*\nPolicy Name: *%s*" % (JSS_URL, output_title, category, jss_policy_name)
 
             slack_data = {'text': slack_text}
 
