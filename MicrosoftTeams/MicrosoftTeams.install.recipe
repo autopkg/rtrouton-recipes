@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads Microsoft Teams disk image, builds a package and installs it.</string>
+    <string>Downloads the latest version of Microsoft's Teams installer package and installs it.</string>
     <key>Identifier</key>
     <string>com.github.rtrouton.install.microsoftteams</string>
     <key>Input</key>

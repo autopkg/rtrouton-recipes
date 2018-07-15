@@ -1,85 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-    <key>Description</key>
-    <string>Downloads Microsoft Teams disk image and builds a package.</string>
-    <key>Identifier</key>
-    <string>com.github.rtrouton.pkg.microsoftteams</string>
-    <key>Input</key>
-    <dict>
-        <key>NAME</key>
-        <string>Microsoft Teams</string>
-    </dict>
-    <key>MinimumVersion</key>
-    <string>1.0.0</string>
-    <key>ParentRecipe</key>
-    <string>com.github.apettinen.download.MSTeams</string>
-    <key>Process</key>
-    <array>
-        <dict>
-            <key>Processor</key>
-            <string>AppDmgVersioner</string>
+   <dict>
+      <key>Description</key>
+      <string>Downloads the latest version of Microsoft's Teams installer package and renames the package.</string>
+      <key>Identifier</key>
+      <string>com.github.rtrouton.pkg.microsoftteams</string>
+      <key>Input</key>
+      <dict>
+         <key>NAME</key>
+         <string>Microsoft Teams</string>
+         <key>VENDOR</key>
+         <string>Microsoft</string>
+         <key>SOFTWARETITLE</key>
+         <string>Teams</string>
+      </dict>
+      <key>MinimumVersion</key>
+      <string>1.0.0</string>
+      <key>ParentRecipe</key>
+      <string>com.github.apettinen.download.MSTeams</string>
+      <key>Process</key>
+      <array>
+         <dict>
             <key>Arguments</key>
             <dict>
-                <key>dmg_path</key>
-                <string>%pathname%</string>
+               <key>destination_path</key>
+               <string>%RECIPE_CACHE_DIR%/downloads/unpack</string>
+               <key>flat_pkg_path</key>
+               <string>%pathname%</string>
             </dict>
-        </dict>
-        <dict>
             <key>Processor</key>
-            <string>PkgRootCreator</string>
+            <string>FlatPkgUnpacker</string>
+         </dict>
+         <dict>
             <key>Arguments</key>
             <dict>
-                <key>pkgroot</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%</string>
-                <key>pkgdirs</key>
-                <dict>
-                    <key>Applications</key>
-                    <string>0775</string>
-                </dict>
+               <key>pattern</key>
+               <string>%RECIPE_CACHE_DIR%/downloads/unpack/*Teams*.pkg</string>
             </dict>
-        </dict>
-        <dict>
             <key>Processor</key>
-            <string>Copier</string>
+            <string>FileFinder</string>
+         </dict>
+         <dict>
             <key>Arguments</key>
             <dict>
-                <key>source_path</key>
-                <string>%pathname%/%NAME%.app</string>
-                <key>destination_path</key>
-                <string>%pkgroot%/Applications/%NAME%.app</string>
+               <key>destination_path</key>
+               <string>%RECIPE_CACHE_DIR%/downloads/payload</string>
+               <key>pkg_payload_path</key>
+               <string>%found_filename%/Payload</string>
             </dict>
-        </dict>
-        <dict>
             <key>Processor</key>
-            <string>PkgCreator</string>
+            <string>PkgPayloadUnpacker</string>
+         </dict>
+         <dict>
             <key>Arguments</key>
             <dict>
-                <key>pkgname</key>
-                <string>%NAME%-%version%</string>
-                <key>pkg_request</key>
-                <dict>
-                    <key>pkgdir</key>
-                    <string>%RECIPE_CACHE_DIR%</string>
-                    <key>id</key>
-                    <string>com.microsoft.teams</string>
-                    <key>options</key>
-                    <string>purge_ds_store</string>
-                    <key>chown</key>
-                    <array>
-                        <dict>
-                            <key>path</key>
-                            <string>Applications</string>
-                            <key>user</key>
-                            <string>root</string>
-                            <key>group</key>
-                            <string>admin</string>
-                        </dict>
-                    </array>
-                </dict>
+               <key>input_plist_path</key>
+               <string>%RECIPE_CACHE_DIR%/downloads/payload/Microsoft Teams.app/Contents/Info.plist</string>
+               <key>plist_version_key</key>
+               <string>CFBundleShortVersionString</string>
             </dict>
-        </dict>
-    </array>
-</dict>
+            <key>Processor</key>
+            <string>Versioner</string>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>PkgCopier</string>
+            <key>Arguments</key>
+            <dict>
+               <key>source_pkg</key>
+               <string>%pathname%</string>
+               <key>pkg_path</key>
+               <string>%RECIPE_CACHE_DIR%/%VENDOR%_%SOFTWARETITLE%_%version%.pkg</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>PathDeleter</string>
+            <key>Arguments</key>
+            <dict>
+               <key>path_list</key>
+               <array>
+                  <string>%RECIPE_CACHE_DIR%/downloads/unpack</string>
+                  <string>%RECIPE_CACHE_DIR%/downloads/payload</string>
+               </array>
+            </dict>
+         </dict>
+      </array>
+   </dict>
 </plist>
