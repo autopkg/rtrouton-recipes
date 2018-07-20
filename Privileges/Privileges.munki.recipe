@@ -4,11 +4,11 @@
 <dict>
 	<key>Description</key>
 	<string>Downloads the latest version of Privileges.app and imports it into Munki</string>
-    <key>Identifier</key>
-    <string>com.github.rtrouton.munki.privileges</string>
-    <key>Input</key>
-    <dict>
-		<key>MUNKI_CATEGORY</key>
+	<key>Identifier</key>
+	<string>com.github.rtrouton.munki.privileges</string>
+	<key>Input</key>
+	<dict>
+			<key>MUNKI_CATEGORY</key>
 		<string>Utilities</string>
 		<key>MUNKI_DEVELOPER</key>
 		<string>SAP</string>
