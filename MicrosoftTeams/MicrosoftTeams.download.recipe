@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+   <dict>
+      <key>Description</key>
+      <string>Downloads the latest Microsoft Teams installer pkg.</string>
+      <key>Identifier</key>
+      <string>com.github.rtrouton.download.microsoftteams</string>
+      <key>MinimumVersion</key>
+      <string>1.0.0</string>
+      <key>Input</key>
+      <dict>
+         <key>NAME</key>
+         <string>Microsoft Teams</string>
+         <key>VENDOR</key>
+         <string>Microsoft</string>
+         <key>SOFTWARETITLE</key>
+         <string>Teams</string>
+         <key>PRODUCTID</key>
+         <string>869428</string>
+         <key>DOWNLOADURL</key>
+         <string>https://go.microsoft.com/fwlink/?linkid=%PRODUCTID%</string>
+      </dict>
+      <key>Process</key>
+      <array>
+         <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+               <key>url</key>
+               <string>%DOWNLOADURL%</string>
+               <key>filename</key>
+               <string>%VENDOR%_%SOFTWARETITLE%.pkg</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+               <key>input_path</key>
+               <string>%pathname%</string>
+               <key>expected_authority_names</key>
+               <array>
+                  <string>Developer ID Installer: Microsoft Corporation (UBF8T346G9)</string>
+                  <string>Developer ID Certification Authority</string>
+                  <string>Apple Root CA</string>
+               </array>
+            </dict>
+         </dict>
+      </array>
+   </dict>
+</plist>
