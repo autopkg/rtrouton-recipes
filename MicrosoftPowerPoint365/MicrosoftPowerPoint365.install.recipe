@@ -3,18 +3,18 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the current release version of the Microsoft OneDrive standalone installer package and installs it.</string>
+    <string>Downloads the current release version of the Microsoft PowerPoint installer package for Office 365 and installs it.</string>
     <key>Identifier</key>
-    <string>com.github.rtrouton.install.MicrosoftOneDrive</string>
+    <string>com.github.rtrouton.install.microsoftpowerpoint365</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>Microsoft OneDrive</string>
+        <string>Microsoft PowerPoint</string>
     </dict>
     <key>MinimumVersion</key>
-    <string>0.6.0</string>
+    <string>1.0.0</string>
     <key>ParentRecipe</key>
-    <string>com.github.rtrouton.pkg.MicrosoftOneDrive</string>
+    <string>com.github.rtrouton.pkg.microsoftpowerpoint365</string>
     <key>Process</key>
     <array>
         <dict>
