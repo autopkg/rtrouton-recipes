@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads latest Endnote X9 installer and imports it into munki.</string>
+	<key>Identifier</key>
+	<string>com.github.rtrouton.munki.EndNoteX9</string>
+	<key>Input</key>
+	<dict>
+		<key>DEFAULT_CATALOG</key>
+		<string>testing</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/%NAME%</string>
+		<key>NAME</key>
+		<string>EndNoteX9</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>%DEFAULT_CATALOG%</string>
+			</array>
+			<key>category</key>
+			<string>Reference</string>
+			<key>description</key>
+			<string>Bibliographic management app.</string>
+			<key>developer</key>
+			<string>Thomson Reuters</string>
+			<key>display_name</key>
+			<string>EndNote X9</string>
+			<key>minimum_os_version</key>
+			<string>10.10.0</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>1.0.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.rtrouton.pkg.EndNoteX9</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
