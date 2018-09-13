@@ -5,16 +5,16 @@
     <key>Description</key>
     <string>Downloads the current release version of the Microsoft OneDrive standalone installer package and installs it.</string>
     <key>Identifier</key>
-    <string>com.github.rtrouton.install.MicrosoftOneDrive</string>
+    <string>com.github.rtrouton.install.microsoftonedrive</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
         <string>Microsoft OneDrive</string>
     </dict>
     <key>MinimumVersion</key>
-    <string>0.6.0</string>
+    <string>1.0.0</string>
     <key>ParentRecipe</key>
-    <string>com.github.rtrouton.pkg.MicrosoftOneDrive</string>
+    <string>com.github.rtrouton.pkg.microsoftonedrive</string>
     <key>Process</key>
     <array>
         <dict>

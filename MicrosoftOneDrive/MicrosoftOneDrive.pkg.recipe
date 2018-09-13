@@ -5,14 +5,20 @@
 	<key>Description</key>
 	<string>Downloads the current standalone Microsoft OneDrive installer, extracts version information and renames the installer package.</string>
 	<key>Identifier</key>
-	<string>com.github.rtrouton.pkg.MicrosoftOneDrive</string>
-	<key>Input</key>
-	<dict>
-	</dict>
+	<string>com.github.rtrouton.pkg.microsoftonedrive</string>
+      <key>Input</key>
+      <dict>
+         <key>NAME</key>
+         <string>Microsoft OneDrive</string>
+         <key>VENDOR</key>
+         <string>Microsoft</string>
+         <key>SOFTWARETITLE</key>
+         <string>OneDrive</string>
+      </dict>
 	<key>MinimumVersion</key>
 	<string>0.6.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.apettinen.download.MSOneDrive</string>
+	<string>com.github.rtrouton.download.microsoftonedrive</string>
 	<key>Process</key>
 	<array>
         <dict>
@@ -32,7 +38,7 @@
             <key>Arguments</key>
             <dict>
                 <key>pkg_payload_path</key>
-                <string>%RECIPE_CACHE_DIR%/unpack/%NAME%.pkg/Payload</string>
+                <string>%RECIPE_CACHE_DIR%/unpack/%SOFTWARETITLE%.pkg/Payload</string>
                 <key>destination_path</key>
                 <string>%RECIPE_CACHE_DIR%/payload</string>
             </dict>
@@ -43,7 +49,7 @@
             <key>Arguments</key>
             <dict>
                 <key>input_plist_path</key>
-                <string>%RECIPE_CACHE_DIR%/payload/%NAME%.app/Contents/Info.plist</string>
+                <string>%RECIPE_CACHE_DIR%/payload/%SOFTWARETITLE%.app/Contents/Info.plist</string>
                 <key>plist_version_key</key>
                 <string>CFBundleShortVersionString</string>
             </dict>
@@ -56,7 +62,7 @@
                 <key>source_pkg</key>
                 <string>%pathname%</string>
                 <key>pkg_path</key>
-                <string>%RECIPE_CACHE_DIR%/Microsoft%NAME%-%version%.pkg</string>
+                <string>%RECIPE_CACHE_DIR%/%VENDOR%_%SOFTWARETITLE%_%version%.pkg</string>
             </dict>
         </dict>
         <dict>
