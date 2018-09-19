@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the current release version of Icons.app, builds a package and installs it.</string>
+    <string>Downloads the current release version of Privileges.app, builds a package and installs it.</string>
     <key>Identifier</key>
     <string>com.github.rtrouton.install.privileges</string>
     <key>Input</key>
