@@ -9,7 +9,7 @@
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>Icons</string>
+        <string>Privileges</string>
     </dict>
     <key>MinimumVersion</key>
     <string>1.0.0</string>
