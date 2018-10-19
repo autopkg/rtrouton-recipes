@@ -9,7 +9,13 @@
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>OpenJDK11</string>
+        <string>OpenJDK 11</string>
+        <key>VENDOR</key>
+        <string>OpenJDK</string>
+        <key>SOFTWARETITLE</key>
+        <string>Java</string>
+        <key>SOFTWARETYPE</key>
+        <string>JDK</string>
     </dict>
     <key>ParentRecipe</key>
     <string>com.github.rtrouton.download.OpenJDK11</string>
@@ -76,7 +82,7 @@
                 <key>pkg_request</key>
                 <dict>
                     <key>pkgname</key>
-                    <string>%NAME%-%version%</string>
+                    <string>%VENDOR%-%version%</string>
                     <key>version</key>
                     <string>%version%</string>
                     <key>id</key>
