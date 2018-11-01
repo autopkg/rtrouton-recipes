@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of Adobe's Creative Cloud Installer and packages it for installation.</string>
+	<string>Downloads the latest version of Adobe's Creative Cloud Desktop App Installer and packages it for installation.</string>
 	<key>Identifier</key>
 	<string>com.github.rtrouton.pkg.AdobeCreativeCloudInstaller</string>
 	<key>Input</key>
@@ -18,7 +18,7 @@
 		<string>CreativeCloudInstaller</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.6.1</string>
+	<string>1.0.0</string>
 	<key>ParentRecipe</key>
 	<string>com.github.rtrouton.download.AdobeCreativeCloudInstaller</string>
 	<key>Process</key>
@@ -40,7 +40,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>input_plist_path</key>
-				<string>%pathname%/%SOFTWARETITLE%.app/Contents/Info.plist</string>
+				<string>%pathname%/Install.app/Contents/Info.plist</string>
 				<key>plist_version_key</key>
 				<string>CFBundleVersion</string>
 			</dict>
@@ -51,9 +51,35 @@
 			<key>Arguments</key>
 			<dict>
 				<key>source_path</key>
-				<string>%pathname%/%SOFTWARETITLE%.app</string>
+				<string>%pathname%/Install.app</string>
 				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/Scripts/%SOFTWARETITLE%.app</string>
+				<string>%RECIPE_CACHE_DIR%/Scripts/Install.app</string>
+				<key>overwrite</key>
+				<true/>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>Copier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>source_path</key>
+				<string>%pathname%/packages</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/Scripts/packages</string>
+				<key>overwrite</key>
+				<true/>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>Copier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>source_path</key>
+				<string>%pathname%/resources</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/Scripts/resources</string>
 				<key>overwrite</key>
 				<true/>
 			</dict>
@@ -74,7 +100,7 @@
 install_dir=$(dirname $0)
 
 # Install the Creative Cloud  application using the Install binary's silent install mode
-"${install_dir}/Creative Cloud Installer.app/Contents/MacOS/Install" --mode=silent</string>
+"${install_dir}/Install.app/Contents/MacOS/Install" --mode=silent</string>
 			</dict>
 		</dict>
 		<dict>
