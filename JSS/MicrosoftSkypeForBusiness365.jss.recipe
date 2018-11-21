@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of the Skype for Business installer and imports it into your JSS.</string>
+	<string>Downloads the latest version of Microsoft's Skype for Business installer and imports it into your JSS.</string>
 	<key>Identifier</key>
-	<string>com.github.rtrouton.jss.SkypeForBusiness</string>
+	<string>com.github.rtrouton.jss.skypeforbusiness365</string>
 	<key>Input</key>
 	<dict>
 		<key>CATEGORY</key>
@@ -26,9 +26,9 @@
 		<string>%RECIPE_DIR%/SkypeForBusiness.png</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.6.0</string>
+	<string>1.0.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.rtrouton.pkg.SkypeForBusiness</string>
+	<string>com.github.rtrouton.pkg.skypeforbusiness365</string>
 	<key>Process</key>
 	<array>
 		<dict>
