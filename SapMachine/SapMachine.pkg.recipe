@@ -3,22 +3,20 @@
 <plist version="1.0">
    <dict>
       <key>Description</key>
-      <string>Downloads the current release version of OpenJDK 11 and builds a package.</string>
+      <string>Downloads the current release version of SapMachine Java JDK and builds an installer package.</string>
       <key>Identifier</key>
-      <string>com.github.rtrouton.pkg.OpenJDK11</string>
+      <string>com.github.rtrouton.pkg.SapMachine</string>
       <key>Input</key>
       <dict>
          <key>NAME</key>
-         <string>OpenJDK 11</string>
+         <string>SapMachine</string>
          <key>VENDOR</key>
-         <string>OpenJDK</string>
+         <string>SAP</string>
          <key>SOFTWARETITLE</key>
-         <string>Java</string>
-         <key>SOFTWARETYPE</key>
-         <string>JDK</string>
+         <string>SapMachine</string>
       </dict>
       <key>ParentRecipe</key>
-      <string>com.github.rtrouton.download.OpenJDK11</string>
+      <string>com.github.rtrouton.download.SapMachine</string>
       <key>MinimumVersion</key>
       <string>1.0.0</string>
       <key>Process</key>
@@ -58,7 +56,7 @@
             <key>Arguments</key>
             <dict>
                <key>pattern</key>
-               <string>%pkgroot%/Library/Java/JavaVirtualMachines/jdk*/Contents/Info.plist</string>
+               <string>%pkgroot%/Library/Java/JavaVirtualMachines/*jdk*/Contents/Info.plist</string>
             </dict>
             <key>Processor</key>
             <string>FileFinder</string>
@@ -82,11 +80,11 @@
                <key>pkg_request</key>
                <dict>
                   <key>pkgname</key>
-                  <string>%VENDOR%-%version%</string>
+                  <string>%VENDOR%-%SOFTWARETITLE%-%version%</string>
                   <key>version</key>
                   <string>%version%</string>
                   <key>id</key>
-                  <string>net.java.openjdk</string>
+                  <string>net.java.openjdk.sapmachine</string>
                   <key>scripts</key>
                   <string>Scripts</string>
                   <key>options</key>

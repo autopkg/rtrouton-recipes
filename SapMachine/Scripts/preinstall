@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Remove existing SapMachine installations
+
+for JAVADIR in "$3"/Library/Java/JavaVirtualMachines/sapmachine-jdk*; do
+  rm -rf "$JAVADIR"
+done
+
+exit 0
