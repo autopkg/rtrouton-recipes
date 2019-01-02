@@ -9,7 +9,7 @@
 	<key>Input</key>
 	<dict>
 		<key>MAJOR_VERSION</key>
-		<string>7</string>
+		<string>8</string>
 		<key>APP_FILENAME</key>
 		<string>Prism %MAJOR_VERSION%</string>
 		<key>DOWNLOAD_BASE_URL</key>
@@ -18,7 +18,7 @@
 		<string>Prism</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.6.1</string>
+	<string>1.0.0</string>
 	<key>Process</key>
 	<array>
 		<dict>
@@ -53,7 +53,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>input_path</key>
-				<string>%pathname%/Prism 7.app</string>
+				<string>%pathname%/%APP_FILENAME%.app</string>
 				<key>requirement</key>
 				<string>anchor apple generic and identifier "com.GraphPad.Prism" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "YQ2D36NS9M")</string>
 			</dict>
