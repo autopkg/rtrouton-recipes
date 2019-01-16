@@ -19,7 +19,7 @@
         <key>SEARCH_URL</key>
         <string>https://jdk.java.net/11/index.html</string>
         <key>SEARCH_PATTERN</key>
-        <string>(?P&lt;url&gt;https://download.java.net/java/GA/jdk11/13/GPL/openjdk-11\.[0-9\.]+_osx-x64_bin\.tar\.gz)</string>
+        <string>(?P&lt;url&gt;https://download.java.net/java/GA/jdk11/.*?/GPL/openjdk-11\.[0-9\.]+_osx-x64_bin\.tar\.gz)</string>
     </dict>
     <key>MinimumVersion</key>
     <string>1.0.0</string>
