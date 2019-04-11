@@ -9,7 +9,7 @@
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>GoogleChrome</string>
+        <string>Word365</string>
         <key>MUNKI_REPO_SUBDIR</key>
         <string>apps/msoffice</string>
         <key>pkginfo</key>
