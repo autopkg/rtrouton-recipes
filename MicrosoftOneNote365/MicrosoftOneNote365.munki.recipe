@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the latest Microsoft Word installer package for Office 365 and imports into Munki.</string>
+    <string>Downloads the latest Microsoft OneNote installer package for Office 365 and imports into Munki.</string>
     <key>Identifier</key>
-    <string>com.github.rtrouton.munki.microsoftword365</string>
+    <string>com.github.rtrouton.munki.microsoftonenote365</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>Word365</string>
+        <string>OneNote365</string>
         <key>MUNKI_REPO_SUBDIR</key>
         <string>apps/msoffice</string>
         <key>pkginfo</key>
@@ -19,7 +19,7 @@
                 <string>testing</string>
             </array>
             <key>display_name</key>
-            <string>Microsoft Word 365</string>
+            <string>Microsoft OneNote 365</string>
             <key>name</key>
             <string>%NAME%</string>
             <key>unattended_install</key>
@@ -29,7 +29,7 @@
     <key>MinimumVersion</key>
     <string>0.2.0</string>
     <key>ParentRecipe</key>
-    <string>com.github.rtrouton.download.microsoftword365</string>
+    <string>com.github.rtrouton.download.microsoftonenote365</string>
     <key>Process</key>
     <array>
         <dict>
