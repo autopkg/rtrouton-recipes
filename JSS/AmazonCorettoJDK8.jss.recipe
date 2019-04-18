@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plist version="1.0">
+    <dict>
+        <key>Description</key>
+        <string>Downloads the latest version of Amazon Coretto Java JDK 8, builds an installer package, then uploads to the JSS.</string>
+        <key>Identifier</key>
+        <string>com.github.rtrouton.jss.amazoncorettojdk8</string>
+        <key>Input</key>
+        <dict>
+            <key>NAME</key>
+            <string>Amazon Coretto Java JDK 8</string>
+            <key>CATEGORY</key>
+            <string>Apps</string>
+            <key>POLICY_CATEGORY</key>
+            <string>Testing</string>
+            <key>POLICY_TEMPLATE</key>
+            <string>%RECIPE_DIR%/PolicyTemplate.xml</string>
+            <key>DESCRIPTION</key>
+            <string>Install the latest version of %NAME%.</string>
+            <key>ICON</key>
+            <string>%RECIPE_DIR%/AmazonCorettoJDK8.png</string>
+        </dict>
+        <key>MinimumVersion</key>
+        <string>1.0.0</string>
+        <key>ParentRecipe</key>
+        <string>com.github.rtrouton.pkg.amazoncorettojdk8</string>
+        <key>Process</key>
+        <array>
+            <dict>
+                <key>Arguments</key>
+                <dict>
+                    <key>prod_name</key>
+                    <string>%NAME%</string>
+                    <key>jss_inventory_name</key>
+                    <string>%NAME%</string>
+                    <key>category</key>
+                    <string>%CATEGORY%</string>
+                    <key>policy_category</key>
+                    <string>%POLICY_CATEGORY%</string>
+                    <key>policy_template</key>
+                    <string>%POLICY_TEMPLATE%</string>
+                    <key>self_service_icon</key>
+                    <string>%ICON%</string>
+                    <key>self_service_description</key>
+                    <string>%DESCRIPTION%</string>
+                </dict>
+                <key>Processor</key>
+                <string>JSSImporter</string>
+            </dict>
+        </array>
+    </dict>
+</plist>
