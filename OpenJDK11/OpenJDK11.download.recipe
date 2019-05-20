@@ -17,7 +17,7 @@
         <key>SOFTWARETYPE</key>
         <string>JDK</string>
         <key>SEARCH_URL</key>
-        <string>https://jdk.java.net/11/index.html</string>
+        <string>https://jdk.java.net/archive</string>
         <key>SEARCH_PATTERN</key>
         <string>(?P&lt;url&gt;https://download.java.net/java/GA/jdk11/.*?/GPL/openjdk-11\.[0-9\.]+_osx-x64_bin\.tar\.gz)</string>
     </dict>
