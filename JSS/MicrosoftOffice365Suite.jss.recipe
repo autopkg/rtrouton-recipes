@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>Description</key>
+        <string>Uses parent download recipe to download the latest unlicensed Microsoft Office 365 Suite installer package and import it into the JSS.</string>
+        <key>Identifier</key>
+        <string>com.github.rtrouton.jss.MicrosoftOffice365Suite</string>
+        <key>Input</key>
+        <dict>
+            <key>NAME</key>
+            <string>Microsoft Office 365 Suite</string>
+            <key>CATEGORY</key>
+            <string>Apps</string>
+            <key>POLICY_CATEGORY</key>
+            <string>Testing</string>
+            <key>POLICY_TEMPLATE</key>
+            <string>%RECIPE_DIR%/PolicyTemplate.xml</string>
+            <key>ICON</key>
+            <string>%RECIPE_DIR%/MicrosoftOffice365Suite.png</string>
+            <key>GROUP_TEMPLATE</key>
+            <string>%RECIPE_DIR%/SmartGroupTemplate.xml</string>
+            <key>GROUP_NAME</key>
+            <string>Update-Smart-%NAME%</string>
+            <key>DESCRIPTION</key>
+            <string>Microsoft Office 365 is a software suite for word processing, spreadsheets, presentations, graphics and more.</string>
+        </dict>
+        <key>MinimumVersion</key>
+        <string>1.0.0</string>
+        <key>ParentRecipe</key>
+        <string>com.github.rtrouton.pkg.MicrosoftOffice365Suite</string>
+        <key>Process</key>
+        <array>
+            <dict>
+                <key>Arguments</key>
+                <dict>
+                    <key>prod_name</key>
+                    <string>%NAME%</string>
+                    <key>category</key>
+                    <string>%CATEGORY%</string>
+                    <key>policy_category</key>
+                    <string>%POLICY_CATEGORY%</string>
+                    <key>policy_template</key>
+                    <string>%POLICY_TEMPLATE%</string>
+                    <key>self_service_icon</key>
+                    <string>%ICON%</string>
+                    <key>self_service_description</key>
+                    <string>%DESCRIPTION%</string>
+                </dict>
+                <key>Processor</key>
+                <string>JSSImporter</string>
+            </dict>
+        </array>
+    </dict>
+</plist>
