@@ -3,7 +3,7 @@
 <plist version="1.0">
    <dict>
       <key>Description</key>
-      <string>Downloads the latest version of Microsoft's Intune Company Portal installer package and renames the package to match our naming standard.</string>
+      <string>Downloads the latest version of Microsoft's Intune Company Portal installer package and extracts the version information from the installer package.</string>
       <key>Identifier</key>
       <string>com.github.rtrouton.pkg.MicrosoftIntuneCompanyPortal</string>
       <key>Input</key>
