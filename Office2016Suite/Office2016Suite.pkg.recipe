@@ -12,7 +12,7 @@
 	<key>MinimumVersion</key>
 	<string>0.4.1</string>
 	<key>ParentRecipe</key>
-	<string>com.github.autopkg.arubdesu-recipes.download.Office2016Suite</string>
+	<string>com.github.rtrouton.download.MicrosoftOffice365Suite</string>
 	<key>Process</key>
 	<array>
         <dict>
