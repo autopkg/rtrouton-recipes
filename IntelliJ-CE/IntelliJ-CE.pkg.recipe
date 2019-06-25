@@ -48,7 +48,7 @@
                 <key>source_path</key>
                 <string>%pathname%/*.app</string>
                 <key>destination_path</key>
-                <string>%pkgroot%/Applications/%NAME%.app</string>
+                <string>%pkgroot%/Applications/IntelliJ IDEA CE.app</string>
             </dict>
         </dict>
         <dict>

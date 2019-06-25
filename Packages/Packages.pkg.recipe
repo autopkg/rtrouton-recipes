@@ -32,18 +32,18 @@
             <key>Arguments</key>
             <dict>
                 <key>pkg_payload_path</key>
-                <string>%RECIPE_CACHE_DIR%/unpack/%NAME%.pkg/Payload</string>
+                <string>%RECIPE_CACHE_DIR%/unpack/Packages.pkg/Payload</string>
                 <key>destination_path</key>
                 <string>%RECIPE_CACHE_DIR%/payload</string>
             </dict>
-        </dict>            
+        </dict>
         <dict>
             <key>Processor</key>
             <string>Versioner</string>
             <key>Arguments</key>
             <dict>
                 <key>input_plist_path</key>
-                <string>%RECIPE_CACHE_DIR%/payload//Applications/%NAME%.app/Contents/Info.plist</string>
+                <string>%RECIPE_CACHE_DIR%/payload/Applications/Packages.app/Contents/Info.plist</string>
                 <key>plist_version_key</key>
                 <string>CFBundleShortVersionString</string>
             </dict>
@@ -70,7 +70,7 @@
         </dict>
         <key>Processor</key>
         <string>PathDeleter</string>
-	</dict>                   	      	
+	</dict>
 	</array>
 </dict>
 </plist>
