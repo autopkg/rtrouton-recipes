@@ -45,6 +45,24 @@
             </dict>
         </dict>
         <dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%pkgroot%/Applications/Fiji.app/Contents/Info.plist</string>
+				<key>output_plist_path</key>
+				<string>%pkgroot%/Applications/Fiji.app/Contents/Info.plist</string>
+				<key>plist_data</key>
+				<dict>
+					<key>CFBundleShortVersionString</key>
+					<string>%version%</string>
+					<key>CFBundleVersion</key>
+					<string>%version%</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>PlistEditor</string>
+		</dict>
+        <dict>
             <key>Processor</key>
             <string>PkgCreator</string>
             <key>Arguments</key>
@@ -75,6 +93,17 @@
                 </dict>
             </dict>
         </dict>
+        <dict>
+			<key>Arguments</key>
+			<dict>
+				<key>path_list</key>
+				<array>
+					<string>%RECIPE_CACHE_DIR%/%NAME%</string>
+				</array>
+			</dict>
+			<key>Processor</key>
+			<string>PathDeleter</string>
+		</dict>
     </array>
 </dict>
 </plist>
