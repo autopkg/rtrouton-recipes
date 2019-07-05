@@ -21,7 +21,7 @@
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/prl-tools-mac.iso</string>
 				<key>source_path</key>
-				<string>%pathname%/%NAME%.app/Contents/Resources/Tools/prl-tools-mac.iso</string>
+				<string>%pathname%/Parallels Desktop.app/Contents/Resources/Tools/prl-tools-mac.iso</string>
 			</dict>
 			<key>Processor</key>
 			<string>Copier</string>
@@ -47,7 +47,7 @@
         </dict>
         <key>Processor</key>
         <string>PathDeleter</string>
-	</dict>                   	      	
+	</dict>
 	</array>
 </dict>
 </plist>
