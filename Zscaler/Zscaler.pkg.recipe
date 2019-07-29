@@ -98,39 +98,39 @@ option_8="%UNATTENDEDMODEUI%"
 option_9="%USERDOMAIN%"
 
 if [[ -n "${option_1}" ]]; then
-   add_option1="--cloudName \"${option_1}\" "
+   add_option1="--cloudName ${option_1} "
 fi
 
 if [[ -n "${option_2}" ]]; then
-    add_option2="--deviceToken \"${option_2}\" "
+    add_option2="--deviceToken ${option_2} "
 fi
 
 if [[ -n "${option_3}" ]]; then
-    add_option3="--hideAppUIOnLaunch \"${option_3}\" "
+    add_option3="--hideAppUIOnLaunch ${option_3} "
 fi
 
 if [[ -n "${option_4}" ]]; then
-    add_option4="--mode \"${option_4}\" "
+    add_option4="--mode ${option_4} "
 fi
 
 if [[ -n "${option_5}" ]]; then
-    add_option5="--policyToken \"${option_5}\" "
+    add_option5="--policyToken ${option_5} "
 fi
 
 if [[ -n "${option_6}" ]]; then
-    add_option6="--reinstallDriver \"${option_6}\" "
+    add_option6="--reinstallDriver ${option_6} "
 fi
 
 if [[ -n "${option_7}" ]]; then
-    add_option7="--strictEnforcement \"${option_7}\" "
+    add_option7="--strictEnforcement ${option_7} "
 fi
 
 if [[ -n "${option_8}" ]]; then
-    add_option8="--unattendedmodeui \"${option_8}\" "
+    add_option8="--unattendedmodeui ${option_8} "
 fi
 
 if [[ -n "${option_9}" ]]; then
-    add_option9="--userDomain \"${option_9}\" "
+    add_option9="--userDomain ${option_9} "
 fi
 
 # Install the Zscaler app and configure it
