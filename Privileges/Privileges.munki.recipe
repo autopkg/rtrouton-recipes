@@ -16,6 +16,8 @@
 		<string>Utilities</string>
 		<key>MUNKI_DEVELOPER</key>
 		<string>SAP</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string></string>
 		<key>NAME</key>
 		<string>Privileges</string>
 		<key>pkginfo</key>
@@ -47,6 +49,8 @@
 			<dict>
 				<key>pkg_path</key>
 				<string>%pkg_path%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>
