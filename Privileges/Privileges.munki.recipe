@@ -36,6 +36,8 @@
 			<string>%MUNKI_DEVELOPER%</string>
 			<key>display_name</key>
 			<string>%DISPLAYNAME%</string>
+			<key>minimum_os_version</key>
+			<string>10.12</string>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>
