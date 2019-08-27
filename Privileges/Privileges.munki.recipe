@@ -8,16 +8,16 @@
 	<string>com.github.rtrouton.munki.privileges</string>
 	<key>Input</key>
 	<dict>
-			<key>MUNKI_CATEGORY</key>
+		<key>DESCRIPTION</key>
+		<string>Privileges.app for macOS is designed to allow users to work as a standard user for day-to-day use, by providing a quick and easy way to get administrator rights when needed. When you do need admin rights, you can get them by clicking on the Privileges icon in your Dock.</string>
+		<key>DISPLAYNAME</key>
+		<string>Privileges</string>
+		<key>MUNKI_CATEGORY</key>
 		<string>Utilities</string>
 		<key>MUNKI_DEVELOPER</key>
 		<string>SAP</string>
 		<key>NAME</key>
 		<string>Privileges</string>
-		<key>DISPLAYNAME</key>
-		<string>Privileges</string>
-		<key>DESCRIPTION</key>
-		<string>Privileges.app for macOS is designed to allow users to work as a standard user for day-to-day use, by providing a quick and easy way to get administrator rights when needed. When you do need admin rights, you can get them by clicking on the Privileges icon in your Dock.</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
@@ -30,17 +30,17 @@
 			<string>%DESCRIPTION%</string>
 			<key>developer</key>
 			<string>%MUNKI_DEVELOPER%</string>
-			<key>name</key>
-			<string>%NAME%</string>
 			<key>display_name</key>
 			<string>%DISPLAYNAME%</string>
+			<key>name</key>
+			<string>%NAME%</string>
 			<key>unattended_install</key>
 			<true/>
 		</dict>
-	</dict>   
-    <key>ParentRecipe</key>
-    <string>com.github.rtrouton.pkg.privileges</string>
-    <key>Process</key>
+	</dict>
+	<key>ParentRecipe</key>
+	<string>com.github.rtrouton.pkg.privileges</string>
+	<key>Process</key>
 	<array>
 		<dict>
 			<key>Arguments</key>
@@ -50,7 +50,7 @@
 			</dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>
-    	</dict>
+		</dict>
 	</array>
 </dict>
 </plist>
