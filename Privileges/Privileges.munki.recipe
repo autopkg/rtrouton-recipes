@@ -8,18 +8,22 @@
 	<string>com.github.rtrouton.munki.privileges</string>
 	<key>Input</key>
 	<dict>
-			<key>MUNKI_CATEGORY</key>
+		<key>DESCRIPTION</key>
+		<string>Privileges.app for macOS is designed to allow users to work as a standard user for day-to-day use, by providing a quick and easy way to get administrator rights when needed. When you do need admin rights, you can get them by clicking on the Privileges icon in your Dock.</string>
+		<key>DISPLAYNAME</key>
+		<string>Privileges</string>
+		<key>MUNKI_CATEGORY</key>
 		<string>Utilities</string>
 		<key>MUNKI_DEVELOPER</key>
 		<string>SAP</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string></string>
 		<key>NAME</key>
 		<string>Privileges</string>
-		<key>DISPLAYNAME</key>
-		<string>Privileges</string>
-		<key>DESCRIPTION</key>
-		<string>Privileges.app for macOS is designed to allow users to work as a standard user for day-to-day use, by providing a quick and easy way to get administrator rights when needed. When you do need admin rights, you can get them by clicking on the Privileges icon in your Dock.</string>
 		<key>pkginfo</key>
 		<dict>
+			<key>blocking_applications</key>
+			<array/>
 			<key>catalogs</key>
 			<array>
 				<string>testing</string>
@@ -30,27 +34,48 @@
 			<string>%DESCRIPTION%</string>
 			<key>developer</key>
 			<string>%MUNKI_DEVELOPER%</string>
-			<key>name</key>
-			<string>%NAME%</string>
 			<key>display_name</key>
 			<string>%DISPLAYNAME%</string>
+			<key>minimum_os_version</key>
+			<string>10.12</string>
+			<key>name</key>
+			<string>%NAME%</string>
 			<key>unattended_install</key>
 			<true/>
+			<key>unattended_uninstall</key>
+			<true/>
+			<key>uninstall_method</key>
+			<string>uninstall_script</string>
+			<key>uninstall_script</key>
+			<string>#!/bin/bash
+
+if [[ -f "/Library/LaunchDaemons/corp.sap.privileges.helper.plist" ]]; then
+    launchctl unload -w "/Library/LaunchDaemons/corp.sap.privileges.helper.plist" 2&gt;/dev/null
+    rm -rf "/Library/LaunchDaemons/corp.sap.privileges.helper.plist"
+fi
+
+rm -rf "/Applications/Privileges.app"
+rm -rf "/Library/PrivilegedHelperTools/corp.sap.privileges.helper"
+</string>
+			<key>uninstallable</key>
+			<true/>
 		</dict>
-	</dict>   
-    <key>ParentRecipe</key>
-    <string>com.github.rtrouton.pkg.privileges</string>
-    <key>Process</key>
+	</dict>
+	<key>ParentRecipe</key>
+	<string>com.github.rtrouton.pkg.privileges</string>
+	<key>Process</key>
 	<array>
 		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_path</key>
 				<string>%pkg_path%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>
-    	</dict>
+		</dict>
 	</array>
 </dict>
 </plist>
