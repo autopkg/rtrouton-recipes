@@ -14,6 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from __future__ import absolute_import
+from __future__ import print_function
 from autopkglib import Processor, ProcessorError
 
 import subprocess
@@ -78,12 +80,12 @@ class Slacker(Processor):
             jss_policy_name = "%s" % jss_importer_summary_result["data"]["Policy"]
             jss_uploaded_package = "%s" % jss_importer_summary_result["data"]["Package"]
             output_title = "%s" % (prod_name)
-            print "JSS address: %s" % JSS_URL
-            print "Title: %s" % output_title
-            print "Policy: %s" % jss_policy_name
-            print "Package Added: %s" % jss_uploaded_package
-            print "Category: %s" % category
-            print "Policy Category: %s" % policy_category
+            print("JSS address: %s" % JSS_URL)
+            print("Title: %s" % output_title)
+            print("Policy: %s" % jss_policy_name)
+            print("Package Added: %s" % jss_uploaded_package)
+            print("Category: %s" % category)
+            print("Policy Category: %s" % policy_category)
             if jss_uploaded_package:
                 slack_text = "*New installer package added to Jamf Pro:*\nURL: %s\nTitle: *%s*\nCategory: *%s*\nPolicy Name: *%s*\nUploaded Package Name: *%s*" % (JSS_URL, output_title, category, jss_policy_name, jss_uploaded_package)
             else:

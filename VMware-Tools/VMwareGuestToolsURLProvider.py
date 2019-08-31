@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from __future__ import absolute_import
 import re
 from xml.dom.minidom import parse, parseString
 import urllib2
