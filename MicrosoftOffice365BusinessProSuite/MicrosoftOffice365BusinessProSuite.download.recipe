@@ -23,7 +23,7 @@
         <key>ID</key>
         <string>2009112</string>        
         <key>DOWNLOAD_URL_BASE</key>
-        <string>http://go.microsoft.com/fwlink/?linkid=</string>
+        <string>https://go.microsoft.com/fwlink/?linkid=</string>
     </dict>
     <key>MinimumVersion</key>
     <string>1.0.0</string>
