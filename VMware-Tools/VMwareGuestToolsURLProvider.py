@@ -3,9 +3,13 @@
 from __future__ import absolute_import
 import re
 from xml.dom.minidom import parse, parseString
-import urllib2
 
 from autopkglib import Processor, ProcessorError
+
+try:
+    from urllib.parse import urlopen  # For Python 3
+except ImportError:
+    from urllib2 import urlopen  # For Python 2
 
 __all__ = ["VMwareGuestToolsURLProvider"]
 
@@ -31,7 +35,7 @@ class VMwareGuestToolsURLProvider(Processor):
 	def get_url(self, version_series):
 		try:
 			fusion_url = FUSION_URL_BASE + '/fusion.xml'
-			f = urllib2.urlopen(fusion_url)
+			f = urlopen(fusion_url)
 			fusion_xml = f.read()
 			f.close()
 		except BaseException as e:
@@ -72,4 +76,3 @@ class VMwareGuestToolsURLProvider(Processor):
 
 		self.env['url'] = self.get_url(version_series)
 		self.output('File URL %s' % self.env['url'])
-
