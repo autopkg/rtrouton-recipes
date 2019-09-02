@@ -14,14 +14,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from __future__ import absolute_import
-from __future__ import print_function
-from autopkglib import Processor, ProcessorError
+from __future__ import absolute_import, print_function
 
-import subprocess
-import os.path
-import json
 import requests
+
+from autopkglib import Processor, ProcessorError
 
 # Set the webhook_url to the one provided by Slack when you create the webhook at https://my.slack.com/services/new/incoming-webhook/
 
