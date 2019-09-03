@@ -39,7 +39,7 @@ class VMwareGuestToolsURLProvider(Processor):
             f = urlopen(fusion_url)
             fusion_xml = f.read()
             f.close()
-        except BaseException as e:
+        except Exception as e:
             raise ProcessorError('Could not retrieve XML feed %s' % fusion_url)
 
         build_re = re.compile(r'^fusion\/([\d\.]+)\/(\d+)\/')

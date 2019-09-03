@@ -44,7 +44,7 @@ class OfficeSuiteSKULessVersionProvider(Processor):
         try:
             raw_xml = urlopen(FEED_URL)
             xml = raw_xml.read()
-        except BaseException as e:
+        except Exception as e:
             raise ProcessorError("Can't download %s: %s" % (FEED_URL, e))
 
         root = ET.fromstring(xml)
