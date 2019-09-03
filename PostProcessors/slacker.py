@@ -14,12 +14,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from autopkglib import Processor, ProcessorError
+from __future__ import absolute_import, print_function
 
-import subprocess
-import os.path
-import json
 import requests
+
+from autopkglib import Processor, ProcessorError
 
 # Set the webhook_url to the one provided by Slack when you create the webhook at https://my.slack.com/services/new/incoming-webhook/
 
@@ -78,12 +77,12 @@ class Slacker(Processor):
             jss_policy_name = "%s" % jss_importer_summary_result["data"]["Policy"]
             jss_uploaded_package = "%s" % jss_importer_summary_result["data"]["Package"]
             output_title = "%s" % (prod_name)
-            print "JSS address: %s" % JSS_URL
-            print "Title: %s" % output_title
-            print "Policy: %s" % jss_policy_name
-            print "Package Added: %s" % jss_uploaded_package
-            print "Category: %s" % category
-            print "Policy Category: %s" % policy_category
+            print("JSS address: %s" % JSS_URL)
+            print("Title: %s" % output_title)
+            print("Policy: %s" % jss_policy_name)
+            print("Package Added: %s" % jss_uploaded_package)
+            print("Category: %s" % category)
+            print("Policy Category: %s" % policy_category)
             if jss_uploaded_package:
                 slack_text = "*New installer package added to Jamf Pro:*\nURL: %s\nTitle: *%s*\nCategory: *%s*\nPolicy Name: *%s*\nUploaded Package Name: *%s*" % (JSS_URL, output_title, category, jss_policy_name, jss_uploaded_package)
             else:
