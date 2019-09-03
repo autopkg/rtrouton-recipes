@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of Microsoft's Remote Desktop installer package,renames the package and imports it into your JSS.</string>
+	<string>Downloads the latest version of the Microsoft Defender ATP installer package, renames the package and imports it into your JSS.</string>
 	<key>Identifier</key>
-	<string>com.github.rtrouton.jss.microsoftremotedesktop</string>
+	<string>com.github.rtrouton.jss.microsoftdefenderatp</string>
 	<key>Input</key>
 	<dict>
 		<key>CATEGORY</key>
@@ -15,20 +15,20 @@
 		<key>GROUP_TEMPLATE</key>
 		<string>SmartGroupTemplate.xml</string>
 		<key>NAME</key>
-		<string>Microsoft Remote Desktop</string>
+		<string>Microsoft Defender ATP</string>
 		<key>POLICY_CATEGORY</key>
 		<string>Testing</string>
 		<key>POLICY_TEMPLATE</key>
 		<string>PolicyTemplate.xml</string>
 		<key>SELF_SERVICE_DESCRIPTION</key>
-		<string>Use Microsoft Remote Desktop app to connect to a remote PC or virtual apps and desktops made available by your administrator.</string>
+		<string>Microsoft Defender Advanced Threat Protection is a platform designed to help enterprise networks prevent, detect, investigate, and respond to advanced threats.</string>
 		<key>SELF_SERVICE_ICON</key>
-		<string>%RECIPE_DIR%/MicrosoftRemoteDesktop.png</string>
+		<string>%RECIPE_DIR%/MicrosoftDefenderATP.png</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.0.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.rtrouton.pkg.microsoftremotedesktop</string>
+	<string>com.github.rtrouton.pkg.microsoftdefenderatp</string>
 	<key>Process</key>
 	<array>
 		<dict>
