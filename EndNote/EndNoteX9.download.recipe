@@ -9,7 +9,7 @@
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL</key>
-		<string>http://download.endnote.com/downloads/X9/EndNoteX9Installer.dmg</string>
+		<string>https://download.endnote.com/downloads/X9/EndNoteX9Installer.dmg</string>
 		<key>NAME</key>
 		<string>EndNoteX9</string>
 	</dict>
