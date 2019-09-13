@@ -27,6 +27,17 @@
             <key>Arguments</key>
             <dict>
                <key>pkgroot</key>
+               <string>%RECIPE_CACHE_DIR%/Scripts</string>
+               <key>pkgdirs</key>
+               <dict />
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>PkgRootCreator</string>
+            <key>Arguments</key>
+            <dict>
+               <key>pkgroot</key>
                <string>%RECIPE_CACHE_DIR%/pkgroot</string>
                <key>pkgdirs</key>
                <dict>
@@ -37,17 +48,6 @@
                   <key>Library/Java/JavaVirtualMachines</key>
                   <string>0755</string>
                </dict>
-            </dict>
-         </dict>
-         <dict>
-            <key>Processor</key>
-            <string>PkgRootCreator</string>
-            <key>Arguments</key>
-            <dict>
-               <key>pkgroot</key>
-               <string>%RECIPE_CACHE_DIR%/Scripts</string>
-               <key>pkgdirs</key>
-               <dict />
             </dict>
          </dict>
          <dict>
