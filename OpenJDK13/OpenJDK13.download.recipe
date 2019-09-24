@@ -10,6 +10,8 @@
     <dict>
         <key>NAME</key>
         <string>OpenJDK 13</string>
+        <key>MAJOR_VERSION</key>
+        <string>13</string>
         <key>VENDOR</key>
         <string>OpenJDK</string>
         <key>SOFTWARETITLE</key>
@@ -17,9 +19,9 @@
         <key>SOFTWARETYPE</key>
         <string>JDK</string>
         <key>SEARCH_URL</key>
-        <string>https://jdk.java.net/13/index.html</string>
+        <string>https://jdk.java.net/%MAJOR_VERSION%/index.html</string>
         <key>SEARCH_PATTERN</key>
-        <string>(?P&lt;url&gt;https://download.java.net/java/GA/jdk13.*?/GPL/openjdk-13+_osx-x64_bin\.tar\.gz)</string>
+        <string>(?P&lt;url&gt;https://download.java.net/java/GA/jdk%MAJOR_VERSION%.*?/GPL/openjdk-%MAJOR_VERSION%.*?_osx-x64_bin\.tar\.gz)</string>
     </dict>
     <key>MinimumVersion</key>
     <string>1.0.0</string>
