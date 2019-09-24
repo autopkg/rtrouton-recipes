@@ -1,8 +1,0 @@
-#!/bin/sh
-
-# Remove previous version of Firefox from /Applications
-
-if [ -d "$3/Applications/Firefox.app" ]; then
-   rm -rf "$3/Applications/Firefox.app"
-fi
-

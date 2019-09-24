@@ -3,22 +3,20 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads Firefox disk image, builds a package and installs it.
-Values for RELEASE correspond to directories here: http://download-origin.cdn.mozilla.net/pub/mozilla.org/firefox/releases/
-Some useful values might include: 'latest', 'latest-24.0esr', 'latest-esr', 'latest-beta'
-LOCALE corresponds to directories at http://download-origin.cdn.mozilla.net/pub/mozilla.org/firefox/releases/$RELEASE/mac/
-Examples include 'en-US', 'de', 'ja-JP-mac', 'sv-SE', and 'zh-TW'
-No idea if all Firefox releases are available in all the same localizations, so you may need to verify that any particular
-combination is offered.</string>
+    <string>Downloads the current release version of the Mozilla Firefox installer package and installs it.</string>
     <key>Identifier</key>
     <string>com.github.rtrouton.install.Firefox</string>
     <key>Input</key>
     <dict>
-        <key>NAME</key>
-        <string>Firefox</string>
+         <key>NAME</key>
+         <string>Firefox</string>
+         <key>VENDOR</key>
+         <string>Mozilla</string>
+         <key>SOFTWARETITLE</key>
+         <string>Firefox</string>
     </dict>
     <key>MinimumVersion</key>
-    <string>0.4.0</string>
+    <string>1.0.0</string>
     <key>ParentRecipe</key>
     <string>com.github.rtrouton.pkg.Firefox</string>
     <key>Process</key>
