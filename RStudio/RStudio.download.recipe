@@ -17,7 +17,7 @@
     <array>
        <dict>
             <key>Processor</key>
-            <string>CURLTextSearcher</string>
+            <string>URLTextSearcher</string>
             <key>Arguments</key>
             <dict>
                 <key>url</key>
