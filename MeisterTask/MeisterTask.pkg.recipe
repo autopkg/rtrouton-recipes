@@ -17,24 +17,27 @@
 	<array>
         <dict>
             <key>Processor</key>
-            <string>FlatPkgUnpacker</string>
+            <string>PkgRootCreator</string>
             <key>Arguments</key>
             <dict>
-                <key>flat_pkg_path</key>
-                <string>%pathname%</string>
-                <key>destination_path</key>
-                <string>%RECIPE_CACHE_DIR%/unpack</string>
+                <key>pkgroot</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%</string>
+                <key>pkgdirs</key>
+                <dict>
+                    <key>Applications</key>
+                    <string>0775</string>
+                </dict>
             </dict>
         </dict>
         <dict>
             <key>Processor</key>
-            <string>PkgPayloadUnpacker</string>
+            <string>Copier</string>
             <key>Arguments</key>
             <dict>
-                <key>pkg_payload_path</key>
-                <string>%RECIPE_CACHE_DIR%/unpack/com.meisterlabs.meistertask.desktop.pkg/Payload</string>
-                <key>extract_root</key>
-                <string>%RECIPE_CACHE_DIR%/unpack</string>
+                <key>source_path</key>
+                <string>%pathname%/MeisterTask.app</string>
+                <key>destination_path</key>
+                <string>%pkgroot%/Applications/MeisterTask.app</string>
             </dict>
         </dict>
         <dict>
@@ -43,33 +46,40 @@
             <key>Arguments</key>
             <dict>
                 <key>input_plist_path</key>
-                <string>%RECIPE_CACHE_DIR%/unpack/MeisterTask.app/Contents/Info.plist</string>
+                <string>%pathname%/MeisterTask.app/Contents/Info.plist</string>
                 <key>plist_version_key</key>
                 <string>CFBundleShortVersionString</string>
             </dict>
         </dict>
         <dict>
             <key>Processor</key>
-            <string>PkgCopier</string>
+            <string>PkgCreator</string>
             <key>Arguments</key>
             <dict>
-                <key>source_pkg</key>
-                <string>%pathname%</string>
-                <key>pkg_path</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.pkg</string>
+                <key>pkgname</key>
+                <string>%NAME%-%version%</string>
+                <key>pkg_request</key>
+                <dict>
+                    <key>pkgdir</key>
+                    <string>%RECIPE_CACHE_DIR%</string>
+                    <key>id</key>
+                    <string>com.meisterlabs.meistertask.desktop</string>
+                    <key>options</key>
+                    <string>purge_ds_store</string>
+                    <key>chown</key>
+                    <array>
+                        <dict>
+                            <key>path</key>
+                            <string>Applications</string>
+                            <key>user</key>
+                            <string>root</string>
+                            <key>group</key>
+                            <string>admin</string>
+                        </dict>
+                    </array>
+                </dict>
             </dict>
         </dict>
-        <dict>
-        <key>Arguments</key>
-        <dict>
-            <key>path_list</key>
-            <array>
-                <string>%RECIPE_CACHE_DIR%/unpack</string>
-            </array>
-        </dict>
-        <key>Processor</key>
-        <string>PathDeleter</string>
-	</dict>
 	</array>
 </dict>
 </plist>
