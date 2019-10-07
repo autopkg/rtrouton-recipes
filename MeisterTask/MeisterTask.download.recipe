@@ -11,7 +11,7 @@
         <key>NAME</key>
         <string>MeisterTask</string>
         <key>DOWNLOAD_URL</key>
-        <string>https://www.meistertask.com/files/MeisterTask_osx.pkg</string>
+        <string>https://www.meistertask.com/files/MeisterTask_osx.dmg</string>
     </dict>
     <key>MinimumVersion</key>
     <string>0.8.0</string>
