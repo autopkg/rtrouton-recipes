@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+   <dict>
+      <key>Description</key>
+      <string>Download recipe for iPass for Mac.</string>
+      <key>Identifier</key>
+      <string>com.github.rtrouton.download.iPass</string>
+      <key>Input</key>
+      <dict>
+         <key>NAME</key>
+         <string>iPass</string>
+         <key>VENDOR</key>
+         <string>iPass</string>
+         <key>DOWNLOAD_URL</key>
+         <string>https://go.pareteum.com/ipass-open-mobile-for-OSX</string>
+         <key>DOWNLOAD_USERAGENT</key>
+         <string>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.2 Safari/605.1.15</string>
+      </dict>
+      <key>MinimumVersion</key>
+      <string>1.0.0</string>
+      <key>Process</key>
+      <array>
+         <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+               <key>url</key>
+               <string>%DOWNLOAD_URL%</string>
+               <key>filename</key>
+               <string>%NAME%.dmg</string>
+               <key>request_headers</key>
+               <dict>
+                  <key>user-agent</key>
+                  <string>%DOWNLOAD_USERAGENT%</string>
+               </dict>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>FlatPkgUnpacker</string>
+            <key>Arguments</key>
+            <dict>
+               <key>flat_pkg_path</key>
+               <string>%pathname%/*.pkg</string>
+               <key>destination_path</key>
+               <string>%RECIPE_CACHE_DIR%/unpack</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>PkgPayloadUnpacker</string>
+            <key>Arguments</key>
+            <dict>
+               <key>pkg_payload_path</key>
+               <string>%RECIPE_CACHE_DIR%/unpack/iPass.pkg/Payload</string>
+               <key>destination_path</key>
+               <string>%RECIPE_CACHE_DIR%/payload</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>Versioner</string>
+            <key>Arguments</key>
+            <dict>
+               <key>input_plist_path</key>
+               <string>%RECIPE_CACHE_DIR%/payload/iPass.app/Contents/Info.plist</string>
+               <key>plist_version_key</key>
+               <string>CFBundleShortVersionString</string>
+            </dict>
+         </dict>
+         <dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%pathname%/iPass.pkg</string>
+				<key>expected_authority_names</key>
+				<array>
+					<string>Developer ID Installer: iPass (8Y8C97F7F9)</string>
+					<string>Developer ID Certification Authority</string>
+					<string>Apple Root CA</string>
+				</array>
+			</dict>
+		</dict>
+      </array>
+   </dict>
+</plist>

@@ -11,7 +11,7 @@
         <key>NAME</key>
         <string>MeisterTask</string>
         <key>DOWNLOAD_URL</key>
-        <string>https://www.meistertask.com/files/MeisterTask_osx.pkg</string>
+        <string>https://www.meistertask.com/files/MeisterTask_osx.dmg</string>
     </dict>
     <key>MinimumVersion</key>
     <string>0.8.0</string>
@@ -25,26 +25,22 @@
                 <key>url</key>
                 <string>%DOWNLOAD_URL%</string>
                 <key>filename</key>
-                <string>%NAME%.pkg</string>
+                <string>%NAME%.dmg</string>
             </dict>
         </dict>
         <dict>
             <key>Processor</key>
             <string>EndOfCheckPhase</string>
         </dict>
-        <dict>   
-            <key>Processor</key>   
-            <string>CodeSignatureVerifier</string>   
-            <key>Arguments</key>   
-            <dict>   
-                <key>input_path</key>   
-                <string>%pathname%</string>
-                <key>expected_authority_names</key>
-                <array>
-                    <string>Developer ID Installer: MeisterLabs (4MX957DLH9)</string>
-                    <string>Developer ID Certification Authority</string>
-                    <string>Apple Root CA</string>
-                </array>
+        <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>input_path</key>
+                <string>%RECIPE_CACHE_DIR%/downloads/MeisterTask.dmg/MeisterTask.app</string>
+                <key>requirement</key>
+                  <string>identifier "com.meisterlabs.meistertask.desktop" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "4MX957DLH9"</string>
             </dict>
         </dict>
     </array>
