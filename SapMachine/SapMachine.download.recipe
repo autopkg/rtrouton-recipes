@@ -25,7 +25,7 @@
             <key>Arguments</key>
             <dict>
                <key>asset_regex</key>
-               <string>sapmachine-jdk-[\S]+\_osx-x64_bin.tar.gz</string>
+               <string>sapmachine-jdk-[\S]+\_osx-x64_bin.dmg</string>
                <key>github_repo</key>
                <string>sap/sapmachine</string>
             </dict>
