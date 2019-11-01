@@ -15,8 +15,8 @@ except ImportError:
 __all__ = ["VMwareGuestToolsURLProvider"]
 
 FUSION_URL_BASE = 'http://softwareupdate.vmware.com/cds/vmw-desktop/'
-DARWIN_TOOLS_URL_APPEND = 'packages/com.vmware.fusion.tools.darwin.zip.tar'
-DEFAULT_VERSION_SERIES = '11.1.0'
+DARWIN_TOOLS_URL_APPEND = 'core/com.vmware.fusion.zip.tar'
+DEFAULT_VERSION_SERIES = '11.5.0'
 
 class VMwareGuestToolsURLProvider(Processor):
     '''Provides URL to the latest Darwin ISO of the VMware Fusion tools.'''
