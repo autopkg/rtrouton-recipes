@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the current release version of the OS X Yosemite OS installer and renames the package.</string>
+    <key>Identifier</key>
+    <string>com.github.rtrouton.pkg.OSXYosemite</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>OS X Yosemite</string>
+        <key>VENDOR</key>
+        <string>Apple</string>
+        <key>OSFAMILYNAME</key>
+        <string>OSX</string>
+        <key>OSVSERSIONNAME</key>
+        <string>Yosemite</string>
+        <key>OSVSERSIONNUMBER</key>
+        <string>10.10.5</string>
+    </dict>
+    <key>ParentRecipe</key>
+    <string>com.github.rtrouton.download.OSXYosemite</string>
+    <key>MinimumVersion</key>
+    <string>1.0.0</string>
+    <key>Process</key>
+      <array>
+         <dict>
+            <key>Processor</key>
+            <string>PkgCopier</string>
+            <key>Arguments</key>
+            <dict>
+               <key>source_pkg</key>
+               <string>%pathname%/InstallMacOSX.pkg</string>
+               <key>pkg_path</key>
+               <string>%RECIPE_CACHE_DIR%/%VENDOR%_%OSFAMILYNAME%_%OSVSERSIONNAME%_%OSVSERSIONNUMBER%.pkg</string>
+            </dict>
+         </dict>
+      </array>
+   </dict>
+</plist>

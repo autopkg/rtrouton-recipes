@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the current release version of the OS X El Capitan OS installer.</string>
+    <key>Identifier</key>
+    <string>com.github.rtrouton.download.OSXElCapitan</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>OS X El Capitan</string>
+        <key>VENDOR</key>
+        <string>Apple</string>
+        <key>OSFAMILYNAME</key>
+        <string>OSX</string>
+        <key>OSVSERSIONNAME</key>
+        <string>ElCapitan</string>
+        <key>OSVSERSIONNUMBER</key>
+        <string>10.11.6</string>
+        <key>SEARCH_URL</key>
+        <string>https://support.apple.com/kb/HT206886</string>
+        <key>SEARCH_PATTERN</key>
+        <string>(?P&lt;url&gt;http.*?\InstallMacOSX.dmg)</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>1.0.0</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%SEARCH_URL%</string>
+                <key>re_pattern</key>
+                <string>%SEARCH_PATTERN%</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%url%</string>
+				<key>filename</key>
+				<string>%VENDOR%_%OSFAMILYNAME%_%OSVSERSIONNAME%_%OSVSERSIONNUMBER%.dmg</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+         <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+               <key>input_path</key>
+               <string>%pathname%/InstallMacOSX.pkg</string>
+               <key>expected_authority_names</key>
+               <array>
+                  <string>Software Update</string>
+                  <string>Apple Software Update Certification Authority</string>
+                  <string>Apple Root CA</string>
+               </array>
+            </dict>
+         </dict>
+    </array>
+</dict>
+</plist>
