@@ -14,47 +14,46 @@ except ImportError:
 
 __all__ = ["VMwareGuestToolsURLProvider"]
 
-FUSION_URL_BASE = 'http://softwareupdate.vmware.com/cds/vmw-desktop/'
-DARWIN_TOOLS_URL_APPEND = 'core/com.vmware.fusion.zip.tar'
-DEFAULT_VERSION_SERIES = '11.5.0'
+FUSION_URL_BASE = "http://softwareupdate.vmware.com/cds/vmw-desktop/"
+DARWIN_TOOLS_URL_APPEND = "core/com.vmware.fusion.zip.tar"
+DEFAULT_VERSION_SERIES = "11.5.0"
+
 
 class VMwareGuestToolsURLProvider(Processor):
-    '''Provides URL to the latest Darwin ISO of the VMware Fusion tools.'''
+    """Provides URL to the latest Darwin ISO of the VMware Fusion tools."""
 
     input_variables = {
-        'VERSION_SERIES': {
-            'required': False,
-            'description': 'Version of VMware Fusion to target tools of. E.g. "8.0.0". Defaults to "8.0.0"',
-            },
+        "VERSION_SERIES": {
+            "required": False,
+            "description": 'Version of VMware Fusion to target tools of. E.g. "8.0.0". Defaults to "8.0.0"',
+        }
     }
     output_variables = {
-        'url': {
-            'description': 'URL to the latest SourceForge project download'
-        }
+        "url": {"description": "URL to the latest SourceForge project download"}
     }
 
     def get_url(self, version_series):
         try:
-            fusion_url = FUSION_URL_BASE + '/fusion.xml'
+            fusion_url = FUSION_URL_BASE + "/fusion.xml"
             f = urlopen(fusion_url)
             fusion_xml = f.read()
             f.close()
         except Exception as e:
-            raise ProcessorError('Could not retrieve XML feed %s' % fusion_url)
+            raise ProcessorError("Could not retrieve XML feed %s" % fusion_url)
 
-        build_re = re.compile(r'^fusion\/([\d\.]+)\/(\d+)\/')
+        build_re = re.compile(r"^fusion\/([\d\.]+)\/(\d+)\/")
 
         last_build_no = 0
         last_url_part = None
 
         fusion_feed = parseString(fusion_xml)
 
-        for i in  fusion_feed.getElementsByTagName('metadata'):
-            productId = i.getElementsByTagName('productId')[0].firstChild.nodeValue
-            version = i.getElementsByTagName('version')[0].firstChild.nodeValue
-            url = i.getElementsByTagName('url')[0].firstChild.nodeValue
+        for i in fusion_feed.getElementsByTagName("metadata"):
+            productId = i.getElementsByTagName("productId")[0].firstChild.nodeValue
+            version = i.getElementsByTagName("version")[0].firstChild.nodeValue
+            url = i.getElementsByTagName("url")[0].firstChild.nodeValue
 
-            if productId == 'fusion' and version == version_series:
+            if productId == "fusion" and version == version_series:
 
                 match = build_re.search(url)
 
@@ -70,10 +69,10 @@ class VMwareGuestToolsURLProvider(Processor):
         if last_url_part:
             return FUSION_URL_BASE + last_url_part + DARWIN_TOOLS_URL_APPEND
         else:
-            raise ProcessorError('Could not find suitable version/build')
+            raise ProcessorError("Could not find suitable version/build")
 
     def main(self):
-        version_series = self.env.get('VERSION_SERIES', DEFAULT_VERSION_SERIES)
+        version_series = self.env.get("VERSION_SERIES", DEFAULT_VERSION_SERIES)
 
-        self.env['url'] = self.get_url(version_series)
-        self.output('File URL %s' % self.env['url'])
+        self.env["url"] = self.get_url(version_series)
+        self.output("File URL %s" % self.env["url"])
