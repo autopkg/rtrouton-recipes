@@ -2,10 +2,17 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 	<dict>
-		<key>Identifier</key>
-		<string>com.github.rtrouton.download.VMwareTools</string>
 		<key>Description</key>
 		<string>Downloads VMware Darwin ISO. Adapted from Jesse Peterson's VMwareTools.munki recipe</string>
+		<key>Identifier</key>
+		<string>com.github.rtrouton.download.VMwareTools</string>
+		<key>Input</key>
+		<dict>
+			<key>NAME</key>
+			<string>VMwareTools</string>
+		</dict>
+        <key>MinimumVersion</key>
+        <string>1.4</string>
 		<key>Process</key>
 		<array>
 			<dict>
@@ -61,10 +68,5 @@
 				</dict>
 			</dict>
 		</array>
-		<key>Input</key>
-		<dict>
-			<key>NAME</key>
-			<string>VMwareTools</string>
-		</dict>
 	</dict>
 </plist>
