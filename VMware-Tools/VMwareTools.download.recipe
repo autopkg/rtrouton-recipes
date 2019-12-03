@@ -40,8 +40,6 @@
 					<key>destination_path</key>
 					<string>%RECIPE_CACHE_DIR%/%NAME%-untar</string>
 				</dict>
-				<key>New item</key>
-				<string></string>
 			</dict>
 			<dict>
 				<key>Processor</key>
@@ -53,8 +51,6 @@
 					<key>destination_path</key>
 					<string>%RECIPE_CACHE_DIR%/%NAME%</string>
 				</dict>
-				<key>New item</key>
-				<string></string>
 			</dict>
 			<dict>
 				<key>Processor</key>
