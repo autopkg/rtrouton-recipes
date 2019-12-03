@@ -33,7 +33,7 @@ class VMwareGuestToolsURLProvider(URLGetter):
         }
     }
     output_variables = {
-        "url": {"description": "URL to the latest SourceForge project download"}
+        "url": {"description": "URL to the latest VMware Guest Tools download"}
     }
 
     def get_url(self, version_series):
