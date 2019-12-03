@@ -1,70 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>Identifier</key>
-	<string>com.github.rtrouton.download.VMwareTools</string>
-	<key>Description</key>
-	<string>Downloads VMware Darwin ISO. Adapted from Jesse Peterson's VMwareTools.munki recipe</string>
-	<key>Process</key>
-	<array>
-		<dict>
-			<key>Processor</key>
-			<string>VMwareGuestToolsURLProvider</string>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
-			<key>Arguments</key>
-			<dict>
-				<key>filename</key>
-				<string>%NAME%.zip.tar</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>EndOfCheckPhase</string>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>Unarchiver</string>
-			<key>Arguments</key>
-			<dict>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%-untar</string>
-			</dict>
-			<key>New item</key>
-			<string></string>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>Unarchiver</string>
-			<key>Arguments</key>
-			<dict>
-				<key>archive_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%-untar/com.vmware.fusion.zip</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
-			</dict>
-			<key>New item</key>
-			<string></string>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>FileMover</string>
-			<key>Arguments</key>
-			<dict>
-				<key>source</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%/payload/VMware Fusion.app/Contents/Library/isoimages/darwin.iso</string>
-				<key>target</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%.iso</string>
-			</dict>
-		</dict>
-	</array>
-	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>VMwareTools</string>
+		<key>Identifier</key>
+		<string>com.github.rtrouton.download.VMwareTools</string>
+		<key>Description</key>
+		<string>Downloads VMware Darwin ISO. Adapted from Jesse Peterson's VMwareTools.munki recipe</string>
+		<key>Process</key>
+		<array>
+			<dict>
+				<key>Processor</key>
+				<string>VMwareGuestToolsURLProvider</string>
+			</dict>
+			<dict>
+				<key>Processor</key>
+				<string>URLDownloader</string>
+				<key>Arguments</key>
+				<dict>
+					<key>filename</key>
+					<string>%NAME%.zip.tar</string>
+				</dict>
+			</dict>
+			<dict>
+				<key>Processor</key>
+				<string>EndOfCheckPhase</string>
+			</dict>
+			<dict>
+				<key>Processor</key>
+				<string>Unarchiver</string>
+				<key>Arguments</key>
+				<dict>
+					<key>destination_path</key>
+					<string>%RECIPE_CACHE_DIR%/%NAME%-untar</string>
+				</dict>
+				<key>New item</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>Processor</key>
+				<string>Unarchiver</string>
+				<key>Arguments</key>
+				<dict>
+					<key>archive_path</key>
+					<string>%RECIPE_CACHE_DIR%/%NAME%-untar/com.vmware.fusion.zip</string>
+					<key>destination_path</key>
+					<string>%RECIPE_CACHE_DIR%/%NAME%</string>
+				</dict>
+				<key>New item</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>Processor</key>
+				<string>FileMover</string>
+				<key>Arguments</key>
+				<dict>
+					<key>source</key>
+					<string>%RECIPE_CACHE_DIR%/%NAME%/payload/VMware Fusion.app/Contents/Library/isoimages/darwin.iso</string>
+					<key>target</key>
+					<string>%RECIPE_CACHE_DIR%/%NAME%.iso</string>
+				</dict>
+			</dict>
+		</array>
+		<key>Input</key>
+		<dict>
+			<key>NAME</key>
+			<string>VMwareTools</string>
+		</dict>
 	</dict>
-</dict>
 </plist>
