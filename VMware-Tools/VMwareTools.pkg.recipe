@@ -39,6 +39,21 @@
             </dict>
             <dict>
                 <key>Processor</key>
+                <string>CodeSignatureVerifier</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>input_path</key>
+                    <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.pkg</string>
+                    <key>expected_authority_names</key>
+                    <array>
+                        <string>Developer ID Installer: VMware, Inc. (EG7KH642X6)</string>
+                        <string>Developer ID Certification Authority</string>
+                        <string>Apple Root CA</string>
+                    </array>
+                </dict>
+            </dict>
+            <dict>
+                <key>Processor</key>
                 <string>PathDeleter</string>
                 <key>Arguments</key>
                 <dict>
