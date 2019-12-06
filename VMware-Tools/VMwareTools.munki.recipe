@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>Description</key>
+		<string>Downloads VMware Darwin ISO, extracts package, imports into Munki</string>
+		<key>Identifier</key>
+		<string>com.github.rtrouton.munki.VMwareTools</string>
+		<key>Input</key>
+		<dict>
+			<key>NAME</key>
+			<string>VMwareTools</string>
+			<key>MUNKI_REPO_SUBDIR</key>
+			<string>drivers</string>
+			<key>MUNKI_CATEGORY</key>
+			<string>Virtualization</string>
+			<key>pkginfo</key>
+			<dict>
+				<key>name</key>
+				<string>%NAME%</string>
+				<key>category</key>
+				<string>%MUNKI_CATEGORY%</string>
+				<key>display_name</key>
+				<string>VMware Tools</string>
+				<key>description</key>
+				<string>With the VMware Tools SVGA driver installed, Workstation supports significantly faster graphics performance.
+
+The VMware Tools package provides support required for shared folders and for drag and drop operations.
+
+Other tools in the package support synchronization of time in the guest operating system with time on the host, automatic grabbing and releasing of the mouse cursor, copying and pasting between guest and host, and improved mouse performance in some guest operating systems.</string>
+				<key>developer</key>
+				<string>VMware</string>
+				<key>catalogs</key>
+				<array>
+					<string>testing</string>
+				</array>
+				<key>minimum_os_version</key>
+				<string>10.11</string>
+			</dict>
+		</dict>
+		<key>MinimumVersion</key>
+		<string>1.4</string>
+		<key>ParentRecipe</key>
+		<string>com.github.rtrouton.pkg.VMwareTools</string>
+		<key>Process</key>
+		<array>
+			<dict>
+				<key>Processor</key>
+				<string>MunkiImporter</string>
+				<key>Arguments</key>
+				<dict>
+					<key>pkg_path</key>
+					<string>%RECIPE_CACHE_DIR%/%NAME%-%version%.pkg</string>
+					<key>repo_subdirectory</key>
+					<string>%MUNKI_REPO_SUBDIR%</string>
+				</dict>
+			</dict>
+		</array>
+	</dict>
+</plist>
