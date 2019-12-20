@@ -34,6 +34,60 @@
 			<string>%NAME%</string>
 			<key>unattended_install</key>
 			<true/>
+			<key>blocking_applications</key>
+			<array>
+				<string>Microsoft Word</string>
+				<string>EndNote X9</string>
+			</array>
+			<key>postinstall_script</key>
+			<string>#!/bin/zsh
+
+		DIR="EndNote CWYW Word 16.bundle"
+		PATH_SRC="/Applications/EndNote X9/Cite While You Write/$DIR"
+		PATH_DEST="/Library/Application Support/Microsoft/Office365/User Content.localized/Startup.localized/Word/"
+
+		if [ -d "$PATH_SRC" ]
+		then
+			echo "Copied $DIR to $PATH_DEST"
+		  cp -r "$PATH_SRC" "$PATH_DEST"
+		else
+		    echo "Error: Directory $PATH_DEST does not exists."
+		fi
+		</string>
+			<key>postuninstall_script</key>
+			<string>#!/bin/zsh
+
+		DIR="EndNote CWYW Word 16.bundle"
+		PATH_DEST="/Library/Application Support/Microsoft/Office365/User Content.localized/Startup.localized/Word/$DIR"
+
+		if [ -d "$PATH_DEST" ]
+		then
+			echo "Removed $PATH_DEST"
+		  rm -r "$PATH_DEST"
+		else
+		    echo "Error: Directory $PATH_DEST does not exists."
+		fi
+		</string>
+			<key>preinstall_script</key>
+			<string>#!/bin/zsh
+
+		endnote_bundle_2008="/Applications/Microsoft Office 2008/Office/Startup/Word/EndNote CWYW Word 2008.bundle"
+		endnote_bundle_2011="/Applications/Microsoft Office 2011/Office/Startup/Word/EndNote CWYW Word 2011.bundle"
+		endnote_bundle_2016="/Library/Application Support/Microsoft/Office365/User Content.localized/Startup.localized/Word/EndNote CWYW Word 2016.bundle"
+
+		bundles=("$endnote_bundle_2008" "$endnote_bundle_2011" "$endnote_bundle_2016")
+
+		for i in "$bundles"; do
+		  if [ -d "$i" ]
+		  then
+				echo "Removing old CWYW bundle $i"
+		    rm -r "$i"
+		  else
+		    echo "$i is not installed"
+		    echo "Proceeding with installation"
+		  fi
+		done
+		</string>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
