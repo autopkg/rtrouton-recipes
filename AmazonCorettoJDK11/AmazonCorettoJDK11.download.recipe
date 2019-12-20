@@ -19,7 +19,7 @@
         <key>SOFTWARETYPE</key>
         <string>JDK</string>
         <key>SEARCH_URL</key>
-        <string>https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html</string>
+        <string>https://github.com/corretto/corretto-11/releases/latest</string>
         <key>SEARCH_PATTERN</key>
         <string>(?P&lt;url&gt;https.*?corretto.*?\.pkg)</string>
     </dict>
