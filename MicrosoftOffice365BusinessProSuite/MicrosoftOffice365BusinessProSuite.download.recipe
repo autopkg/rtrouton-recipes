@@ -21,7 +21,7 @@
         <key>SOFTWARETITLE4</key>
         <string>Suite</string>
         <key>ID</key>
-        <string>2009112</string>        
+        <string>2009112</string>
         <key>DOWNLOAD_URL_BASE</key>
         <string>https://go.microsoft.com/fwlink/?linkid=</string>
     </dict>
@@ -31,7 +31,7 @@
     <array>
         <dict>
             <key>Processor</key>
-            <string>OfficeSuiteSKULessVersionProvider</string>
+            <string>com.github.rtrouton.download.MicrosoftOffice365Suite/OfficeSuiteSKULessVersionProvider</string>
         </dict>
         <dict>
             <key>Processor</key>
