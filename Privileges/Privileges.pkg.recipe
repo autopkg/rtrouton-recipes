@@ -11,7 +11,7 @@
         <key>NAME</key>
         <string>Privileges</string>
         <key>INSTALLERSCRIPTS</key>
-        <string>%RECIPE_DIR%/Scripts</string>
+        <string>Scripts</string>
     </dict>
     <key>ParentRecipe</key>
     <string>com.github.rtrouton.download.privileges</string>
