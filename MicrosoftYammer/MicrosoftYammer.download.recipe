@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+   <dict>
+      <key>Description</key>
+      <string>Downloads the latest version of Microsoft Yammer</string>
+      <key>Identifier</key>
+      <string>com.github.rtrouton.download.microsoftyammer</string>
+      <key>MinimumVersion</key>
+      <string>1.0.0</string>
+      <key>Input</key>
+      <dict>
+         <key>NAME</key>
+         <string>Microsoft Yammer</string>
+         <key>VENDOR</key>
+         <string>Microsoft</string>
+         <key>SOFTWARETITLE</key>
+         <string>Yammer</string>
+         <key>DOWNLOADURL</key>
+         <string>https://aka.ms/yammer_desktop_mac</string>
+      </dict>
+      <key>Process</key>
+      <array>
+         <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+               <key>url</key>
+               <string>%DOWNLOADURL%</string>
+               <key>filename</key>
+               <string>%VENDOR%_%SOFTWARETITLE%.dmg</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>input_path</key>
+                <string>%pathname%/Yammer.app</string>
+                <key>requirement</key>
+                <string>identifier "com.microsoft.Yammer" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = UBF8T346G9</string>
+            </dict>
+         </dict>
+      </array>
+   </dict>
+</plist>
