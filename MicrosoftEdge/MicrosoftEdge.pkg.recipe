@@ -13,7 +13,7 @@
          <key>VENDOR</key>
          <string>Microsoft</string>
          <key>SOFTWARETITLE</key>
-         <string>Defender</string>
+         <string>Edge</string>
       </dict>
       <key>MinimumVersion</key>
       <string>1.0.0</string>
@@ -36,7 +36,7 @@
             <key>Arguments</key>
             <dict>
                <key>pattern</key>
-               <string>%RECIPE_CACHE_DIR%/downloads/unpack/*default*.pkg</string>
+               <string>%RECIPE_CACHE_DIR%/downloads/unpack/*MicrosoftEdge*.pkg</string>
             </dict>
             <key>Processor</key>
             <string>FileFinder</string>
