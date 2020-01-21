@@ -18,19 +18,16 @@ from __future__ import absolute_import
 
 import xml.etree.ElementTree as ET
 
-from autopkglib import Processor, ProcessorError
-
-try:
-    from urllib.parse import urlopen  # For Python 3
-except ImportError:
-    from urllib2 import urlopen  # For Python 2
+from autopkglib import Processor, ProcessorError, URLGetter
 
 __all__ = ["OfficeSuiteSKULessVersionProvider"]
 
 FEED_URL = "https://macadmins.software/latest.xml"
 
-class OfficeSuiteSKULessVersionProvider(Processor):
+
+class OfficeSuiteSKULessVersionProvider(URLGetter):
     """Provides the version of the latest SKU-Less Office 2016 Suite release"""
+
     input_variables = {}
     output_variables = {
         "version": {
@@ -42,15 +39,14 @@ class OfficeSuiteSKULessVersionProvider(Processor):
     def get_version(self, FEED_URL):
         """Parse the macadmins.software/versions.xml feed for the latest O365 version number"""
         try:
-            raw_xml = urlopen(FEED_URL)
-            xml = raw_xml.read()
+            xml = self.download(FEED_URL)
         except Exception as e:
             raise ProcessorError("Can't download %s: %s" % (FEED_URL, e))
 
         root = ET.fromstring(xml)
-        latest = root.find('latest')
-        for vers in root.iter('latest'):
-            version = vers.find('o365').text
+        latest = root.find("latest")
+        for vers in root.iter("latest"):
+            version = vers.find("o365").text
         return version
 
     def main(self):
