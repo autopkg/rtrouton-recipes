@@ -22,6 +22,8 @@
         <string>https://github.com/corretto/corretto-8/releases/latest</string>
         <key>SEARCH_PATTERN</key>
         <string>(?P&lt;url&gt;https.*?corretto.*?\.pkg)</string>
+        <key>VERSION_SEARCH_PATTERN</key>
+        <string>amazon-corretto-(?P&lt;version&gt;.*?)-macosx-x64.pkg</string>
     </dict>
     <key>MinimumVersion</key>
     <string>1.0.0</string>
@@ -55,7 +57,7 @@
                 <key>url</key>
                 <string>%SEARCH_URL%</string>
                 <key>re_pattern</key>
-                <string>amazon-corretto-(?P&lt;version&gt;.*?)-macosx-x64.pkg</string>
+                <string>%VERSION_SEARCH_PATTERN%</string>
             </dict>
         </dict>
         <dict>
