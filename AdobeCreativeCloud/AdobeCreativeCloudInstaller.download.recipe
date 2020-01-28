@@ -19,7 +19,7 @@
         <key>SEARCH_URL</key>
         <string>https://helpx.adobe.com/download-install/kb/creative-cloud-desktop-app-download.html</string>
         <key>SEARCH_PATTERN</key>
-        <string>(?P&lt;url&gt;http://ccmdl.adobe.com//AdobeProducts/KCCC/CCD/.*?/osx10/ACCC.*?.dmg)</string>
+        <string>(?P&lt;url&gt;https://ccmdl.adobe.com//AdobeProducts/KCCC/CCD/.*?/osx10/ACCC.*?.dmg)</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.0.0</string>
