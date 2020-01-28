@@ -18,6 +18,8 @@
         <string>Java</string>
         <key>SOFTWARETYPE</key>
         <string>JDK</string>
+        <key>PKG_PREFIX</key>
+        <string>%VENDOR%_%DISTRIBUTION%_%SOFTWARETITLE%_%SOFTWARETYPE%_</string>
     </dict>
     <key>ParentRecipe</key>
     <string>com.github.rtrouton.download.amazoncorettojdk11</string>
@@ -33,7 +35,7 @@
                <key>source_pkg</key>
                <string>%pathname%</string>
                <key>pkg_path</key>
-               <string>%RECIPE_CACHE_DIR%/%VENDOR%_%DISTRIBUTION%_%SOFTWARETITLE%_%SOFTWARETYPE%_%version%.pkg</string>
+               <string>%RECIPE_CACHE_DIR%/%PKG_PREFIX%%version%.pkg</string>
             </dict>
          </dict>
       </array>
