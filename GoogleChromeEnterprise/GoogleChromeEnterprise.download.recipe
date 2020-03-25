@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+   <dict>
+      <key>Description</key>
+      <string>Downloads the latest Google Chrome installer pkg.</string>
+      <key>Identifier</key>
+      <string>com.github.rtrouton.download.googlechromeenterprise</string>
+      <key>MinimumVersion</key>
+      <string>1.0.0</string>
+      <key>Input</key>
+      <dict>
+         <key>NAME</key>
+         <string>Google Chrome</string>
+         <key>VENDOR</key>
+         <string>Google</string>
+         <key>SOFTWARETITLE</key>
+         <string>Chrome</string>
+         <key>DOWNLOADURL</key>
+         <string>https://dl.google.com/chrome/mac/stable/gcem/GoogleChrome.pkg</string>
+      </dict>
+      <key>Process</key>
+      <array>
+         <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+               <key>url</key>
+               <string>%DOWNLOADURL%</string>
+               <key>filename</key>
+               <string>%VENDOR%_%SOFTWARETITLE%.pkg</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+               <key>input_path</key>
+               <string>%pathname%</string>
+               <key>expected_authority_names</key>
+               <array>
+                  <string>Developer ID Installer: Google LLC (EQHXZ8M8AV)</string>
+                  <string>Developer ID Certification Authority</string>
+                  <string>Apple Root CA</string>
+               </array>
+            </dict>
+         </dict>
+      </array>
+   </dict>
+</plist>
