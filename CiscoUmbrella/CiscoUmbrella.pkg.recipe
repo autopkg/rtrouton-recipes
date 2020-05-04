@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the current release version of the Cisco Umbrella client for macOS and renames the package.</string>
+    <key>Identifier</key>
+    <string>com.github.rtrouton.pkg.ciscoumbrella</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>Cisco Umbrella</string>
+        <key>VENDOR</key>
+        <string>Cisco</string>
+        <key>SOFTWARETITLE</key>
+        <string>Umbrella</string>
+    </dict>
+    <key>ParentRecipe</key>
+    <string>com.github.rtrouton.download.ciscoumbrella</string>
+    <key>MinimumVersion</key>
+    <string>1.0.0</string>
+    <key>Process</key>
+      <array>
+         <dict>
+            <key>Processor</key>
+            <string>PkgCopier</string>
+            <key>Arguments</key>
+            <dict>
+               <key>source_pkg</key>
+               <string>%found_filename%</string>
+               <key>pkg_path</key>
+               <string>%RECIPE_CACHE_DIR%/%VENDOR%_%SOFTWARETITLE%_%version%.pkg</string>
+            </dict>
+         </dict>
+      </array>
+   </dict>
+</plist>

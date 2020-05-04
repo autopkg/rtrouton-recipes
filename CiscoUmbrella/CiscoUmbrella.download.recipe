@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the latest Cisco Umbrella client for macOS.</string>
+    <key>Identifier</key>
+    <string>com.github.rtrouton.download.ciscoumbrella</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>Cisco Umbrella</string>
+        <key>VENDOR</key>
+        <string>Cisco</string>
+        <key>SOFTWARETITLE</key>
+        <string>Umbrella</string>
+        <key>SEARCH_URL</key>
+        <string>https://disthost.umbrella.com/roaming/upgrade/mac/stage/manifest.json</string>
+        <key>SEARCH_PATTERN</key>
+        <string>RoamingClient_MAC_(?P&lt;version&gt;.*?).pkg.zip</string>
+        <key>DOWNLOAD_URL</key>
+        <string>https://disthost.umbrella.com/roaming/upgrade/mac/stage</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>1.0.0</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%SEARCH_URL%</string>
+                <key>re_pattern</key>
+                <string>%SEARCH_PATTERN%</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%DOWNLOAD_URL%/RoamingClient_MAC_%version%.pkg.zip</string>
+            </dict>
+        </dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>archive_path</key>
+				<string>%pathname%</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+		</dict>
+         <dict>
+            <key>Processor</key>
+            <string>FileFinder</string>
+            <key>Arguments</key>
+            <dict>
+               <key>pattern</key>
+               <string>%RECIPE_CACHE_DIR%/%NAME%/*.pkg</string>
+            </dict>
+         </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+         <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+               <key>input_path</key>
+               <string>%found_filename%</string>
+               <key>expected_authority_names</key>
+               <array>
+                  <string>Developer ID Installer: OpenDNS (7P7HQ8H646)</string>
+                  <string>Developer ID Certification Authority</string>
+                  <string>Apple Root CA</string>
+               </array>
+            </dict>
+         </dict>
+    </array>
+</dict>
+</plist>
