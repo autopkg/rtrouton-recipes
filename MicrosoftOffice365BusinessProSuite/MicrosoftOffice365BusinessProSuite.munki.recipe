@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the latest Microsoft Office 365 Business Pro Suite SKU-less installer package,
+appends the version to the end of the filename, and imports into Munki.</string>
+    <key>Identifier</key>
+    <string>com.github.rtrouton.munki.MicrosoftOffice365BusinessProSuite</string>
+    <key>ParentRecipe</key>
+    <string>com.github.rtrouton.download.MicrosoftOffice365BusinessProSuite</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>Office365BusinessProSuite</string>
+        <key>MUNKI_REPO_SUBDIR</key>
+        <string>apps/Office365</string>
+        <key>ID</key>
+        <string>2009112</string>
+		<key>pkg_ids_set_optional_true</key>
+		<array/>
+        <key>pkginfo</key>
+        <dict>
+            <key>blocking_applications</key>
+            <array>
+                    <string>Microsoft Autoupdate</string>
+                    <string>Microsoft Outlook</string>
+                    <string>Microsoft Excel</string>
+                    <string>Microsoft PowerPoint</string>
+                    <string>Microsoft Word</string>
+                    <string>Microsoft OneNote</string>
+                    <string>Microsoft Teams</string>
+            </array>
+            <key>catalogs</key>
+            <array>
+                <string>testing</string>
+            </array>
+            <key>description</key>
+            <string>Microsoft Office 365 Business Pro includes the lastest version of Word, Outlook, Excel, Powerpoint, Word, OneNote and Teams</string>
+            <key>display_name</key>
+            <string>Microsoft Office 365 Business Pro</string>
+            <key>developer</key>
+            <string>Microsoft</string>
+            <key>category</key>
+            <string>Productivity</string>
+            <key>name</key>
+            <string>%NAME%</string>
+            <key>minimum_os_version</key>
+            <string>10.13.0</string>
+        </dict>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.2.0</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_path</key>
+                <string>%pathname%</string>
+                <key>repo_subdirectory</key>
+                <string>%MUNKI_REPO_SUBDIR%</string>
+            </dict>
+            <key>Processor</key>
+            <string>MunkiImporter</string>
+        </dict>
+    </array>
+</dict>
+</plist>
