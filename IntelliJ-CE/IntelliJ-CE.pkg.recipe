@@ -14,7 +14,7 @@
     <key>MinimumVersion</key>
     <string>0.2.0</string>
     <key>ParentRecipe</key>
-    <string>com.facebook.autopkg.download.intellij</string>
+    <string>com.github.dataJAR-recipes.download.intellijideace</string>
     <key>Process</key>
     <array>
         <dict>
