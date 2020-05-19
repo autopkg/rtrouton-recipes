@@ -19,7 +19,7 @@
         <key>SOFTWARETYPE</key>
         <string>JDK</string>
         <key>SEARCH_URL</key>
-        <string>https://github.com/corretto/corretto-8/releases/latest</string>
+        <string>https://github.com/corretto/corretto-8/releases</string>
         <key>SEARCH_PATTERN</key>
         <string>(?P&lt;url&gt;https.*?corretto.*?\.pkg)</string>
     </dict>
