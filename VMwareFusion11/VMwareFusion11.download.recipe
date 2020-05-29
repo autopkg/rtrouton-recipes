@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the latest version of VMware Fusion 11</string>
+    <key>Identifier</key>
+    <string>com.github.rtrouton.download.VMwareFusion11</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>VMwareFusion11</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.2.5</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>com.justinrummel.download.VMwareFusion/VMwareFusionURLProvider</string>
+            <key>Arguments</key>
+            <dict>
+                <key>major_version</key>
+                <string>11</string>
+                <key>product_name</key>
+                <string>fusion.xml</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>filename</key>
+                <string>%NAME%.zip.tar</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>Unarchiver</string>
+            <key>Arguments</key>
+            <dict>
+                <key>archive_path</key>
+                <string>%pathname%</string>
+                <key>destination_path</key>
+                <string>%RECIPE_CACHE_DIR%/tar</string>
+                <key>purge_destination</key>
+                <true/>
+                <key>archive_format</key>
+                <string>tar</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>Unarchiver</string>
+            <key>Arguments</key>
+            <dict>
+                <key>archive_path</key>
+                <string>%RECIPE_CACHE_DIR%/tar/com.vmware.fusion.zip</string>
+                <key>destination_path</key>
+                <string>%RECIPE_CACHE_DIR%/source</string>
+                <key>purge_destination</key>
+                <true/>
+                <key>archive_format</key>
+                <string>zip</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>PkgRootCreator</string>
+            <key>Arguments</key>
+            <dict>
+                <key>pkgroot</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%</string>
+                <key>pkgdirs</key>
+                <dict>
+                    <key>Applications</key>
+                    <string>0775</string>
+                </dict>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>FileMover</string>
+            <key>Arguments</key>
+            <dict>
+                <key>source</key>
+                <string>%RECIPE_CACHE_DIR%/source/payload/VMware Fusion.app</string>
+                <key>target</key>
+                <string>%pkgroot%/Applications/VMware Fusion.app</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>input_path</key>
+                <string>%pkgroot%/Applications/VMware Fusion.app</string>
+                <key>requirement</key>
+                <string>identifier "com.vmware.fusion" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = EG7KH642X6</string>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>
