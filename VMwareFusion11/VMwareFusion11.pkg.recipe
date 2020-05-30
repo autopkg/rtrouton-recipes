@@ -14,7 +14,7 @@
     <key>MinimumVersion</key>
     <string>0.2.5</string>
     <key>ParentRecipe</key>
-    <string>com.github.rtrouton.download.VMware Fusion 11</string>
+    <string>com.github.rtrouton.download.VMwareFusion11</string>
     <key>Process</key>
     <array>
         <dict>
