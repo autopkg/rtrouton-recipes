@@ -68,6 +68,10 @@ appends the version to the end of the filename, and imports into Munki.
             <key>Processor</key>
             <string>MunkiImporter</string>
         </dict>
+		<dict>
+			<key>Processor</key>
+			<string>com.github.keeleysam.recipes.GoogleTalkPlugin/MunkiPkginfoReceiptsEditor</string>
+		</dict>
     </array>
 </dict>
 </plist>
