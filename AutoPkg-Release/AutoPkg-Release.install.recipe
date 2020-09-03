@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the current release version of AutoPkg and installs it.</string>
+    <string>These recipes have moved into autopkg-recipes, and these are now deprecated.</string>
     <key>Identifier</key>
     <string>com.github.rtrouton.install.AutoPkg-Release</string>
     <key>Input</key>
@@ -19,11 +19,11 @@
     <array>
         <dict>
             <key>Processor</key>
-            <string>Installer</string>
+            <string>DeprecationWarning</string>
             <key>Arguments</key>
             <dict>
-                <key>pkg_path</key>
-                <string>%pathname%</string>
+                <key>warning_message</key>
+                <string>These recipes have moved into autopkg-recipes, and the identifiers have changed. Please update your overrides!</string>
             </dict>
         </dict>
     </array>

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the current release of AutoPkg from the AutoPkg release page on Github: https://github.com/autopkg/autopkg/releases</string>
+    <string>These recipes have moved into autopkg-recipes, and these are now deprecated.</string>
     <key>Identifier</key>
     <string>com.github.rtrouton.download.AutoPkg-Release</string>
     <key>Input</key>
@@ -17,25 +17,12 @@
     <array>
         <dict>
             <key>Processor</key>
-            <string>GitHubReleasesInfoProvider</string>
+            <string>DeprecationWarning</string>
             <key>Arguments</key>
             <dict>
-                <key>github_repo</key>
-                <string>autopkg/autopkg</string>
+                <key>warning_message</key>
+                <string>These recipes have moved into autopkg-recipes, and the identifiers have changed. Please update your overrides!</string>
             </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>URLDownloader</string>
-            <key>Arguments</key>
-            <dict>
-                <key>filename</key>
-                <string>%NAME%-%version%.pkg</string>
-            </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>EndOfCheckPhase</string>
         </dict>
     </array>
 </dict>
