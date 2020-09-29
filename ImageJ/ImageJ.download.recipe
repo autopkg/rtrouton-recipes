@@ -15,35 +15,24 @@
     <string>0.2.0</string>
     <key>Process</key>
     <array>
-		<dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
-			<key>Arguments</key>
-			<dict>
-				<key>url</key>
-				<string>https://imagej.nih.gov/ij/notes.html</string>
-				<key>re_pattern</key>
-				<string>Version (?P&lt;version&gt;[0-9a-z\.]*)</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>re_pattern</key>
-				<string>ImageJ2-[0-9]*.zip</string>
-				<key>url</key>
-				<string>https://downloads.imagej.net/</string>
-			</dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
-		</dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>https://imagej.nih.gov/ij/download.html</string>
+                <key>re_pattern</key>
+                <string>http://wsr\.imagej\.net/distros/osx/ij.*-osx-java8\.zip</string>
+            </dict>
+        </dict>
         <dict>
             <key>Processor</key>
             <string>URLDownloader</string>
             <key>Arguments</key>
             <dict>
                 <key>url</key>
-                <string>%url%/%match%</string>
+                <string>%match%</string>
                 <key>filename</key>
                 <string>%NAME%.zip</string>
             </dict>
