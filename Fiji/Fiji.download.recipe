@@ -36,7 +36,7 @@
                 <key>url</key>
                 <string>%DOWNLOAD_URL%</string>
                 <key>filename</key>
-                <string>%NAME%.zip</string>
+                <string>%NAME%-%version%.zip</string>
             </dict>
         </dict>
         <dict>
