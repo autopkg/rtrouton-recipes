@@ -42,6 +42,17 @@
                     <string>%POLICY_CATEGORY%</string>
                     <key>policy_template</key>
                     <string>%POLICY_TEMPLATE%</string>
+                    <key>groups</key>
+                    <array>
+                        <dict>
+                            <key>name</key>
+                            <string>%GROUP_NAME%</string>
+                            <key>smart</key>
+                            <true/>
+                            <key>template_path</key>
+                            <string>%GROUP_TEMPLATE%</string>
+                        </dict>
+                    </array>
                     <key>self_service_icon</key>
                     <string>%ICON%</string>
                     <key>self_service_description</key>
