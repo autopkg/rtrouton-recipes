@@ -17,17 +17,17 @@
     <string>0.2.0</string>
     <key>Process</key>
     <array>
-		<dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
-			<key>Arguments</key>
-			<dict>
-				<key>url</key>
-				<string>https://imagej.nih.gov/ij/notes.html</string>
-				<key>re_pattern</key>
-				<string>Version (?P&lt;version&gt;[0-9a-z\.]*)</string>
-			</dict>
-		</dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>https://imagej.nih.gov/ij/notes.html</string>
+                <key>re_pattern</key>
+                <string>Version (&amp;gt;)?(?P&lt;version&gt;[0-9a-z\.]*)</string>
+            </dict>
+        </dict>
         <dict>
             <key>Processor</key>
             <string>URLDownloader</string>
@@ -36,7 +36,7 @@
                 <key>url</key>
                 <string>%DOWNLOAD_URL%</string>
                 <key>filename</key>
-                <string>%NAME%.zip</string>
+                <string>%NAME%-%version%.zip</string>
             </dict>
         </dict>
         <dict>

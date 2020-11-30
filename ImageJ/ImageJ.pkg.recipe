@@ -9,7 +9,7 @@
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>ImageJ</string>
+    <string>ImageJ</string>
     </dict>
     <key>ParentRecipe</key>
     <string>com.github.rtrouton.download.ImageJ</string>
