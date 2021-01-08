@@ -13,7 +13,7 @@
 		<key>APP_FILENAME</key>
 		<string>Prism %MAJOR_VERSION%</string>
 		<key>DOWNLOAD_BASE_URL</key>
-		<string>http://cdn.graphpad.com/downloads/prism</string>
+		<string>https://cdn.graphpad.com/downloads/prism</string>
 		<key>NAME</key>
 		<string>Prism</string>
 	</dict>
