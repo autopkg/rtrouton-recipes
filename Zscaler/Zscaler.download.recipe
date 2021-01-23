@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Processes the current release version of Zscaler for macOS. Must be downloaded from the private portal in the form https.*?Zscaler-osx.*?\.zip</string>
+    <string>Processes a pre-downloaded Zscaler installation zip for macOS. Provide the path to the zip to AutoPkg with the -p switch, for example: `autopkg run Zscaler.download -p ~/Downloads/Zscaler-1.2.3.zip`</string>
     <key>Identifier</key>
     <string>com.github.rtrouton.download.zscaler</string>
     <key>Input</key>
