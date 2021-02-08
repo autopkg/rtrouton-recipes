@@ -38,7 +38,7 @@
                 <key>url</key>
                 <string>https://imagej.nih.gov/ij/download.html</string>
                 <key>re_pattern</key>
-                <string>http://wsr\.imagej\.net/distros/osx/ij.*-osx-java8\.zip</string>
+                <string>https:\/\/wsr\.imagej\.net\/distros\/osx\/ij.*-osx-java8\.zip</string>
             </dict>
         </dict>
         <dict>

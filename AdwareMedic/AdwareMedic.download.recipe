@@ -11,7 +11,7 @@
         <key>NAME</key>
         <string>AdwareMedic</string>
         <key>SPARKLE_FEED_URL</key>
-        <string>http://www.adwaremedic.com/versions/updates.xml</string>
+        <string>https://www.adwaremedic.com/versions/updates.xml</string>
     </dict>
     <key>MinimumVersion</key>
     <string>0.2.0</string>
