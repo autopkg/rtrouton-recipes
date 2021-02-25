@@ -19,11 +19,18 @@
     <array>
         <dict>
             <key>Processor</key>
-            <string>AppDmgVersioner</string>
+            <string>PlistReader</string>
             <key>Arguments</key>
             <dict>
-                <key>dmg_path</key>
-                <string>%pathname%</string>
+                <key>info_path</key>
+                <string>%pathname%/Google Chrome.app/Contents/Info.plist</string>
+                <key>plist_keys</key>
+                <dict>
+                    <key>CFBundleShortVersionString</key>
+                    <string>version</string>
+                    <key>LSMinimumSystemVersion</key>
+                    <string>min_os_version</string>
+                </dict>
             </dict>
         </dict>
         <dict>
@@ -46,9 +53,9 @@
             <key>Arguments</key>
             <dict>
                 <key>source_path</key>
-                <string>%pathname%/%app_name%</string>
+                <string>%pathname%/Google Chrome.app</string>
                 <key>destination_path</key>
-                <string>%pkgroot%/Applications/%app_name%</string>
+                <string>%pkgroot%/Applications/Google Chrome.app/string>
             </dict>
         </dict>
         <dict>
