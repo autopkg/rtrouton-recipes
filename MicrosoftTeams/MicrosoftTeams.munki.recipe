@@ -6,8 +6,6 @@
     <string>Downloads the latest Microsoft Teams installer and imports into Munki.</string>
     <key>Identifier</key>
     <string>com.github.rtrouton.munki.microsoftteams</string>
-    <key>ParentRecipe</key>
-    <string>com.github.rtrouton.download.microsoftteams</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
@@ -20,24 +18,40 @@
             <array>
                 <string>testing</string>
             </array>
+            <key>category</key>
+            <string>Productivity</string>
             <key>description</key>
-            <string>Microsoft Teams</string>
-            <key>display_name</key>
             <string>Microsoft Teams</string>
             <key>developer</key>
             <string>Microsoft</string>
-            <key>category</key>
-            <string>Productivity</string>
+            <key>display_name</key>
+            <string>Microsoft Teams</string>
             <key>name</key>
             <string>%NAME%</string>
-            <key>minimum_os_version</key>
-            <string>10.10.0</string>
+            <key>unattended_install</key>
+            <true/>
         </dict>
     </dict>
     <key>MinimumVersion</key>
     <string>1.0.0</string>
+    <key>ParentRecipe</key>
+    <string>com.github.rtrouton.pkg.microsoftteams</string>
     <key>Process</key>
     <array>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>additional_pkginfo</key>
+                <dict>
+                    <key>minimum_os_version</key>
+                    <string>%min_os_version%</string>
+                    <key>version</key>
+                    <string>%version%</string>
+                </dict>
+            </dict>
+            <key>Processor</key>
+            <string>MunkiPkginfoMerger</string>
+        </dict>
         <dict>
             <key>Arguments</key>
             <dict>
