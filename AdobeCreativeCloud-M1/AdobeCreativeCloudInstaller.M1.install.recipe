@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Installs the latest version of Adobe's Creative Cloud Desktop App Installer.</string>
+	<key>Identifier</key>
+	<string>com.github.rtrouton.install.AdobeCreativeCloudInstaller.M1</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>Creative Cloud Installer M1</string>
+		<key>VENDOR</key>
+		<string>Adobe</string>
+		<key>SOFTWARETITLE</key>
+		<string>Creative Cloud Installer</string>
+		<key>NAMEWITHOUTSPACES</key>
+		<string>CreativeCloudInstaller</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>1.0.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.rtrouton.pkg.AdobeCreativeCloudInstaller.M1</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>Installer</string>
+		</dict>
+	</array>
+</dict>
+</plist>

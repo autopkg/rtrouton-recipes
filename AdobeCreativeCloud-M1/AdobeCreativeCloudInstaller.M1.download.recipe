@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Adobe's Creative Cloud Desktop App Installer.</string>
+	<key>Identifier</key>
+	<string>com.github.rtrouton.download.AdobeCreativeCloudInstaller.M1</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>Creative Cloud Installer M1</string>
+		<key>VENDOR</key>
+		<string>Adobe</string>
+		<key>SOFTWARETITLE</key>
+		<string>Creative Cloud Installer</string>
+		<key>NAMEWITHOUTSPACES</key>
+		<string>CreativeCloudInstaller</string>
+        <key>SEARCH_URL</key>
+        <string>https://helpx.adobe.com/download-install/kb/creative-cloud-desktop-app-download.html</string>
+        <key>SEARCH_PATTERN</key>
+        <string>(?P&lt;url&gt;http.*?://ccmdl.adobe.com/AdobeProducts/KCCC/CCD/.*?/macarm64/ACCC.*?.dmg)</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>1.0.0</string>
+	<key>Process</key>
+	<array>
+        <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%SEARCH_URL%</string>
+                <key>re_pattern</key>
+                <string>%SEARCH_PATTERN%</string>
+            </dict>
+        </dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%url%</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%pathname%/Install.app</string>
+				<key>requirement</key>
+				<string>identifier "com.adobe.cc.Install" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = JQ525L2MZD</string>
+			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>source_path</key>
+				<string>%pathname%/packages/ApplicationInfo.xml</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/ApplicationInfo.xml</string>
+				<key>overwrite</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>xml_path</key>
+				<string>%RECIPE_CACHE_DIR%/ApplicationInfo.xml</string>
+				<key>elements</key>
+				<array>
+					<dict>
+						<key>xpath</key>
+						<string>version</string>
+						<key>text</key>
+						<string>version</string>
+					</dict>
+				</array>
+			</dict>
+			<key>Processor</key>
+			<string>XMLReader</string>
+		</dict>
+	</array>
+</dict>
+</plist>
