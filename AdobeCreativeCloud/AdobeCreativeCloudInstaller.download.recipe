@@ -19,7 +19,7 @@
         <key>SEARCH_URL</key>
         <string>https://helpx.adobe.com/download-install/kb/creative-cloud-desktop-app-download.html</string>
         <key>SEARCH_PATTERN</key>
-        <string>(?P&lt;url&gt;http.*://ccmdl.adobe.com/AdobeProducts/KCCC/CCD/.*?/osx10/ACCC.*?.dmg)</string>
+        <string>(?P&lt;url&gt;http.*?://ccmdl.adobe.com/AdobeProducts/KCCC/CCD/.*?/osx10/ACCC.*?.dmg)</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.0.0</string>
@@ -55,7 +55,7 @@
 				<key>input_path</key>
 				<string>%pathname%/Install.app</string>
 				<key>requirement</key>
-				<string>identifier "com.adobe.Install" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = JQ525L2MZD</string>
+				<string>identifier "com.adobe.cc.Install" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = JQ525L2MZD</string>
 			</dict>
 			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>
@@ -63,13 +63,33 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>input_plist_path</key>
-				<string>%pathname%/Install.app/Contents/Info.plist</string>
-				<key>plist_version_key</key>
-				<string>CFBundleVersion</string>
+				<key>source_path</key>
+				<string>%pathname%/packages/ApplicationInfo.xml</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/ApplicationInfo.xml</string>
+				<key>overwrite</key>
+				<true/>
 			</dict>
 			<key>Processor</key>
-			<string>Versioner</string>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>xml_path</key>
+				<string>%RECIPE_CACHE_DIR%/ApplicationInfo.xml</string>
+				<key>elements</key>
+				<array>
+					<dict>
+						<key>xpath</key>
+						<string>version</string>
+						<key>text</key>
+						<string>version</string>
+					</dict>
+				</array>
+			</dict>
+			<key>Processor</key>
+			<string>XMLReader</string>
 		</dict>
 	</array>
 </dict>
