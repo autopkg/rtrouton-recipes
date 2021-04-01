@@ -56,6 +56,7 @@ fi
 
 rm -rf "/Applications/Privileges.app"
 rm -rf "/Library/PrivilegedHelperTools/corp.sap.privileges.helper"
+pkgutil --forget com.sap.privileges
 </string>
 			<key>uninstallable</key>
 			<true/>
