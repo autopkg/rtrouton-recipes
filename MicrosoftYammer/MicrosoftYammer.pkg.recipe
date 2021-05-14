@@ -14,6 +14,8 @@
             <string>Microsoft</string>
             <key>SOFTWARETITLE</key>
             <string>Yammer</string>
+            <key>VERSIONTYPE</key>
+            <string>CFBundleShortVersionString</string>
         </dict>
         <key>MinimumVersion</key>
         <string>1.0.0</string>
@@ -56,7 +58,7 @@
                     <key>input_plist_path</key>
                     <string>%pkgroot%/Applications/Yammer.app/Contents/Info.plist</string>
                     <key>plist_version_key</key>
-                    <string>CFBundleShortVersionString</string>
+                    <string>%VERSIONTYPE%</string>
                 </dict>
             </dict>
             <dict>

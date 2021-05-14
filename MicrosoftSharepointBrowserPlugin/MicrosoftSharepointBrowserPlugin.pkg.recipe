@@ -16,6 +16,8 @@
          <string>SharePoint</string>
          <key>SOFTWARETYPE</key>
          <string>Plugin</string>
+         <key>VERSIONTYPE</key>
+         <string>CFBundleVersion</string>
       </dict>
       <key>MinimumVersion</key>
       <string>1.0.0</string>
@@ -60,7 +62,7 @@
                <key>input_plist_path</key>
                <string>%RECIPE_CACHE_DIR%/downloads/payload/SharePointBrowserPlugin.plugin/Contents/Info.plist</string>
                <key>plist_version_key</key>
-               <string>CFBundleVersion</string>
+               <string>%VERSIONTYPE%</string>
             </dict>
             <key>Processor</key>
             <string>Versioner</string>
