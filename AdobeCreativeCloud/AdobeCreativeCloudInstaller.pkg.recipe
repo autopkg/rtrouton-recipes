@@ -137,7 +137,7 @@ install_dir=$(dirname $0)
 					<key>pkgtype</key>
 					<string>flat</string>
 					<key>id</key>
-					<string>com.adobe.AdobeCreativeCloudInstaller.pkg</string>
+					<string>com.adobe.AdobeCreativeCloudInstaller.%ARCHITECTURE%.pkg</string>
 					<key>version</key>
 					<string>%version%</string>
 					<key>scripts</key>
