@@ -16,28 +16,26 @@
 		<string>Creative Cloud Installer</string>
 		<key>NAMEWITHOUTSPACES</key>
 		<string>CreativeCloudInstaller</string>
-		<key>SEARCH_URL</key>
-		<string>https://helpx.adobe.com/download-install/kb/creative-cloud-desktop-app-download.html</string>
-		<key>SEARCH_PATTERN</key>
-		<string>(?P&lt;url&gt;http.*?://ccmdl.adobe.com/AdobeProducts/KCCC/CCD/.*?/%ARCHITECTURE%/ACCC.*?.dmg)</string>
-		<key>ARCHITECTURE</key>
-		<string>osx10</string>
+        <key>SEARCH_URL</key>
+        <string>https://helpx.adobe.com/download-install/kb/creative-cloud-desktop-app-download.html</string>
+        <key>SEARCH_PATTERN</key>
+        <string>(?P&lt;url&gt;http.*?://ccmdl.adobe.com/AdobeProducts/KCCC/CCD/.*?/osx10/ACCC.*?.dmg)</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.0.0</string>
 	<key>Process</key>
 	<array>
-		<dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
-			<key>Arguments</key>
-			<dict>
-				<key>url</key>
-				<string>%SEARCH_URL%</string>
-				<key>re_pattern</key>
-				<string>%SEARCH_PATTERN%</string>
-			</dict>
-		</dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%SEARCH_URL%</string>
+                <key>re_pattern</key>
+                <string>%SEARCH_PATTERN%</string>
+            </dict>
+        </dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>
