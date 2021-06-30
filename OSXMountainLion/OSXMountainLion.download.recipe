@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the current release version of the OS X Mountain Lion OS installer.</string>
+    <key>Identifier</key>
+    <string>com.github.rtrouton.download.OSXMountainLion</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>OS X Mountain Lion</string>
+        <key>VENDOR</key>
+        <string>Apple</string>
+        <key>OSFAMILYNAME</key>
+        <string>OSX</string>
+        <key>OSVSERSIONNAME</key>
+        <string>MountainLion</string>
+        <key>OSVSERSIONNUMBER</key>
+        <string>10.8.5</string>
+        <key>SEARCH_URL</key>
+        <string>https://support.apple.com/kb/DL2076</string>
+        <key>SEARCH_PATTERN</key>
+        <string>(?P&lt;url&gt;http.*?InstallMacOSX.dmg)</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>1.0.0</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%SEARCH_URL%</string>
+                <key>re_pattern</key>
+                <string>%SEARCH_PATTERN%</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%url%</string>
+				<key>filename</key>
+				<string>%VENDOR%_%OSFAMILYNAME%_%OSVSERSIONNAME%_%OSVSERSIONNUMBER%.dmg</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+    </array>
+</dict>
+</plist>
