@@ -51,7 +51,7 @@ then
     echo "Copying $DIR to $PATH_DEST"
     cp -r "$PATH_SRC" "$PATH_DEST"
 else
-    echo "Error: Directory $PATH_DEST does not exists."
+    echo "Error: Directory $PATH_SRC does not exists."
 fi
 			</string>
 			<key>postuninstall_script</key>
