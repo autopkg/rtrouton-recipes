@@ -12,7 +12,7 @@
         <string>ImageJ</string>
     </dict>
     <key>MinimumVersion</key>
-    <string>0.2.0</string>
+    <string>0.2.9</string>
     <key>Process</key>
     <array>
         <dict>
@@ -20,10 +20,25 @@
             <string>URLTextSearcher</string>
             <key>Arguments</key>
             <dict>
+                <key>result_output_var_name</key>
+                <string>version</string>
+                <key>url</key>
+                <string>https://imagej.nih.gov/ij/notes.html</string>
+                <key>re_pattern</key>
+                <string>&lt;u&gt;\s*([0-9a-z\\.]*)</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>result_output_var_name</key>
+                <string>match</string>                
                 <key>url</key>
                 <string>https://imagej.nih.gov/ij/download.html</string>
                 <key>re_pattern</key>
-                <string>http://wsr\.imagej\.net/distros/osx/ij.*-osx-java8\.zip</string>
+                <string>https:\/\/wsr\.imagej\.net\/distros\/osx\/ij.*-osx-java8\.zip</string>
             </dict>
         </dict>
         <dict>
@@ -34,7 +49,7 @@
                 <key>url</key>
                 <string>%match%</string>
                 <key>filename</key>
-                <string>%NAME%.zip</string>
+                <string>%NAME%-%version%.zip</string>
             </dict>
         </dict>
         <dict>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads latest Google Chrome disk image with Universal build of Chrome.</string>
+    <key>Identifier</key>
+    <string>com.github.rtrouton.download.googlechromeuniversal</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>GoogleChrome</string>
+        <key>BUILD</key>
+        <string>Universal</string>
+        <key>DOWNLOAD_URL</key>
+        <string>https://dl.google.com/chrome/mac/universal/stable/GGRO/googlechrome.dmg</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.2.0</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%DOWNLOAD_URL%</string>
+                <key>filename</key>
+                <string>%NAME%%BUILD%.dmg</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>input_path</key>
+                <string>%pathname%/Google Chrome.app</string>
+                <key>strict_verification</key>
+                <false/>
+                <key>requirement</key>
+                <string>(identifier "com.google.Chrome" or identifier "com.google.Chrome.beta" or identifier "com.google.Chrome.dev" or identifier "com.google.Chrome.canary") and (certificate leaf = H"85cee8254216185620ddc8851c7a9fc4dfe120ef" or certificate leaf = H"c9a99324ca3fcb23dbcc36bd5fd4f9753305130a")</string>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>

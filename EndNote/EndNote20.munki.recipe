@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads latest Endnote 20 installer and imports it into munki.</string>
+	<key>Identifier</key>
+	<string>com.github.rtrouton.munki.EndNote20</string>
+	<key>Input</key>
+	<dict>
+		<key>DEFAULT_CATALOG</key>
+		<string>testing</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/%NAME%</string>
+		<key>NAME</key>
+		<string>EndNote 20</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>%DEFAULT_CATALOG%</string>
+			</array>
+			<key>category</key>
+			<string>Reference</string>
+			<key>description</key>
+			<string>Bibliographic management app.</string>
+			<key>developer</key>
+			<string>Thomson Reuters</string>
+			<key>display_name</key>
+			<string>EndNote 20</string>
+			<key>minimum_os_version</key>
+			<string>10.10.0</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>blocking_applications</key>
+			<array>
+				<string>Microsoft Word</string>
+				<string>EndNote 20</string>
+			</array>
+			<key>postinstall_script</key>
+			<string>#!/bin/zsh
+DIR="EndNote CWYW Word 16.bundle"
+PATH_SRC="/Applications/EndNote 20/Cite While You Write/$DIR"
+PATH_DEST="/Library/Application Support/Microsoft/Office365/User Content.localized/Startup.localized/Word/"
+
+[[ -d "$PATH_DEST" ]] || mkdir -p "$PATH_DEST"
+if [ -d "$PATH_SRC" ]
+then
+    echo "Copying $DIR to $PATH_DEST"
+    cp -r "$PATH_SRC" "$PATH_DEST"
+else
+    echo "Error: Directory $PATH_SRC does not exists."
+fi
+			</string>
+			<key>postuninstall_script</key>
+			<string>#!/bin/zsh
+DIR="EndNote CWYW Word 16.bundle"
+PATH_DEST="/Library/Application Support/Microsoft/Office365/User Content.localized/Startup.localized/Word/$DIR"
+
+if [ -d "$PATH_DEST" ]
+then
+    echo "Removing $PATH_DEST"
+    rm -r "$PATH_DEST"
+fi
+			</string>
+			<key>preinstall_script</key>
+			<string>#!/bin/zsh
+endnote_bundle_2008="/Applications/Microsoft Office 2008/Office/Startup/Word/EndNote CWYW Word 2008.bundle"
+endnote_bundle_2011="/Applications/Microsoft Office 2011/Office/Startup/Word/EndNote CWYW Word 2011.bundle"
+endnote_bundle_2016="/Library/Application Support/Microsoft/Office365/User Content.localized/Startup.localized/Word/EndNote CWYW Word 2016.bundle"
+
+bundles=("$endnote_bundle_2008" "$endnote_bundle_2011" "$endnote_bundle_2016")
+
+for i in $bundles; do
+  if [ -d "$i" ]
+  then
+    echo "Removing old CWYW bundle $i"
+    rm -r "$i"
+  else
+    echo "$i is not installed"
+    echo "Proceeding with installation"
+  fi
+done
+			</string>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>1.0.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.rtrouton.pkg.EndNote20</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>

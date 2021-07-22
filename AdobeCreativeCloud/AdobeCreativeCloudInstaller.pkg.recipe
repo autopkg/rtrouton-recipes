@@ -35,41 +35,46 @@
 			</dict>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>Versioner</string>
 			<key>Arguments</key>
 			<dict>
-				<key>input_plist_path</key>
-				<string>%pathname%/Install.app/Contents/Info.plist</string>
-				<key>plist_version_key</key>
-				<string>CFBundleVersion</string>
+				<key>pkgdirs</key>
+				<dict/>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/Scripts</string>
 			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>Copier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>source_path</key>
-				<string>%pathname%/Install.app</string>
+				<string>%pathname%/packages/ApplicationInfo.xml</string>
 				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/Scripts/Install.app</string>
+				<string>%RECIPE_CACHE_DIR%/ApplicationInfo.xml</string>
 				<key>overwrite</key>
 				<true/>
 			</dict>
-		</dict>
-		<dict>
 			<key>Processor</key>
 			<string>Copier</string>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>source_path</key>
-				<string>%pathname%/packages</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/Scripts/packages</string>
-				<key>overwrite</key>
-				<true/>
+				<key>xml_path</key>
+				<string>%RECIPE_CACHE_DIR%/ApplicationInfo.xml</string>
+				<key>elements</key>
+				<array>
+					<dict>
+						<key>xpath</key>
+						<string>version</string>
+						<key>text</key>
+						<string>version</string>
+					</dict>
+				</array>
 			</dict>
+			<key>Processor</key>
+			<string>XMLReader</string>
 		</dict>
 		<dict>
 			<key>Processor</key>
@@ -77,9 +82,9 @@
 			<key>Arguments</key>
 			<dict>
 				<key>source_path</key>
-				<string>%pathname%/resources</string>
+				<string>%pathname%</string>
 				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/Scripts/resources</string>
+				<string>%RECIPE_CACHE_DIR%/Scripts/%VENDOR%%NAMEWITHOUTSPACES%-%version%.dmg</string>
 				<key>overwrite</key>
 				<true/>
 			</dict>
@@ -95,12 +100,27 @@
 				<string>0755</string>
 				<key>file_content</key>
 				<string>#!/bin/bash
-
+				
 # Determine working directory
-install_dir=$(dirname $0)
+installDir=$(dirname $0)
+dmg=("${installDir}"/*\.dmg)
 
-# Install the Creative Cloud  application using the Install binary's silent install mode
-"${install_dir}/Install.app/Contents/MacOS/Install" --mode=silent</string>
+# Mount the disk image to /Volumes
+mountResult=$(/usr/bin/hdiutil attach "${dmg}" -nobrowse -noverify -noautoopen)
+mountPoint=$(/bin/echo "${mountResult}" | /usr/bin/grep Volumes | /usr/bin/awk '{print substr($0, index($0,$3))}')
+
+# Install the software
+"${mountPoint}/Install.app/Contents/MacOS/Install" --mode=silent
+
+# Get the exit code so we can fail properly
+exitcode=$?
+
+# Unmount the disk image from /Volumes
+/usr/bin/hdiutil detach "${mountPoint}"
+
+# Exit according to whether the install succeeded or not
+exit "${exitcode}"
+</string>
 			</dict>
 		</dict>
 		<dict>
@@ -132,7 +152,9 @@ install_dir=$(dirname $0)
 			<dict>
 				<key>path_list</key>
 				<array>
+					<string>%RECIPE_CACHE_DIR%/pkgroot</string>
 					<string>%RECIPE_CACHE_DIR%/Scripts</string>
+					<string>%RECIPE_CACHE_DIR%/ApplicationInfo.xml</string>
 				</array>
 			</dict>
 		</dict>

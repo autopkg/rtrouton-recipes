@@ -9,7 +9,7 @@
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>ImageJ</string>
+    <string>ImageJ</string>
     </dict>
     <key>ParentRecipe</key>
     <string>com.github.rtrouton.download.ImageJ</string>
@@ -42,20 +42,6 @@
                 <string>%pkgroot%/Applications</string>
                 <key>purge_destination</key>
                 <true/>
-            </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>PlistReader</string>
-            <key>Arguments</key>
-            <dict>
-                <key>info_path</key>
-                <string>%destination_path%/ImageJ.app</string>
-                <key>plist_keys</key>
-                <dict>
-                    <key>CFBundleShortVersionString</key>
-                    <string>version</string>
-                </dict>
             </dict>
         </dict>
         <dict>

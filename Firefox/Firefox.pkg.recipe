@@ -33,16 +33,25 @@
             </dict>
         </dict>
         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>pattern</key>
+               <string>%RECIPE_CACHE_DIR%/unpack/*.pkg</string>
+            </dict>
+            <key>Processor</key>
+            <string>FileFinder</string>
+        </dict>
+        <dict>
             <key>Processor</key>
             <string>PkgPayloadUnpacker</string>
             <key>Arguments</key>
             <dict>
                 <key>pkg_payload_path</key>
-                <string>%RECIPE_CACHE_DIR%/unpack/Payload</string>
+                <string>%found_filename%/Payload</string>
                 <key>destination_path</key>
                 <string>%RECIPE_CACHE_DIR%/payload</string>
             </dict>
-        </dict>            
+        </dict>             
         <dict>
             <key>Processor</key>
             <string>Versioner</string>
