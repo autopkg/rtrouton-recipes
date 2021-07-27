@@ -23,7 +23,7 @@
 				<key>url</key>
 				<string>https://www.citrix.com/downloads/workspace-app/mac/workspace-app-for-mac-latest.html</string>
 				<key>re_pattern</key>
-				<string>(?P&lt;DYNAMIC_URL&gt;//downloads.citrix.com/[\d]+/CitrixWorkspaceApp\.dmg\?__gda__\=[\w]+)</string>
+				<string>(?P&lt;DYNAMIC_URL&gt;//downloads.citrix.com/[\d]+/CitrixWorkspaceApp\.dmg\?__gda__\=exp\=(\w|\~|\=)+/(\w|\*|\~|\=)+)</string>
 			</dict>
 		</dict>
 		<dict>
