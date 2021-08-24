@@ -48,7 +48,7 @@
             <string>#!/bin/bash
 
 if [[ -f "/Library/LaunchDaemons/corp.sap.privileges.helper.plist" ]]; then
-    launchctl unload -w "/Library/LaunchDaemons/corp.sap.privileges.helper.plist" 2&gt;/dev/null
+    launchctl unload "/Library/LaunchDaemons/corp.sap.privileges.helper.plist" 2&gt;/dev/null
     rm -rf "/Library/LaunchDaemons/corp.sap.privileges.helper.plist"
 fi
 
