@@ -3,9 +3,9 @@
 <plist version="1.0">
    <dict>
       <key>Description</key>
-      <string>Downloads the current release of SapMachine Java 17 JDK from the SapMachine release page on Github: https://github.com/SAP/SapMachine/releases</string>
+      <string>Downloads the current release of SapMachine Java 17 JDK for Apple Silicon from the SapMachine release page on Github: https://github.com/SAP/SapMachine/releases</string>
       <key>Identifier</key>
-      <string>com.github.rtrouton.download.SapMachineJDK17</string>
+      <string>com.github.rtrouton.download.SapMachineAppleSiliconJDK17</string>
       <key>Input</key>
       <dict>
          <key>NAME</key>
@@ -25,7 +25,7 @@
             <key>Arguments</key>
             <dict>
                <key>asset_regex</key>
-               <string>sapmachine-jdk-17[\S]macos-x64_bin.dmg</string>
+               <string>sapmachine-jdk-17[\S]macos-aarch64_bin.dmg</string>
                <key>github_repo</key>
                <string>sap/sapmachine</string>
             </dict>

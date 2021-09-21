@@ -3,9 +3,9 @@
 <plist version="1.0">
    <dict>
       <key>Description</key>
-      <string>Downloads the current release version of SapMachine Java 17 JDK and builds an installer package.</string>
+      <string>Downloads the current release version of SapMachine Java 17 JDK for Apple Silicon and builds an installer package.</string>
       <key>Identifier</key>
-      <string>com.github.rtrouton.pkg.SapMachineJDK17</string>
+      <string>com.github.rtrouton.pkg.SapMachineAppleSiliconJDK17</string>
       <key>Input</key>
       <dict>
          <key>NAME</key>
@@ -16,7 +16,7 @@
          <string>SapMachine</string>
       </dict>
       <key>ParentRecipe</key>
-      <string>com.github.rtrouton.download.SapMachineJDK17</string>
+      <string>com.github.rtrouton.download.SapMachineAppleSiliconJDK17</string>
       <key>MinimumVersion</key>
       <string>1.0.0</string>
       <key>Process</key>
@@ -121,7 +121,7 @@ exit 0</string>
                <key>pkg_request</key>
                <dict>
                   <key>pkgname</key>
-                  <string>%VENDOR%-%SOFTWARETITLE%-%version%.%BUILD_NUMBER%</string>
+                  <string>%VENDOR%-%SOFTWARETITLE%-AppleSilicon-%version%.%BUILD_NUMBER%</string>
                   <key>version</key>
                   <string>%version%.%BUILD_NUMBER%</string>
                   <key>id</key>
