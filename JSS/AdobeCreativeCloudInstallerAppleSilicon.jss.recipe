@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the latest version of Adobe's Creative Cloud Installer, builds an installer package which installs the correct Creative Cloud for your Mac's processor and imports it into your JSS.</string>
 	<key>Identifier</key>
-	<string>com.github.rtrouton.jss.AdobeCreativeCloudInstallerUniversal</string>
+	<string>com.github.rtrouton.jss.AdobeCreativeCloudInstallerAppleSilicon</string>
 	<key>Input</key>
 	<dict>
 		<key>CATEGORY</key>
@@ -23,12 +23,12 @@
 		<key>SELF_SERVICE_DESCRIPTION</key>
 		<string>Access Adobe apps from the cloud with a monthly fee.</string>
 		<key>SELF_SERVICE_ICON</key>
-		<string>AdobeCreativeCloudInstallerUniversal.png</string>
+		<string>AdobeCreativeCloudInstallerAppleSilicon.png</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
 	<key>ParentRecipe</key>
-	<string>com.github.rtrouton.pkg.AdobeCreativeCloudInstallerUniversal</string>
+	<string>com.github.rtrouton.pkg.AdobeCreativeCloudInstallerAppleSilicon</string>
 	<key>Process</key>
 	<array>
 		<dict>
