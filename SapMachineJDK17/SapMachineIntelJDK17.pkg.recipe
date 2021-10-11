@@ -125,7 +125,7 @@ exit 0</string>
                   <key>version</key>
                   <string>%version%.%BUILD_NUMBER%</string>
                   <key>id</key>
-                  <string>net.java.openjdk.sapmachine</string>
+                  <string>net.java.openjdk.sapmachine.x8664.%version%.%BUILD_NUMBER%</string>
                   <key>scripts</key>
                   <string>Scripts</string>
                   <key>options</key>

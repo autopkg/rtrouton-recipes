@@ -134,7 +134,7 @@ exit 0</string>
                   <key>version</key>
                   <string>%version%.%BUILD_NUMBER%</string>
                   <key>id</key>
-                  <string>net.java.openjdk.sapmachine</string>
+                  <string>net.java.openjdk.sapmachine.x8664.%version%.%BUILD_NUMBER%</string>
                   <key>scripts</key>
                   <string>%RECIPE_CACHE_DIR%/Intel/Scripts</string>
                   <key>options</key>
@@ -282,7 +282,7 @@ exit 0</string>
                   <key>version</key>
                   <string>%version%.%BUILD_NUMBER%</string>
                   <key>id</key>
-                  <string>net.java.openjdk.sapmachine</string>
+                  <string>net.java.openjdk.sapmachine.arm64.%version%.%BUILD_NUMBER%</string>
                   <key>scripts</key>
                   <string>%RECIPE_CACHE_DIR%/AppleSilicon/Scripts</string>
                   <key>options</key>
@@ -415,7 +415,7 @@ exit 0</string>
                   <key>version</key>
                   <string>%version%.%BUILD_NUMBER%</string>
                   <key>id</key>
-                  <string>net.java.openjdk.sapmachine</string>
+                  <string>net.java.openjdk.sapmachine.universal.%version%.%BUILD_NUMBER%</string>
                   <key>scripts</key>
                   <string>%RECIPE_CACHE_DIR%/Universal/Scripts</string>
                   <key>options</key>
