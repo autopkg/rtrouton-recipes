@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of SAP GUI for macOS and packages it for installation.</string>
+	<key>Identifier</key>
+	<string>com.github.rtrouton.pkg.sapgui.withouttemplate</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>SAP GUI</string>
+        <key>VENDOR</key>
+        <string>SAP</string>
+        <key>SOFTWARETITLE</key>
+        <string>SAPGUI</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>1.0.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.rtrouton.download.sapgui</string>
+	<key>Process</key>
+	<array>
+         <dict>
+            <key>Processor</key>
+            <string>PlistReader</string>
+            <key>Arguments</key>
+            <dict>
+               <key>info_path</key>
+               <string>%RECIPE_CACHE_DIR%/%VENDOR%/com.sapgui.identifier.plist</string>
+               <key>plist_keys</key>
+               <dict>
+               	<key>CFBundleShortVersionString</key>
+               	<string>version</string>
+               	<key>AlphanumericVersionString</key>
+               	<string>alphanumeric_version</string>
+               	<key>CFBundleIdentifier</key>
+               	<string>bundle_identifier</string>
+               </dict>
+            </dict>
+         </dict>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>predicate</key>
+               <string>version == ""</string>
+            </dict>
+            <key>Processor</key>
+            <string>StopProcessingIf</string>
+         </dict>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>predicate</key>
+               <string>alphanumeric_version == ""</string>
+            </dict>
+            <key>Processor</key>
+            <string>StopProcessingIf</string>
+         </dict>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>predicate</key>
+               <string>bundle_identifier == ""</string>
+            </dict>
+            <key>Processor</key>
+            <string>StopProcessingIf</string>
+         </dict>
+		<dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+				<key>pkgdirs</key>
+				<dict/>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+				<key>pkgdirs</key>
+				<dict/>
+			</dict>
+		</dict>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>pattern</key>
+               <string>%RECIPE_CACHE_DIR%/%VENDOR%/*.dmg</string>
+            </dict>
+            <key>Processor</key>
+            <string>FileFinder</string>
+         </dict>
+		<dict>
+			<key>Processor</key>
+			<string>Copier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>source_path</key>
+				<string>%found_filename%/SAP GUI for Java Installer.app</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/Scripts/SAP GUI for Java Installer.app</string>
+				<key>overwrite</key>
+				<true/>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>FileCreator</string>
+			<key>Arguments</key>
+			<dict>
+				<key>file_path</key>
+				<string>%RECIPE_CACHE_DIR%/Scripts/postinstall</string>
+				<key>file_mode</key>
+				<string>0755</string>
+				<key>file_content</key>
+				<string>#!/bin/bash
+
+install_dir=$(/usr/bin/dirname $0)
+sap_gui_installer="$install_dir/SAP GUI for Java Installer.app"
+sap_gui_install_path="/Applications/SAP Clients"
+
+ERROR=0
+IFS=$'\n'
+
+
+function log {
+	echo "$1"
+	/usr/bin/logger "SAPCorp: $1"
+}
+
+if [[ -x "$sap_gui_installer" ]]; then
+
+		  log "Attempting to install $sap_gui_install..."
+		  "$sap_gui_installer/Contents/MacOS/install" -G --installdir "${sap_gui_install_path}" -J "${install_dir}" --force
+	
+		if [[ $? -ne 0 ]]; then
+			log "ERROR! Installation of $sap_gui_installer failed"
+			ERROR=1
+			break
+		else
+			log "Successfully installed $sap_gui_installer"
+		fi
+fi
+
+exit $ERROR</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>PkgCreator</string>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_request</key>
+				<dict>
+					<key>pkgroot</key>
+					<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+					<key>pkgname</key>
+					<string>%VENDOR%_%SOFTWARETITLE%_%alphanumeric_version%</string>
+					<key>pkgtype</key>
+					<string>flat</string>
+					<key>id</key>
+					<string>%bundle_identifier%</string>
+					<key>version</key>
+					<string>%version%</string>
+					<key>scripts</key>
+					<string>Scripts</string>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>PathDeleter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>path_list</key>
+				<array>
+					<string>%RECIPE_CACHE_DIR%/%VENDOR%</string>
+					<string>%RECIPE_CACHE_DIR%/Scripts</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
