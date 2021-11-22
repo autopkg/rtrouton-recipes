@@ -31,7 +31,7 @@
             <key>name</key>
             <string>%NAME%</string>
             <key>minimum_os_version</key>
-            <string>10.12.0</string>
+            <string>10.14.0</string>
         </dict>
     </dict>
     <key>MinimumVersion</key>
