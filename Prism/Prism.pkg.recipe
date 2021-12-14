@@ -8,8 +8,6 @@
 	<string>com.github.rtrouton.pkg.Prism</string>
 	<key>Input</key>
 	<dict>
-		<key>MAJOR_VERSION</key>
-		<string>9</string>
 		<key>APP_FILENAME</key>
 		<string>Prism %MAJOR_VERSION%</string>
 		<key>BUNDLE_ID</key>
