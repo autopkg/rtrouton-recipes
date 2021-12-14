@@ -17,15 +17,39 @@
     <array>
         <dict>
             <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>http://wsr.imagej.net/jars/ij.jar</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>Unarchiver</string>
+            <key>Arguments</key>
+            <dict>
+                <key>archive_format</key>
+                <string>zip</string>
+                <key>archive_path</key>
+                <string>%RECIPE_CACHE_DIR%/downloads/ij.jar</string>
+                <key>destination_path</key>
+                <string>%RECIPE_CACHE_DIR%/unzip</string>
+                <key>purge_destination</key>
+                <true/>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
             <string>URLTextSearcher</string>
             <key>Arguments</key>
             <dict>
+                <key>re_pattern</key>
+                <string>ImageJ (.*)\; Java</string>
                 <key>result_output_var_name</key>
                 <string>version</string>
                 <key>url</key>
-                <string>https://imagej.nih.gov/ij/notes.html</string>
-                <key>re_pattern</key>
-                <string>&lt;u&gt;\s*([0-9a-z\\.]*)</string>
+                <string>file:////%RECIPE_CACHE_DIR%/unzip/ij/ImageJ.class</string>
             </dict>
         </dict>
         <dict>
@@ -34,7 +58,7 @@
             <key>Arguments</key>
             <dict>
                 <key>result_output_var_name</key>
-                <string>match</string>                
+                <string>match</string>
                 <key>url</key>
                 <string>https://imagej.nih.gov/ij/download.html</string>
                 <key>re_pattern</key>
@@ -55,6 +79,73 @@
         <dict>
             <key>Processor</key>
             <string>EndOfCheckPhase</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>PkgRootCreator</string>
+            <key>Arguments</key>
+            <dict>
+                <key>pkgroot</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%</string>
+                <key>pkgdirs</key>
+                <dict>
+                    <key>Applications</key>
+                    <string>0775</string>
+                </dict>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>Unarchiver</string>
+            <key>Arguments</key>
+            <dict>
+                <key>archive_path</key>
+                <string>%pathname%</string>
+                <key>destination_path</key>
+                <string>%pkgroot%/Applications</string>
+                <key>purge_destination</key>
+                <true/>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>Copier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>source_path</key>
+                <string>%RECIPE_CACHE_DIR%/downloads/ij.jar</string>
+                <key>destination_path</key>
+                <string>%pkgroot%/Applications/ImageJ.app/Contents/Java/ij.jar</string>
+                <key>overwrite</key>
+                <true/>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>PlistEditor</string>
+            <key>Arguments</key>
+            <dict>
+                <key>input_plist_path</key>
+                <string>%pkgroot%/Applications/ImageJ.app/Contents/Info.plist</string>
+                <key>output_plist_path</key>
+                <string>%pkgroot%/Applications/ImageJ.app/Contents/Info.plist</string>
+                <key>plist_data</key>
+                <dict>
+                    <key>CFBundleShortVersionString</key>
+                    <string>%version%</string>
+                </dict>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>PathDeleter</string>
+            <key>Arguments</key>
+            <dict>
+                <key>path_list</key>
+                <array>
+                    <string>%RECIPE_CACHE_DIR%/unzip</string>
+                </array>
+            </dict>
         </dict>
     </array>
 </dict>
