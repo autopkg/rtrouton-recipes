@@ -41,6 +41,9 @@
         <!--USERDOMAIN corresponds to the value given to the userDomain switch-->
         <key>USERDOMAIN</key>
         <string></string>
+        <!--LAUNCHTRAY corresponds to the value given to the launchTray switch-->
+        <key>LAUNCHTRAY</key>
+        <string></string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.0.0</string>
@@ -107,6 +110,7 @@ option_6="%REINSTALLDRIVER%"
 option_7="%STRICTENFORCEMENT%"
 option_8="%UNATTENDEDMODEUI%"
 option_9="%USERDOMAIN%"
+option_10="%LAUNCHTRAY%"
 
 if [[ -n "${option_1}" ]]; then
    add_option1="--cloudName ${option_1} "
@@ -142,6 +146,10 @@ fi
 
 if [[ -n "${option_9}" ]]; then
     add_option9="--userDomain ${option_9} "
+fi
+					
+if [[ -n "${option_10}" ]]; then
+    add_option10="--launchTray ${option_9} "
 fi
 
 # Install the Zscaler app and configure it
