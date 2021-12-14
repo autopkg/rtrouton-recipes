@@ -8,8 +8,6 @@
 	<string>com.github.rtrouton.jss.Prism</string>
 	<key>Input</key>
 	<dict>
-		<key>MAJOR_VERSION</key>
-		<string>8</string>
 		<key>APP_FILENAME</key>
 		<string>Prism %MAJOR_VERSION%</string>
 		<key>CATEGORY</key>
