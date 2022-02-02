@@ -21,17 +21,75 @@
 	<string>com.github.rtrouton.download.polylens</string>
 	<key>Process</key>
 	<array>
-		<dict>
-			<key>Processor</key>
-			<string>AppPkgCreator</string>
+        <dict>
+            <key>Processor</key>
+            <string>PkgRootCreator</string>
             <key>Arguments</key>
             <dict>
-                <key>app_path</key>
-                <string>%pathname%/Poly Lens.app</string>
-                <key>pkg_path</key>
-                <string>%RECIPE_CACHE_DIR%/%VENDOR%_%SOFTWARETITLE%_%version%.pkg</string>
+                <key>pkgroot</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%</string>
+                <key>pkgdirs</key>
+                <dict>
+                    <key>Applications</key>
+                    <string>0775</string>
+                </dict>
             </dict>
-		</dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>Copier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>source_path</key>
+                <string>%pathname%/Poly Lens.app</string>
+                <key>destination_path</key>
+                <string>%pkgroot%/Applications/Poly Lens.app</string>
+                <key>purge_destination</key>
+                <true/>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>Versioner</string>
+            <key>Arguments</key>
+            <dict>
+                <key>input_plist_path</key>
+                <string>%pkgroot%/Applications/Poly Lens.app/Contents/Info.plist</string>
+                <key>plist_version_key</key>
+                <string>CFBundleShortVersionString</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>PkgCreator</string>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_request</key>
+                <dict>
+                    <key>pkgname</key>
+                    <string>%VENDOR%_%SOFTWARETITLE%_%version%</string>
+                    <key>version</key>
+                    <string>%version%</string>
+                    <key>id</key>
+                    <string>com.poly.lens.client.app</string>
+                    <key>options</key>
+                    <string>purge_ds_store</string>
+                    <key>chown</key>
+                    <array>
+                        <dict>
+                            <key>path</key>
+                            <string>Applications</string>
+                            <key>user</key>
+                            <string>root</string>
+                            <key>group</key>
+                            <string>wheel</string>
+                            <key>mode</key>
+                            <string>0755</string>
+                        </dict>
+                    </array>
+                </dict>
+            </dict>
+        </dict>
 	</array>
 </dict>
 </plist>
