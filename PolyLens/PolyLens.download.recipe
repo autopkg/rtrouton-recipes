@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+   <dict>
+      <key>Description</key>
+      <string>Downloads the current release version of Poly Lens for macOS.</string>
+      <key>Identifier</key>
+      <string>com.github.rtrouton.download.polylens</string>
+      <key>Input</key>
+      <dict>
+         <key>NAME</key>
+         <string>Poly Lens</string>
+         <key>VENDOR</key>
+         <string>Poly</string>
+         <key>SOFTWARETITLE</key>
+         <string>Lens</string>
+         <key>CONTENT_TYPE_HEADER</key>
+         <string>application/json</string>
+         <key>DATA_BINARY_CONTENT</key>
+         <string>{"query":"\n          query {\n            availableProductSoftwareByPid(pid:\"lens-desktop-mac\") {\n              name\n              version\n              publishDate\n              productBuild {\n                archiveUrl\n              }\n            }\n        }"}</string>
+         <key>SEARCH_PATTERN</key>
+         <string>https://swupdate\.lens\.poly\.com/lens-desktop-mac/.*?/.*?/PolyLens-.*?.dmg</string>
+      </dict>
+      <key>MinimumVersion</key>
+      <string>1.0.0</string>
+      <key>Process</key>
+      <array>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>curl_opts</key>
+               <array>
+                  <string>--data-binary</string>
+                  <string>%DATA_BINARY_CONTENT%</string>
+               </array>
+               <key>re_pattern</key>
+               <string>%SEARCH_PATTERN%</string>
+               <key>request_headers</key>
+               <dict>
+                  <key>content-type</key>
+                  <string>%CONTENT_TYPE_HEADER%</string>
+               </dict>
+               <key>url</key>
+               <string>https://api.silica-prod01.io.lens.poly.com/graphql</string>
+            </dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+         </dict>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>curl_opts</key>
+               <array />
+               <key>url</key>
+               <string>%match%</string>
+            </dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+         </dict>
+      </array>
+   </dict>
+</plist>
