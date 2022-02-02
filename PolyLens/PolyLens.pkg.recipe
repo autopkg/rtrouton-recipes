@@ -26,6 +26,8 @@
 			<string>AppPkgCreator</string>
             <key>Arguments</key>
             <dict>
+                <key>app_path</key>
+                <string>%pathname%/Poly Lens.app</string>
                 <key>pkg_path</key>
                 <string>%RECIPE_CACHE_DIR%/%VENDOR%_%SOFTWARETITLE%_%version%.pkg</string>
             </dict>
