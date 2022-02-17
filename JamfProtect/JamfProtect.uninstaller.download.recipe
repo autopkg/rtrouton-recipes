@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Download recipe for Jamf Protect's uninstaller from a Jamf Protect tenant. Jamf does not provide a public download URL, so you will need to create a recipe override and enter the URL and UUID Jamf provides into the DOWNLOAD_URL and DOWNLOAD_UUID values of the override.</string>
+    <key>Identifier</key>
+    <string>com.github.rtrouton.download.uninstaller.jamfprotect</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>Jamf Protect</string>
+        <key>DOWNLOAD_URL</key>
+        <string>Put_Jamf_Protect_Uninstaller_download_URL_into_AutoPkg_recipe_override</string>
+        <key>DOWNLOAD_UUID</key>
+        <string>Put_Jamf_Protect_Uninstaller_download_UUID_into_AutoPkg_recipe_override</string>
+        <key>DOWNLOAD_FILENAME</key>
+        <string>Jamf_Protect_Uninstaller.pkg</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>1.0.0</string>
+    <key>Process</key>
+    <array>
+    <dict>
+    	<key>Arguments</key>
+    	<dict>
+    		<key>predicate</key>
+    		<string>DOWNLOAD_URL == "Put_Jamf_Protect_Uninstaller_download_URL_into_AutoPkg_recipe_override"</string>
+    	</dict>
+    	<key>Processor</key>
+    	<string>StopProcessingIf</string>
+    </dict>
+    <dict>
+    	<key>Arguments</key>
+    	<dict>
+    		<key>predicate</key>
+    		<string>DOWNLOAD_URL == "Put_Jamf_Protect_Uninstaller_download_UUID_into_AutoPkg_recipe_override"</string>
+    	</dict>
+    	<key>Processor</key>
+    	<string>StopProcessingIf</string>
+    </dict>
+    <dict>
+    	<key>Processor</key>
+    	<string>URLDownloader</string>
+    	<key>Arguments</key>
+    	<dict>
+    		<key>url</key>
+    		<string>%DOWNLOAD_URL%?%DOWNLOAD_UUID%</string>
+    		<key>filename</key>
+    		<string>%DOWNLOAD_FILENAME%</string>
+    	</dict>
+    </dict>
+    <dict>
+    	<key>Processor</key>
+    	<string>EndOfCheckPhase</string>
+    </dict>
+         <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+               <key>input_path</key>
+               <string>%pathname%</string>
+               <key>expected_authority_names</key>
+               <array>
+                  <string>Developer ID Installer: JAMF Software (483DWKW443)</string>
+                  <string>Developer ID Certification Authority</string>
+                  <string>Apple Root CA</string>
+               </array>
+            </dict>
+         </dict>
+    </array>
+</dict>
+</plist>
