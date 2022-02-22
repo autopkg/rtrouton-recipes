@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+   <dict>
+      <key>Description</key>
+      <string>Downloads the current release version of Carousel Cloud's screensaver and builds an installer package.</string>
+      <key>Identifier</key>
+      <string>com.github.rtrouton.pkg.carouselcloudscreensaver</string>
+      <key>Input</key>
+      <dict>
+         <key>NAME</key>
+         <string>Carousel</string>
+         <key>VENDOR</key>
+         <string>Carousel</string>
+         <key>SOFTWARETITLE1</key>
+         <string>Cloud</string>
+         <key>SOFTWARETITLE2</key>
+         <string>ScreenSaver</string>
+      </dict>
+      <key>MinimumVersion</key>
+      <string>1.0.0</string>
+      <key>ParentRecipe</key>
+      <string>com.github.rtrouton.download.carouselcloudscreensaver</string>
+      <key>Process</key>
+      <array>
+         <dict>
+            <key>Processor</key>
+            <string>PkgRootCreator</string>
+            <key>Arguments</key>
+            <dict>
+               <key>pkgroot</key>
+               <string>%RECIPE_CACHE_DIR%/pkgroot</string>
+               <key>pkgdirs</key>
+               <dict>
+                  <key>Library</key>
+                  <string>0755</string>
+                  <key>Screen Savers</key>
+                  <string>0755</string>
+                  <key>Scripts</key>
+                  <string>0755</string>
+               </dict>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>FileMover</string>
+            <key>Arguments</key>
+            <dict>
+               <key>source</key>
+               <string>%RECIPE_CACHE_DIR%/pkgroot/Scripts</string>
+               <key>target</key>
+               <string>%RECIPE_CACHE_DIR%/Scripts</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>FileMover</string>
+            <key>Arguments</key>
+            <dict>
+               <key>source</key>
+               <string>%RECIPE_CACHE_DIR%/pkgroot/Screen Savers</string>
+               <key>target</key>
+               <string>%RECIPE_CACHE_DIR%/pkgroot/Library/Screen Savers</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>FileCreator</string>
+            <key>Arguments</key>
+            <dict>
+               <key>file_path</key>
+               <string>%RECIPE_CACHE_DIR%/Scripts/preinstall</string>
+               <key>file_mode</key>
+               <string>0755</string>
+               <key>file_content</key>
+               <string>#!/bin/bash
+
+# Remove existing screen saver file before installing new one
+
+ERROR=0
+
+/bin/rm -rf "$3/Library/Screen Savers/Carousel Cloud.saver"
+
+exit $ERROR</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>pattern</key>
+               <string>%pathname%/*.saver</string>
+            </dict>
+            <key>Processor</key>
+            <string>FileFinder</string>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>Copier</string>
+            <key>Arguments</key>
+            <dict>
+               <key>source_path</key>
+               <string>%pathname%/%dmg_found_filename%</string>
+               <key>destination_path</key>
+               <string>%pkgroot%/Library/Screen Savers/%dmg_found_filename%</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>PkgCreator</string>
+            <key>Arguments</key>
+            <dict>
+               <key>pkgname</key>
+               <string>%VENDOR%_%SOFTWARETITLE1%_%SOFTWARETITLE2%_%version%</string>
+               <key>pkg_request</key>
+               <dict>
+                  <key>version</key>
+                  <string>%version%</string>
+                  <key>id</key>
+                  <string>com.trms.Carousel-Cloud-Screensaver</string>
+                  <key>options</key>
+                  <string>purge_ds_store</string>
+                  <key>scripts</key>
+                  <string>Scripts</string>
+                  <key>chown</key>
+                  <array>
+                     <dict>
+                        <key>path</key>
+                        <string>Library</string>
+                        <key>user</key>
+                        <string>root</string>
+                        <key>group</key>
+                        <string>wheel</string>
+                     </dict>
+                     <dict>
+                        <key>path</key>
+                        <string>Library/Screen Savers</string>
+                        <key>user</key>
+                        <string>root</string>
+                        <key>group</key>
+                        <string>admin</string>
+                     </dict>
+                  </array>
+               </dict>
+            </dict>
+         </dict>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>path_list</key>
+               <array>
+                  <string>%RECIPE_CACHE_DIR%/pkgroot</string>
+                  <string>%RECIPE_CACHE_DIR%/Scripts</string>
+               </array>
+            </dict>
+            <key>Processor</key>
+            <string>PathDeleter</string>
+         </dict>
+      </array>
+   </dict>
+</plist>

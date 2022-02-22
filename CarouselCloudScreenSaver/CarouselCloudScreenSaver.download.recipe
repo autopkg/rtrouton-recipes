@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+   <dict>
+      <key>Description</key>
+      <string>Downloads the latest version of Carousel Cloud's screensaver.</string>
+      <key>Identifier</key>
+      <string>com.github.rtrouton.download.carouselcloudscreensaver</string>
+      <key>Input</key>
+      <dict>
+         <key>NAME</key>
+         <string>Carousel</string>
+         <key>DOWNLOAD_URL</key>
+         <string>https://carousel-public-files.s3.amazonaws.com/Carousel.Cloud.Screen.Saver.dmg</string>
+      </dict>
+      <key>MinimumVersion</key>
+      <string>1.0.0</string>
+      <key>Process</key>
+      <array>
+         <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+               <key>url</key>
+               <string>%DOWNLOAD_URL%</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+         </dict>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>info_path</key>
+               <string>%pathname%/Carousel Cloud.saver/Contents/Info.plist</string>
+               <key>plist_keys</key>
+               <dict>
+                  <key>CFBundleVersion</key>
+                  <string>minor_version</string>
+                  <key>CFBundleShortVersionString</key>
+                  <string>major_version</string>
+               </dict>
+            </dict>
+            <key>Processor</key>
+            <string>PlistReader</string>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+               <key>input_path</key>
+               <string>%pathname%/Carousel Cloud.saver</string>
+               <key>requirement</key>
+               <string>identifier "com.trms.Carousel-Cloud-Screensaver" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "3WG65JKLQ8"</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+            <key>Arguments</key>
+            <dict>
+               <key>version</key>
+               <string>%major_version%.%minor_version%</string>
+            </dict>
+         </dict>
+      </array>
+   </dict>
+</plist>
