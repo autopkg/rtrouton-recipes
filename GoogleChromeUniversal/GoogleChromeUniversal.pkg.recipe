@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads latest Google Chrome disk image with Universal build of Chrome and builds a package. The installer package includes a preinstall script that will check for an existing Google Chrome.app in /Applications and remove it if found.</string>
+    <string>Downloads latest Google Chrome disk image with Universal build of Chrome and builds a package.</string>
     <key>Identifier</key>
     <string>com.github.rtrouton.pkg.googlechromeuniversal</string>
     <key>Input</key>
