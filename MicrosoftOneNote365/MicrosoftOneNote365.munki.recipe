@@ -14,6 +14,12 @@
         <string>apps/msoffice</string>
         <key>pkginfo</key>
         <dict>
+            <key>blocking_applications</key>
+            <array>
+                <string>Microsoft AutoUpdate</string>
+                <string>Microsoft Error Reporting</string>
+                <string>Microsoft OneNote</string>
+            </array>
             <key>catalogs</key>
             <array>
                 <string>testing</string>
@@ -24,14 +30,32 @@
             <string>%NAME%</string>
             <key>unattended_install</key>
             <true/>
+            <key>unattended_uninstall</key>
+            <true/>
         </dict>
     </dict>
     <key>MinimumVersion</key>
     <string>0.2.0</string>
     <key>ParentRecipe</key>
-    <string>com.github.rtrouton.download.microsoftonenote365</string>
+    <string>com.github.rtrouton.pkg.microsoftonenote365</string>
     <key>Process</key>
     <array>
+        <dict>
+            <key>Processor</key>
+            <string>MunkiPkginfoMerger</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>MunkiPkginfoMerger</string>
+            <key>Arguments</key>
+            <dict>
+                <key>additional_pkginfo</key>
+                <dict>
+                    <key>minimum_os_version</key>
+                    <string>%minimum_os_version%</string>
+                </dict>
+            </dict>
+        </dict>
         <dict>
             <key>Arguments</key>
             <dict>

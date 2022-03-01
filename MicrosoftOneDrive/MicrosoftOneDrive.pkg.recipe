@@ -57,6 +57,20 @@
                 </dict>
             </dict>
             <dict>
+                <key>Arguments</key>
+                <dict>
+                    <key>info_path</key>
+                    <string>%RECIPE_CACHE_DIR%/payload/%SOFTWARETITLE%.app/Contents/Info.plist</string>
+                    <key>plist_keys</key>
+                    <dict>
+                        <key>LSMinimumSystemVersion</key>
+                        <string>minimum_os_version</string>
+                    </dict>
+                </dict>
+                <key>Processor</key>
+                <string>PlistReader</string>
+            </dict>
+            <dict>
                 <key>Processor</key>
                 <string>PkgCopier</string>
                 <key>Arguments</key>
@@ -66,6 +80,46 @@
                     <key>pkg_path</key>
                     <string>%RECIPE_CACHE_DIR%/%VENDOR%_%SOFTWARETITLE%_%version%.pkg</string>
                 </dict>
+            </dict>
+            <dict>
+                <key>Arguments</key>
+                <dict>
+                    <key>pkgroot</key>
+                    <string>%RECIPE_CACHE_DIR%/payload/faux_root</string>
+                    <key>pkgdirs</key>
+                    <dict>
+                        <key>Applications</key>
+                        <string>0775</string>
+                    </dict>
+                </dict>
+                <key>Processor</key>
+                <string>PkgRootCreator</string>
+            </dict>
+            <dict>
+                <key>Arguments</key>
+                <dict>
+                    <key>source</key>
+                    <string>%RECIPE_CACHE_DIR%/payload/OneDrive.app</string>
+                    <key>target</key>
+                    <string>%RECIPE_CACHE_DIR%/payload/faux_root/Applications/OneDrive.app</string>
+                </dict>
+                <key>Processor</key>
+                <string>FileMover</string>
+            </dict>
+            <dict>
+                <key>Arguments</key>
+                <dict>
+                    <key>installs_item_paths</key>
+                    <array>
+                        <string>/Applications/OneDrive.app</string>
+                    </array>
+                    <key>faux_root</key>
+                    <string>%RECIPE_CACHE_DIR%/payload/faux_root</string>
+                    <key>version_comparison_key</key>
+                    <string>%VERSIONTYPE%</string>
+                </dict>
+                <key>Processor</key>
+                <string>MunkiInstallsItemsCreator</string>
             </dict>
             <dict>
                 <key>Arguments</key>
