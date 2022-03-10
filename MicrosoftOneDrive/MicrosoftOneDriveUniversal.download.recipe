@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+   <dict>
+      <key>Description</key>
+      <string>Downloads the current releases of SapMachine Java 17 JDK for Intel and Apple Silicon from the SapMachine release page on Github: https://github.com/SAP/SapMachine/releases</string>
+      <key>Identifier</key>
+      <string>com.github.rtrouton.download.microsoftuniversalonedrive</string>
+      <key>Input</key>
+      <dict>
+         <key>NAME</key>
+         <string>Microsoft OneDrive</string>
+         <key>VENDOR</key>
+         <string>Microsoft</string>
+         <key>SOFTWARETITLE</key>
+         <string>OneDrive</string>
+         <key>INTELPROCESSOR</key>
+         <string>x8664</string>
+         <key>INTELPRODUCTID</key>
+         <string>823060</string>
+         <key>INTELDOWNLOADURL</key>
+         <string>https://go.microsoft.com/fwlink/?linkid=%INTELPRODUCTID%</string>
+         <key>APPLESILICONPROCESSOR</key>
+         <string>ARM64</string>
+         <key>APPLESILICONPRODUCTID</key>
+         <string>2188758</string>
+         <key>APPLESILICODOWNLOADURL</key>
+         <string>https://go.microsoft.com/fwlink/?linkid=%APPLESILICONPRODUCTID%</string>
+      </dict>
+      <key>MinimumVersion</key>
+      <string>1.0.0</string>
+      <key>Process</key>
+      <array>
+         <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+               <key>url</key>
+               <string>%INTELDOWNLOADURL%</string>
+               <key>filename</key>
+               <string>%SOFTWARETITLE%-%INTELPROCESSOR%.pkg</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+               <key>input_path</key>
+               <string>%pathname%</string>
+               <key>expected_authority_names</key>
+               <array>
+                  <string>Developer ID Installer: Microsoft Corporation (UBF8T346G9)</string>
+                  <string>Developer ID Certification Authority</string>
+                  <string>Apple Root CA</string>
+               </array>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+               <key>url</key>
+               <string>%APPLESILICODOWNLOADURL%</string>
+               <key>filename</key>
+               <string>%SOFTWARETITLE%-%APPLESILICONPROCESSOR%.pkg</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+               <key>input_path</key>
+               <string>%pathname%</string>
+               <key>expected_authority_names</key>
+               <array>
+                  <string>Developer ID Installer: Microsoft Corporation (UBF8T346G9)</string>
+                  <string>Developer ID Certification Authority</string>
+                  <string>Apple Root CA</string>
+               </array>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+         </dict>
+      </array>
+   </dict>
+</plist>

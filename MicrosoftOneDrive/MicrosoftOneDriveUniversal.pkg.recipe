@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+   <dict>
+      <key>Description</key>
+      <string>Downloads the current release version of both the Microsoft OneDrive installers for Intel and Apple Silicon and builds an installer package which installs the correct OneDrive for the relevant Mac processor.</string>
+      <key>Identifier</key>
+      <string>com.github.rtrouton.pkg.microsoftuniversalonedrive</string>
+      <key>Input</key>
+      <dict>
+         <key>NAME</key>
+         <string>Microsoft OneDrive</string>
+         <key>VENDOR</key>
+         <string>Microsoft</string>
+         <key>SOFTWARETITLE</key>
+         <string>OneDrive</string>
+         <key>INTELPROCESSOR</key>
+         <string>x8664</string>
+         <key>APPLESILICONPROCESSOR</key>
+         <string>ARM64</string>
+         <key>VERSIONTYPE</key>
+         <string>CFBundleShortVersionString</string>
+      </dict>
+      <key>ParentRecipe</key>
+      <string>com.github.rtrouton.download.microsoftuniversalonedrive</string>
+      <key>MinimumVersion</key>
+      <string>1.0.0</string>
+      <key>Process</key>
+      <array>
+         <dict>
+            <key>Processor</key>
+            <string>FlatPkgUnpacker</string>
+            <key>Arguments</key>
+            <dict>
+               <key>flat_pkg_path</key>
+               <string>%RECIPE_CACHE_DIR%/downloads/%SOFTWARETITLE%-%INTELPROCESSOR%.pkg</string>
+               <key>destination_path</key>
+               <string>%RECIPE_CACHE_DIR%/Intel/unpack</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>PkgPayloadUnpacker</string>
+            <key>Arguments</key>
+            <dict>
+               <key>pkg_payload_path</key>
+               <string>%RECIPE_CACHE_DIR%/Intel/unpack/%SOFTWARETITLE%.pkg/Payload</string>
+               <key>destination_path</key>
+               <string>%RECIPE_CACHE_DIR%/Intel/payload</string>
+            </dict>
+         </dict>
+            <dict>
+                <key>Processor</key>
+                <string>Versioner</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>input_plist_path</key>
+                    <string>%RECIPE_CACHE_DIR%/Intel/payload/%SOFTWARETITLE%.app/Contents/Info.plist</string>
+                    <key>plist_version_key</key>
+                    <string>%VERSIONTYPE%</string>
+                </dict>
+            </dict>
+         <dict>
+            <key>Processor</key>
+            <string>PkgRootCreator</string>
+            <key>Arguments</key>
+            <dict>
+               <key>pkgroot</key>
+               <string>%RECIPE_CACHE_DIR%/Universal/Scripts</string>
+               <key>pkgdirs</key>
+               <dict />
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>PkgRootCreator</string>
+            <key>Arguments</key>
+            <dict>
+               <key>pkgroot</key>
+               <string>%RECIPE_CACHE_DIR%/Universal/pkgroot</string>
+               <key>pkgdirs</key>
+               <dict />
+            </dict>
+         </dict>
+         <dict>
+                <key>Processor</key>
+                <string>PkgCopier</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>source_pkg</key>
+                    <string>%RECIPE_CACHE_DIR%/downloads/%SOFTWARETITLE%-%INTELPROCESSOR%.pkg</string>
+                    <key>pkg_path</key>
+                    <string>%RECIPE_CACHE_DIR%/Universal/Scripts/%VENDOR%_%SOFTWARETITLE%_%INTELPROCESSOR%_%version%.pkg</string>
+                </dict>
+         </dict>
+         <dict>
+                <key>Processor</key>
+                <string>PkgCopier</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>source_pkg</key>
+                    <string>%RECIPE_CACHE_DIR%/downloads/%SOFTWARETITLE%-%APPLESILICONPROCESSOR%.pkg</string>
+                    <key>pkg_path</key>
+                    <string>%RECIPE_CACHE_DIR%/Universal/Scripts/%VENDOR%_%SOFTWARETITLE%_%APPLESILICONPROCESSOR%_%version%.pkg</string>
+                </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>FileCreator</string>
+            <key>Arguments</key>
+            <dict>
+               <key>file_path</key>
+               <string>%RECIPE_CACHE_DIR%/Universal/Scripts/preinstall</string>
+               <key>file_mode</key>
+               <string>0755</string>
+               <key>file_content</key>
+               <string>#!/bin/bash
+
+# Determine working directory
+
+installDir=$(dirname $0)
+
+# Identify installer package names
+
+Intel_package="%VENDOR%_%SOFTWARETITLE%_%INTELPROCESSOR%_%version%.pkg"
+Apple_Silicon_package="%VENDOR%_%SOFTWARETITLE%_%APPLESILICONPROCESSOR%_%version%.pkg"
+
+# Determine if this Mac has an Intel or Apple Silicon processor
+
+processor=$(/usr/sbin/sysctl -n machdep.cpu.brand_string | grep -o "Intel")
+
+if [[ -n "$processor" ]]; then
+
+/usr/sbin/installer -pkg "$Intel_package" -target "$3"
+
+else
+
+/usr/sbin/installer -pkg "$Apple_Silicon_package" -target "$3"
+
+fi
+
+exit 0</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>PkgCreator</string>
+            <key>Arguments</key>
+            <dict>
+               <key>pkg_request</key>
+               <dict>
+                  <key>pkgname</key>
+                  <string>%VENDOR%-%SOFTWARETITLE%-Universal-%version%</string>
+                  <key>version</key>
+                  <string>%version%</string>
+                  <key>id</key>
+                  <string>com.microsoft.OneDrive.universal</string>
+                  <key>scripts</key>
+                  <string>%RECIPE_CACHE_DIR%/Universal/Scripts</string>
+                  <key>options</key>
+                  <string>purge_ds_store</string>
+               </dict>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>PathDeleter</string>
+            <key>Arguments</key>
+            <dict>
+               <key>path_list</key>
+               <array>
+                  <string>%RECIPE_CACHE_DIR%/Intel</string>
+                  <string>%RECIPE_CACHE_DIR%/Universal</string>
+               </array>
+            </dict>
+         </dict>
+      </array>
+   </dict>
+</plist>
