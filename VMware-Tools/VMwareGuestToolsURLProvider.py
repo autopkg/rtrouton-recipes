@@ -5,14 +5,13 @@ from __future__ import absolute_import
 import re
 from xml.etree import ElementTree
 from xml.parsers.expat import ExpatError
-from distutils.version import LooseVersion
 
 try:
     from urlparse import urljoin
 except ImportError:
     from urllib.parse import urljoin
 
-from autopkglib import URLGetter, ProcessorError
+from autopkglib import APLooseVersion, ProcessorError, URLGetter
 
 __all__ = ["VMwareGuestToolsURLProvider"]
 
@@ -75,7 +74,7 @@ class VMwareGuestToolsURLProvider(URLGetter):
 
     def find_highest_version(self, versions_dict):
         """Find the URL of the highest version in the versions dictionary."""
-        return sorted(versions_dict.keys(), key=LooseVersion)[-1]
+        return sorted(versions_dict.keys(), key=APLooseVersion)[-1]
 
     def get_version_and_url(self, version_series):
         """Return the version and URL string for the Guest Tools."""
