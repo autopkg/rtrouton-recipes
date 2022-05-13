@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the current release version of Amazon Coretto JDK 17 for Apple Silicon and renames the package.</string>
+    <key>Identifier</key>
+    <string>com.github.rtrouton.pkg.applesiliconamazoncorettojdk17</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>Amazon Coretto JDK 17</string>
+        <key>VENDOR</key>
+        <string>Amazon</string>
+        <key>DISTRIBUTION</key>
+        <string>Coretto</string>
+        <key>ARCHITECTURE</key>
+        <string>Apple_Silicon</string>
+        <key>SOFTWARETITLE</key>
+        <string>Java</string>
+        <key>SOFTWARETYPE</key>
+        <string>JDK</string>
+    </dict>
+    <key>ParentRecipe</key>
+    <string>com.github.rtrouton.download.applesiliconamazoncorettojdk17</string>
+    <key>MinimumVersion</key>
+    <string>1.0.0</string>
+    <key>Process</key>
+      <array>
+         <dict>
+            <key>Processor</key>
+            <string>PkgCopier</string>
+            <key>Arguments</key>
+            <dict>
+               <key>source_pkg</key>
+               <string>%pathname%</string>
+               <key>pkg_path</key>
+               <string>%RECIPE_CACHE_DIR%/%VENDOR%_%DISTRIBUTION%_%SOFTWARETITLE%_%SOFTWARETYPE%_%ARCHITECTURE%_%version%.pkg</string>
+            </dict>
+         </dict>
+      </array>
+   </dict>
+</plist>
