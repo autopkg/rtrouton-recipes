@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the current release version of Amazon Coretto JDK 8 and renames the package.</string>
+    <string>Downloads the current release version of Amazon Coretto JDK 8 for macOS on Intel and renames the package.</string>
     <key>Identifier</key>
     <string>com.github.rtrouton.pkg.amazoncorettojdk8</string>
     <key>Input</key>
@@ -14,6 +14,8 @@
         <string>Amazon</string>
         <key>DISTRIBUTION</key>
         <string>Coretto</string>
+        <key>ARCHITECTURE</key>
+        <string>Intel</string>
         <key>SOFTWARETITLE</key>
         <string>Java</string>
         <key>SOFTWARETYPE</key>
@@ -33,7 +35,7 @@
                <key>source_pkg</key>
                <string>%pathname%</string>
                <key>pkg_path</key>
-               <string>%RECIPE_CACHE_DIR%/%VENDOR%_%DISTRIBUTION%_%SOFTWARETITLE%_%SOFTWARETYPE%_%version%.pkg</string>
+               <string>%RECIPE_CACHE_DIR%/%VENDOR%_%DISTRIBUTION%_%SOFTWARETITLE%_%SOFTWARETYPE%_%ARCHITECTURE%_%version%.pkg</string>
             </dict>
          </dict>
       </array>

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the latest Amazon Coretto JDK 11 for macOS.</string>
+    <string>Downloads the latest Amazon Coretto JDK 11 for macOS on Intel.</string>
     <key>Identifier</key>
     <string>com.github.rtrouton.download.amazoncorettojdk11</string>
     <key>Input</key>
@@ -21,7 +21,7 @@
         <key>SEARCH_URL</key>
         <string>https://github.com/corretto/corretto-11/releases/latest</string>
         <key>SEARCH_PATTERN</key>
-        <string>(?P&lt;url&gt;https.*?corretto.*?\.pkg)</string>
+        <string>(?P&lt;url&gt;https.*?corretto.*?\-macosx-x64.pkg)</string>
     </dict>
     <key>MinimumVersion</key>
     <string>1.0.0</string>

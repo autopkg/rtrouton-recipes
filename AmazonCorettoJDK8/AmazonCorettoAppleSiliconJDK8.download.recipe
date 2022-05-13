@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the current release version of Amazon Coretto JDK 8 for macOS on Intel.</string>
+    <string>Downloads the current release version of Amazon Coretto JDK 8 for macOS on Apple Silicon.</string>
     <key>Identifier</key>
-    <string>com.github.rtrouton.download.amazoncorettojdk8</string>
+    <string>com.github.rtrouton.download.applesiliconamazoncorettojdk8</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
@@ -21,7 +21,7 @@
         <key>SEARCH_URL</key>
         <string>https://github.com/corretto/corretto-8/releases</string>
         <key>SEARCH_PATTERN</key>
-        <string>(?P&lt;url&gt;https.*?corretto.*?\-macosx-x64.pkg)</string>
+        <string>(?P&lt;url&gt;https.*?corretto.*?\-macosx-aarch64.pkg)</string>
     </dict>
     <key>MinimumVersion</key>
     <string>1.0.0</string>
@@ -55,7 +55,7 @@
                 <key>url</key>
                 <string>%SEARCH_URL%</string>
                 <key>re_pattern</key>
-                <string>amazon-corretto-(?P&lt;version&gt;.*?)-macosx-x64.pkg</string>
+                <string>amazon-corretto-(?P&lt;version&gt;.*?)-macosx-aarch64.pkg</string>
             </dict>
         </dict>
         <dict>

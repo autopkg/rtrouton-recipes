@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the current release version of Amazon Coretto JDK 11 for macOS on Intel and renames the package.</string>
+    <string>Downloads the current release version of Amazon Coretto JDK 11 for macOS on Apple Silicon and renames the package.</string>
     <key>Identifier</key>
-    <string>com.github.rtrouton.pkg.amazoncorettojdk11</string>
+    <string>com.github.rtrouton.pkg.applesiliconamazoncorettojdk11</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
@@ -15,14 +15,14 @@
         <key>DISTRIBUTION</key>
         <string>Coretto</string>
         <key>ARCHITECTURE</key>
-        <string>Intel</string>
+        <string>Apple_Silicon</string>
         <key>SOFTWARETITLE</key>
         <string>Java</string>
         <key>SOFTWARETYPE</key>
         <string>JDK</string>
     </dict>
     <key>ParentRecipe</key>
-    <string>com.github.rtrouton.download.amazoncorettojdk11</string>
+    <string>com.github.rtrouton.download.applesiliconamazoncorettojdk11</string>
     <key>MinimumVersion</key>
     <string>1.0.0</string>
     <key>Process</key>
