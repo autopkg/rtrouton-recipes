@@ -23,15 +23,6 @@
       </dict>
       <key>Process</key>
       <array>
-        <dict>
-            <key>Processor</key>
-            <string>DeprecationWarning</string>
-            <key>Arguments</key>
-            <dict>
-                <key>warning_message</key>
-                <string>The com.github.rtrouton.microsoftonedrive recipes will get the Intel-only version of OneDrive. They still work, but there are new OneDrive recipes available from my repo to get the Universal version of OneDrive.</string>
-            </dict>
-        </dict>
          <dict>
             <key>Processor</key>
             <string>URLDownloader</string>

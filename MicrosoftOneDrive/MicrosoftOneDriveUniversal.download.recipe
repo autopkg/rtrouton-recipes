@@ -23,6 +23,15 @@
       </dict>
       <key>Process</key>
       <array>
+        <dict>
+            <key>Processor</key>
+            <string>DeprecationWarning</string>
+            <key>Arguments</key>
+            <dict>
+                <key>warning_message</key>
+                <string>The com.github.rtrouton.microsoftonedrive recipes, which previously received only the Intel version of OneDrive, now receive the Universal version of OneDrive. The com.github.rtrouton.microsoftuniversalonedrive recipes still work, but they are now deprecated and will be removed by August 1, 2022. Please update to use the the com.github.rtrouton.microsoftonedrive recipes.</string>
+            </dict>
+        </dict>
          <dict>
             <key>Processor</key>
             <string>URLDownloader</string>
