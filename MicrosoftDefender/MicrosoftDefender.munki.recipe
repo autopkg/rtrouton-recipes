@@ -32,12 +32,80 @@
             <string>%NAME%</string>
             <key>minimum_os_version</key>
             <string>10.12.0</string>
+            <key>uninstall_method</key>
+			<string>removepackages</string>
+            <key>postinstall_script</key>
+			<string>#!/bin/zsh
+/usr/local/bin/mdatp definitions update
+exit 0</string>
+			<key>preuninstall_script</key>
+			<string>#!/bin/zsh
+# Source: https://docs.microsoft.com/en-us/microsoft-365/security/defender-endpoint/mac-resources?view=o365-worldwide#uninstalling
+/Library/Application\ Support/Microsoft/Defender/uninstall/uninstall
+exit 0</string>
         </dict>
     </dict>
     <key>MinimumVersion</key>
     <string>1.0.0</string>
     <key>Process</key>
     <array>
+        <dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/downloads/unpack</string>
+				<key>flat_pkg_path</key>
+				<string>%pathname%</string>
+			</dict>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pattern</key>
+				<string>%RECIPE_CACHE_DIR%/downloads/unpack/*wdav*.pkg</string>
+			</dict>
+			<key>Processor</key>
+			<string>FileFinder</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/downloads/payload/Applications</string>
+				<key>pkg_payload_path</key>
+				<string>%found_filename%/Payload</string>
+			</dict>
+			<key>Processor</key>
+			<string>PkgPayloadUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%RECIPE_CACHE_DIR%/downloads/payload/Applications/Microsoft Defender.app/Contents/Info.plist</string>
+			</dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>faux_root</key>
+				<string>%RECIPE_CACHE_DIR%/downloads/payload</string>
+				<key>installs_item_paths</key>
+				<array>
+					<string>/Applications/Microsoft Defender.app</string>
+				</array>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiInstallsItemsCreator</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>MunkiPkginfoMerger</string>
+        </dict>
         <dict>
             <key>Arguments</key>
             <dict>
