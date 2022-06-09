@@ -7,7 +7,7 @@
     <key>Identifier</key>
     <string>com.github.rtrouton.munki.microsoftdefender</string>
     <key>ParentRecipe</key>
-    <string>com.github.rtrouton.download.microsoftdefender</string>
+    <string>com.github.rtrouton.pkg.microsoftdefender</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
@@ -49,46 +49,6 @@ exit 0</string>
     <string>1.0.0</string>
     <key>Process</key>
     <array>
-        <dict>
-			<key>Arguments</key>
-			<dict>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/downloads/unpack</string>
-				<key>flat_pkg_path</key>
-				<string>%pathname%</string>
-			</dict>
-			<key>Processor</key>
-			<string>FlatPkgUnpacker</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>pattern</key>
-				<string>%RECIPE_CACHE_DIR%/downloads/unpack/*wdav*.pkg</string>
-			</dict>
-			<key>Processor</key>
-			<string>FileFinder</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/downloads/payload/Applications</string>
-				<key>pkg_payload_path</key>
-				<string>%found_filename%/Payload</string>
-			</dict>
-			<key>Processor</key>
-			<string>PkgPayloadUnpacker</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>input_plist_path</key>
-				<string>%RECIPE_CACHE_DIR%/downloads/payload/Applications/Microsoft Defender.app/Contents/Info.plist</string>
-			</dict>
-			<key>Processor</key>
-			<string>Versioner</string>
-		</dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>
