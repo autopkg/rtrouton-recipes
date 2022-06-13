@@ -34,10 +34,6 @@
             <string>10.12.0</string>
             <key>uninstall_method</key>
 			<string>removepackages</string>
-            <key>postinstall_script</key>
-			<string>#!/bin/zsh
-/usr/local/bin/mdatp definitions update
-exit 0</string>
 			<key>preuninstall_script</key>
 			<string>#!/bin/zsh
 # Source: https://docs.microsoft.com/en-us/microsoft-365/security/defender-endpoint/mac-resources?view=o365-worldwide#uninstalling
