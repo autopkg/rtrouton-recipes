@@ -3,9 +3,9 @@
 <plist version="1.0">
    <dict>
       <key>Description</key>
-      <string>Downloads the current release version of SapMachine Java 11 JDK and builds an installer package.</string>
+      <string>Downloads the current release version of SapMachine Java 11 JDK for Apple Silicon and builds an installer package.</string>
       <key>Identifier</key>
-      <string>com.github.rtrouton.pkg.SapMachineJDK11</string>
+      <string>com.github.rtrouton.pkg.SapMachineAppleSiliconJDK11</string>
       <key>Input</key>
       <dict>
          <key>NAME</key>
@@ -16,7 +16,7 @@
          <string>SapMachine</string>
       </dict>
       <key>ParentRecipe</key>
-      <string>com.github.rtrouton.download.SapMachineJDK11</string>
+      <string>com.github.rtrouton.download.SapMachineAppleSiliconJDK11</string>
       <key>MinimumVersion</key>
       <string>1.0.0</string>
       <key>Process</key>
@@ -73,16 +73,20 @@
             <string>FileFinder</string>
          </dict>
          <dict>
-            <key>Arguments</key>
-            <dict>
-               <key>input_plist_path</key>
-               <string>%found_filename%</string>
-               <key>plist_version_key</key>
-               <string>CFBundleVersion</string>
-            </dict>
-            <key>Processor</key>
-            <string>Versioner</string>
+             <key>Processor</key>
+             <string>PlistReader</string>
+             <key>Arguments</key>
+             <dict>
+                 <key>info_path</key>
+                 <string>%found_filename%</string>
+                 <key>plist_keys</key>
+                 <dict>
+                     <key>CFBundleVersion</key>
+                     <string>version</string>
+                 </dict>
+             </dict>
          </dict>
+
          <dict>
             <key>Processor</key>
             <string>FileCreator</string>
@@ -115,11 +119,11 @@ exit 0</string>
                <key>pkg_request</key>
                <dict>
                   <key>pkgname</key>
-                  <string>%VENDOR%-%SOFTWARETITLE%-%version%</string>
+                  <string>%VENDOR%-%SOFTWARETITLE%-AppleSilicon-%version%.%BUILD_NUMBER%</string>
                   <key>version</key>
-                  <string>%version%</string>
+                  <string>%version%.%BUILD_NUMBER%</string>
                   <key>id</key>
-                  <string>net.java.openjdk.sapmachine</string>
+                  <string>net.java.openjdk.sapmachine.arm64.%version%.%BUILD_NUMBER%</string>
                   <key>scripts</key>
                   <string>Scripts</string>
                   <key>options</key>
