@@ -235,8 +235,6 @@ exit 0</string>
                  <string>%found_filename%</string>
                  <key>plist_keys</key>
                  <dict>
-                     <key>CFBundleShortVersionString</key>
-                     <string>version</string>
                      <key>CFBundleVersion</key>
                      <string>version</string>
                  </dict>
