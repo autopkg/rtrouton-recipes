@@ -7,7 +7,7 @@
     <key>Identifier</key>
     <string>com.github.rtrouton.munki.microsoftteams</string>
     <key>ParentRecipe</key>
-    <string>com.github.rtrouton.download.microsoftteams</string>
+    <string>com.github.rtrouton.pkg.microsoftteams</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
@@ -38,6 +38,18 @@
     <string>1.0.0</string>
     <key>Process</key>
     <array>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>additional_pkginfo</key>
+                <dict>
+                    <key>version</key>
+                    <string>%version%</string>
+                </dict>
+            </dict>
+            <key>Processor</key>
+            <string>MunkiPkginfoMerger</string>
+        </dict>
         <dict>
             <key>Arguments</key>
             <dict>
