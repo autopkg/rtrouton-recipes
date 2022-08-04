@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/local/autopkg/python
 #
 # Copyright 2016 Allister Banks, lovingly based on work by Hannes Juutilainen
 #
