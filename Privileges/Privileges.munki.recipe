@@ -64,6 +64,24 @@ pkgutil --forget com.sap.privileges
     <array>
         <dict>
             <key>Processor</key>
+            <string>DeprecationWarning</string>
+            <key>Arguments</key>
+            <dict>
+                <key>warning_message</key>
+                <string>This recipe is now non-functional. Please remove it from your list of recipes. The com.github.rtrouton.munki.privileges recipe appears to have problems as of Privileges 1.5.3. I do not use Munki and I do not have the knowledge necessary to figure out why this is happening, so I am deprecating this recipe and adding a StopProcessingIf step to prevent it from running. Hopefully someone with more expertise in this area is able to write a .munki recipe for Privileges which works correctly.</string>
+            </dict>
+        </dict>
+        <dict>
+          <key>Processor</key>
+          <string>StopProcessingIf</string>
+          <key>Arguments</key>
+          <dict>
+            <key>predicate</key>
+            <string>TRUEPREDICATE</string>
+          </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
             <string>MunkiInstallsItemsCreator</string>
             <key>Arguments</key>
             <dict>
