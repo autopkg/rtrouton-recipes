@@ -40,8 +40,6 @@
             <key>Processor</key>
             <string>DeprecationWarning</string>
          </dict>
-         <dict>
-            <key>Arguments</key>
 		<dict>
 			<key>Arguments</key>
                 <dict>
