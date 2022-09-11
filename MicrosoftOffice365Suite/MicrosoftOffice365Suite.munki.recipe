@@ -54,7 +54,7 @@ appends the version to the end of the filename, and imports into Munki.
         </dict>
     </dict>
     <key>MinimumVersion</key>
-    <string>0.2.0</string>
+    <string>2.7</string>
     <key>Process</key>
     <array>
         <dict>
@@ -68,9 +68,19 @@ appends the version to the end of the filename, and imports into Munki.
             <key>Processor</key>
             <string>MunkiImporter</string>
         </dict>
+        <dict>
+            <!-- If nothing was imported then no need to run the Receipt Editor processor -->
+            <key>Arguments</key>
+            <dict>
+                <key>predicate</key>
+                <string>munki_repo_changed != True</string>
+            </dict>
+            <key>Processor</key>
+            <string>StopProcessingIf</string>
+        </dict>        
 		<dict>
 			<key>Processor</key>
-			<string>com.github.keeleysam.recipes.GoogleTalkPlugin/MunkiPkginfoReceiptsEditor</string>
+			<string>MunkiOptionalReceiptEditor</string>
 		</dict>
     </array>
 </dict>
