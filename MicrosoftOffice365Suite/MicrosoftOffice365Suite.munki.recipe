@@ -73,7 +73,7 @@ appends the version to the end of the filename, and imports into Munki.
             <key>Arguments</key>
             <dict>
                 <key>predicate</key>
-                <string>munki_repo_changed != True</string>
+                <string>munki_repo_changed == False</string>
             </dict>
             <key>Processor</key>
             <string>StopProcessingIf</string>
