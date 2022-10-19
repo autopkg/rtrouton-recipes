@@ -90,7 +90,7 @@
                  <string>%found_filename%</string>
                  <key>plist_keys</key>
                  <dict>
-                     <key>CFBundleVersion</key>
+                     <key>CFBundleShortVersionString</key>
                      <string>version</string>
                  </dict>
              </dict>
@@ -235,7 +235,7 @@ exit 0</string>
                  <string>%found_filename%</string>
                  <key>plist_keys</key>
                  <dict>
-                     <key>CFBundleVersion</key>
+                     <key>CFBundleShortVersionString</key>
                      <string>version</string>
                  </dict>
              </dict>
