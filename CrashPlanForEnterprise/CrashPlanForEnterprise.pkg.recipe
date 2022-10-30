@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+   <dict>
+      <key>Description</key>
+      <string>Downloads the latest CrashPlan for Enterprise installer package and prepares it for deployment.</string>
+      <key>Identifier</key>
+      <string>com.github.rtrouton.pkg.CrashplanForEnterprise</string>
+      <key>Input</key>
+      <dict>
+         <key>NAME</key>
+         <string>CrashPlan</string>
+         <key>VENDOR</key>
+         <string>CrashPlan</string>
+      </dict>
+      <key>MinimumVersion</key>
+      <string>1.0.0</string>
+      <key>ParentRecipe</key>
+      <string>com.github.rtrouton.download.Crashplan</string>
+      <key>Process</key>
+      <array>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>flat_pkg_path</key>
+               <string>%pathname%/Install Code42.pkg</string>
+               <key>destination_path</key>
+               <string>%RECIPE_CACHE_DIR%/unpack</string>
+            </dict>
+            <key>Processor</key>
+            <string>FlatPkgUnpacker</string>
+         </dict>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>pkg_payload_path</key>
+               <string>%RECIPE_CACHE_DIR%/unpack/code42.pkg/Payload</string>
+               <key>destination_path</key>
+               <string>%RECIPE_CACHE_DIR%/payload</string>
+            </dict>
+            <key>Processor</key>
+            <string>PkgPayloadUnpacker</string>
+         </dict>
+         <dict>
+            <key>Comment</key>
+            <string>Get version from the pkg</string>
+            <key>Processor</key>
+            <string>Versioner</string>
+            <key>Arguments</key>
+            <dict>
+               <key>input_plist_path</key>
+               <string>%RECIPE_CACHE_DIR%/payload/Code42.app/Contents/Info.plist</string>
+               <key>plist_version_key</key>
+               <string>CFBundleShortVersionString</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>PkgCopier</string>
+            <key>Arguments</key>
+            <dict>
+               <key>source_pkg</key>
+               <string>%pathname%/Install Code42.pkg</string>
+               <key>pkg_path</key>
+               <string>%RECIPE_CACHE_DIR%/%VENDOR%_%version%.pkg</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>path_list</key>
+               <array>
+                  <string>%RECIPE_CACHE_DIR%/payload</string>
+                  <string>%RECIPE_CACHE_DIR%/unpack</string>
+               </array>
+            </dict>
+            <key>Processor</key>
+            <string>PathDeleter</string>
+         </dict>
+      </array>
+   </dict>
+</plist>
