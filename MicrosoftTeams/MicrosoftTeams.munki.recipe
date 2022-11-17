@@ -7,13 +7,19 @@
     <key>Identifier</key>
     <string>com.github.rtrouton.munki.microsoftteams</string>
     <key>ParentRecipe</key>
-    <string>com.github.rtrouton.download.microsoftteams</string>
+    <string>com.github.rtrouton.pkg.microsoftteams</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
         <string>MicrosoftTeams</string>
         <key>MUNKI_REPO_SUBDIR</key>
         <string>apps/Microsoft</string>
+        <key>VENDOR</key>
+         <string>Microsoft</string>
+         <key>SOFTWARETITLE</key>
+         <string>Teams</string>
+         <key>VERSIONTYPE</key>
+         <string>CFBundleShortVersionString</string>
         <key>pkginfo</key>
         <dict>
             <key>catalogs</key>
@@ -41,13 +47,22 @@
         <dict>
             <key>Arguments</key>
             <dict>
-                <key>pkg_path</key>
-                <string>%pathname%</string>
                 <key>repo_subdirectory</key>
                 <string>%MUNKI_REPO_SUBDIR%</string>
             </dict>
             <key>Processor</key>
             <string>MunkiImporter</string>
+        </dict>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_ids_set_optional_true</key>
+                <array>
+                    <string>com.microsoft.MSTeamsAudioDevice</string>
+                </array>
+            </dict>
+            <key>Processor</key>
+            <string>MunkiOptionalReceiptEditor</string>
         </dict>
     </array>
 </dict>
