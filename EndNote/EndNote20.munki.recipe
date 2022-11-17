@@ -118,6 +118,17 @@ done
 				<true/>
 			</dict>
 		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>FileMover</string>
+			<key>Arguments</key>
+			<dict>
+				<key>source</key>
+				<string>%RECIPE_CACHE_DIR%/Applications/EndNote</string>
+				<key>target</key>
+				<string>%RECIPE_CACHE_DIR%/Applications/EndNote 20</string>
+			</dict>
+		</dict>
         <dict>
             <key>Processor</key>
             <string>MunkiInstallsItemsCreator</string>
@@ -127,7 +138,7 @@ done
                 <string>%RECIPE_CACHE_DIR%</string>
                 <key>installs_item_paths</key>
                 <array>
-                    <string>/Applications/EndNote/EndNote 20.app</string>
+                    <string>/Applications/EndNote 20/EndNote 20.app</string>
                 </array>
                 <key>version_comparison_key</key>
                 <string>CFBundleShortVersionString</string>
