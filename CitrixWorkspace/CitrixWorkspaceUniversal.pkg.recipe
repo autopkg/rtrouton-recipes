@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+   <dict>
+      <key>Description</key>
+      <string>Downloads the latest Citrix Workspace version with Apple Silicon support and extracts the package.</string>
+      <key>Identifier</key>
+      <string>com.github.rtrouton.pkg.citrixworkspaceuniversal</string>
+      <key>Input</key>
+      <dict>
+         <key>NAME</key>
+         <string>Citrix Workspace</string>
+         <key>VENDOR</key>
+         <string>Citrix</string>
+         <key>SOFTWARETITLE1</key>
+         <string>Workspace</string>
+         <key>SOFTWARETITLE2</key>
+         <string>Universal</string>
+      </dict>
+      <key>MinimumVersion</key>
+      <string>1.0.0</string>
+      <key>ParentRecipe</key>
+      <string>com.github.rtrouton.download.citrixworkspaceuniversal</string>
+      <key>Process</key>
+      <array>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>flat_pkg_path</key>
+               <string>%pathname%/*.pkg</string>
+               <key>destination_path</key>
+               <string>%RECIPE_CACHE_DIR%/unpack</string>
+            </dict>
+            <key>Processor</key>
+            <string>FlatPkgUnpacker</string>
+         </dict>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>pkg_payload_path</key>
+               <string>%RECIPE_CACHE_DIR%/unpack/com.citrix.ICAClient.pkg/Payload</string>
+               <key>destination_path</key>
+               <string>%RECIPE_CACHE_DIR%/payload</string>
+            </dict>
+            <key>Processor</key>
+            <string>PkgPayloadUnpacker</string>
+         </dict>
+         <dict>
+            <key>Comment</key>
+            <string>Get version from the pkg</string>
+            <key>Processor</key>
+            <string>Versioner</string>
+            <key>Arguments</key>
+            <dict>
+               <key>input_plist_path</key>
+               <string>%RECIPE_CACHE_DIR%/payload/Applications/Citrix Workspace.app/Contents/Info.plist</string>
+               <key>plist_version_key</key>
+               <string>CFBundleShortVersionString</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>PkgRootCreator</string>
+            <key>Arguments</key>
+            <dict>
+               <key>pkgroot</key>
+               <string>%RECIPE_CACHE_DIR%/pkgroot</string>
+               <key>pkgdirs</key>
+               <dict>
+                  <key>Scripts</key>
+                  <string>0775</string>
+               </dict>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>FileMover</string>
+            <key>Arguments</key>
+            <dict>
+               <key>source</key>
+               <string>%RECIPE_CACHE_DIR%/pkgroot/Scripts</string>
+               <key>target</key>
+               <string>%RECIPE_CACHE_DIR%/Scripts</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>FileCreator</string>
+            <key>Arguments</key>
+            <dict>
+               <key>file_path</key>
+               <string>%RECIPE_CACHE_DIR%/Scripts/postinstall</string>
+               <key>file_mode</key>
+               <string>0755</string>
+               <key>file_content</key>
+               <string>#!/bin/bash
+
+PKG="${0%/*}/Install Citrix Workspace.pkg"
+ERROR=0
+
+if [[ -f "$PKG" ]]; then
+
+	CURRENT_USER=$(/bin/ls -l /dev/console | /usr/bin/awk '{ print $3 }')
+
+	if [[ -n "$CURRENT_USER" ]] ;then
+
+		# get path to user's home directory
+		USER_HOME=$(/usr/bin/dscl . -read "/Users/$CURRENT_USER" NFSHomeDirectory | /usr/bin/sed 's/^[^\/]*//g')
+
+		export HOME="$USER_HOME"
+
+	else
+		export HOME="/var/root"
+	fi
+
+	/usr/sbin/installer -pkg "$PKG" -target "$3"
+
+	if [[ $? -ne 0 ]]; then
+		/usr/bin/logger -t "${0##*/}" "ERROR! Installation of package $PKG failed"
+		ERROR=1
+	fi
+
+else
+	/usr/bin/logger -t "${0##*/}" "ERROR! Package $PKG not found"
+	ERROR=1
+fi
+
+exit $ERROR</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>PkgCopier</string>
+            <key>Arguments</key>
+            <dict>
+               <key>source_pkg</key>
+               <string>%pathname%/*.pkg</string>
+               <key>pkg_path</key>
+               <string>%RECIPE_CACHE_DIR%/Scripts/Install Citrix Workspace.pkg</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>PkgCreator</string>
+            <key>Arguments</key>
+            <dict>
+               <key>pkg_request</key>
+               <dict>
+                  <key>pkgroot</key>
+                  <string>%RECIPE_CACHE_DIR%/pkgroot</string>
+                  <key>pkgname</key>
+                  <string>%VENDOR%_%SOFTWARETITLE1%_%SOFTWARETITLE2%_%version%</string>
+                  <key>pkgtype</key>
+                  <string>flat</string>
+                  <key>id</key>
+                  <string>com.citrix.workspace.app.pkg</string>
+                  <key>version</key>
+                  <string>%version%</string>
+                  <key>scripts</key>
+                  <string>Scripts</string>
+               </dict>
+            </dict>
+         </dict>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>path_list</key>
+               <array>
+                  <string>%RECIPE_CACHE_DIR%/payload</string>
+                  <string>%RECIPE_CACHE_DIR%/unpack</string>
+                  <string>%RECIPE_CACHE_DIR%/Scripts</string>
+               </array>
+            </dict>
+            <key>Processor</key>
+            <string>PathDeleter</string>
+         </dict>
+      </array>
+   </dict>
+</plist>
