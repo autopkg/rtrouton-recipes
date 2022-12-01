@@ -47,6 +47,11 @@
         <dict>
             <key>Arguments</key>
             <dict>
+                <key>additional_makepkginfo_options</key>
+                <array>
+                    <string>--pkgvers</string>
+                    <string>%version%</string>
+                </array>
                 <key>repo_subdirectory</key>
                 <string>%MUNKI_REPO_SUBDIR%</string>
             </dict>
