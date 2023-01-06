@@ -89,7 +89,7 @@ done
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>1.0.0</string>
+	<string>2.7</string>
 	<key>ParentRecipe</key>
 	<string>com.github.rtrouton.pkg.EndNote20</string>
 	<key>Process</key>
