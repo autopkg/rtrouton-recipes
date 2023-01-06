@@ -11,7 +11,7 @@ Set the DERIVE_MIN_OS variable to a non-empty string to set the minimum_os_versi
 	<key>Input</key>
 	<dict>
 		<key>DERIVE_MIN_OS</key>
-        <string>YES</string>
+		<string>YES</string>
 		<key>DEFAULT_CATALOG</key>
 		<string>testing</string>
 		<key>MUNKI_REPO_SUBDIR</key>
