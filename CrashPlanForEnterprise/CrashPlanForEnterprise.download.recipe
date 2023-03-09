@@ -37,12 +37,12 @@
             <dict>
                 <key>expected_authority_names</key>
                 <array>
-                    <string>Developer ID Installer: Code 42 Software (9YV9435DHD)</string>
+                    <string>Developer ID Installer: CrashPlan Group, LLC (UGHXR79U6M)</string>
                     <string>Developer ID Certification Authority</string>
                     <string>Apple Root CA</string>
                 </array>
                 <key>input_path</key>
-                <string>%pathname%/Install Code42.pkg</string>
+                <string>%pathname%/Install CrashPlan.pkg</string>
             </dict>
         </dict>
     </array>
