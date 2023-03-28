@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads latest Opera release, builds a package, and signs it.
+
+Requires:
+- com.github.bochoven.recipes.Opera.download
+- com.github.amsysuk-recipes.pkg.opera
+</string>
+	<key>Identifier</key>
+	<string>com.github.rtrouton.sign.opera</string>
+	<key>Input</key>
+	<dict>
+		<key>SIGNINGCERTIFICATE</key>
+		<string>Put_Signing_Certificate_into_AutoPkg_recipe_override</string>
+	</dict>
+	<key>ParentRecipe</key>
+	<string>com.github.amsysuk-recipes.pkg.opera</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>predicate</key>
+				<string>DOWNLOAD_URL == "Put_Signing_Certificate_into_AutoPkg_recipe_override"</string>
+			</dict>
+			<key>Processor</key>
+			<string>StopProcessingIf</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pkg_path%</string>
+				<key>signing_cert</key>
+				<string>%SIGNINGCERTIFICATE%</string>
+			</dict>
+			<key>Processor</key>
+			<string>com.github.rtrouton.SharedProcessors/PkgSigner</string>
+		</dict>
+	</array>
+</dict>
+</plist>
