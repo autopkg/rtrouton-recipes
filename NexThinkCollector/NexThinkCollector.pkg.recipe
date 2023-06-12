@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+   <dict>
+      <key>Description</key>
+      <string>Downloads the latest NexThink Collector installer package and prepares it for deployment.</string>
+      <key>Identifier</key>
+      <string>com.github.rtrouton.pkg.NexThinkCollector</string>
+      <key>Input</key>
+      <dict>
+         <key>NAME</key>
+         <string>NexThink Collector</string>
+         <key>VENDOR</key>
+         <string>NexThink</string>
+         <key>SOFTWARETITLE</key>
+         <string>Collector</string>
+         <key>NTTCPPORT</key>
+         <string>443</string>
+         <key>NTUDPPORT</key>
+         <string></string>
+         <key>NTPROXYPACADDRESS</key>
+         <string></string>
+         <key>NTPROXYADDRESS</key>
+         <string></string>
+         <key>NTPROXYPORT</key>
+         <string></string>
+         <key>NTREMOTEACTIONS</key>
+         <string>disabled</string>
+         <key>NTENGAGE</key>
+         <string>disable</string>
+         <key>NTASSIGNMENT</key>
+         <string>enable</string>
+         <key>NTDATAOVERTCP</key>
+         <string>enable</string>
+         <key>NTSERVERADDRESS</key>
+         <string>Put_nextthink_server_address_into_AutoPkg_recipe_override</string>
+         <key>NTSTRINGTAG</key>
+         <string></string>
+         <key>NTCUSTOMERKEYNAME</key>
+         <string>nexthink-customer-key.txt</string>
+         <key>NTCUSTOMERKEYDATA</key>
+         <string>Put_nextthink_customer_key_data_into_AutoPkg_recipe_override</string>
+      </dict>
+      <key>MinimumVersion</key>
+      <string>1.0.0</string>
+      <key>ParentRecipe</key>
+      <string>com.github.rtrouton.download.NexThinkCollector</string>
+      <key>Process</key>
+      <array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>predicate</key>
+				<string>NTSERVERADDRESS == "Put_nextthink_server_address_into_AutoPkg_recipe_override"</string>
+			</dict>
+			<key>Processor</key>
+			<string>StopProcessingIf</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>predicate</key>
+				<string>NTCUSTOMERKEYDATA == "Put_nextthink_customer_key_data_into_AutoPkg_recipe_override"</string>
+			</dict>
+			<key>Processor</key>
+			<string>StopProcessingIf</string>
+		</dict>
+         <dict>
+            <key>Comment</key>
+            <string>Get version from the installer application</string>
+            <key>Processor</key>
+            <string>Versioner</string>
+            <key>Arguments</key>
+            <dict>
+               <key>input_plist_path</key>
+               <string>%RECIPE_CACHE_DIR%/downloads/%VENDOR%%SOFTWARETITLE%.dmg/csi.app/Contents/Info.plist</string>
+               <key>plist_version_key</key>
+               <string>CFBundleVersion</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>PkgRootCreator</string>
+            <key>Arguments</key>
+            <dict>
+               <key>pkgroot</key>
+               <string>%RECIPE_CACHE_DIR%/Scripts</string>
+               <key>pkgdirs</key>
+               <dict />
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>PkgRootCreator</string>
+            <key>Arguments</key>
+            <dict>
+               <key>pkgroot</key>
+               <string>%RECIPE_CACHE_DIR%/Scripts/CustomerKeys</string>
+               <key>pkgdirs</key>
+               <dict />
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>PkgRootCreator</string>
+            <key>Arguments</key>
+            <dict>
+               <key>pkgroot</key>
+               <string>%RECIPE_CACHE_DIR%/pkgroot</string>
+               <key>pkgdirs</key>
+               <dict />
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>Copier</string>
+            <key>Arguments</key>
+            <dict>
+               <key>source_path</key>
+               <string>%RECIPE_CACHE_DIR%/downloads/%VENDOR%%SOFTWARETITLE%.dmg</string>
+               <key>destination_path</key>
+               <string>%RECIPE_CACHE_DIR%/Scripts/%VENDOR%%SOFTWARETITLE%.dmg</string>
+               <key>purge_destination</key>
+               <true />
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>FileCreator</string>
+            <key>Arguments</key>
+            <dict>
+               <key>file_path</key>
+               <string>%RECIPE_CACHE_DIR%/Scripts/CustomerKeys/%NTCUSTOMERKEYNAME%</string>
+               <key>file_mode</key>
+               <string>0755</string>
+               <key>file_content</key>
+               <string>%NTCUSTOMERKEYDATA%</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>FileCreator</string>
+            <key>Arguments</key>
+            <dict>
+               <key>file_path</key>
+               <string>%RECIPE_CACHE_DIR%/Scripts/postinstall</string>
+               <key>file_mode</key>
+               <string>0755</string>
+               <key>file_content</key>
+               <string>#!/bin/bash
+
+# Description: Script to install the NexThink Collector from the pre-cached dmg installer file with Customer Key.
+
+ERROR=0
+
+# File Paths
+
+if [[ -f "$(/usr/bin/find $(dirname $0) -maxdepth 1 \( -iname \*\.dmg \))" ]]; then
+   dmgFile="$(/usr/bin/find $(dirname $0) -maxdepth 1 \( -iname \*\.dmg \))"
+fi
+
+dmgMount="$(/usr/bin/mktemp -d /tmp/Nexthink_Collector.XXXX)"
+csiAppPath="$dmgMount/csi.app/Contents/MacOS/"
+
+# Remove the trailing slash from the csiAppPath variable if needed.
+csiAppPath=${csiAppPath%%/}
+
+#installer variables
+
+customerfile="$(dirname $0)/CustomerKeys/%NTCUSTOMERKEYNAME%"
+
+option_1="%NTSERVERADDRESS%"
+option_2="%NTUDPPORT%"
+option_3="%NTTCPPORT%"
+option_4="$customerfile"
+option_5="%NTENGAGE%"
+option_6="%NTDATAOVERTCP%"
+option_7="%NTPROXYPACADDRESS%"
+option_8="%NTPROXYADDRESS%"
+option_9="%NTPROXYPORT%"
+option_10="%NTASSIGNMENT%"
+option_11="%NTREMOTEACTIONS%"
+option_12="%NTSTRINGTAG%"
+
+if [[ -n ${option_1} ]]; then
+   add_option1="-address ${option_1} "
+fi
+
+if [[ -n ${option_2} ]]; then
+    add_option2="-port ${option_2} "
+fi
+
+if [[ -n ${option_3} ]]; then
+    add_option3="-tcp_port ${option_3} "
+fi
+
+if [[ -n ${option_4} ]]; then
+    add_option4="-key ${option_4} "
+fi
+
+if [[ -n ${option_5} ]]; then
+    add_option5="-engage ${option_5} "
+fi
+
+if [[ -n ${option_6} ]]; then
+    add_option6="-data_over_tcp ${option_6} "
+fi
+
+if [[ -n ${option_7} ]]; then
+    add_option7="-proxy_pac_address ${option_7} "
+fi
+
+if [[ -n ${option_8} ]]; then
+    add_option8="-proxy_address ${option_8} "
+fi
+
+if [[ -n ${option_9} ]]; then
+    add_option9="-proxy_port ${option_9} "
+fi
+
+if [[ -n ${option_10} ]]; then
+    add_option7="-use_assignment ${option_10} "
+fi
+
+if [[ -n ${option_11} ]]; then
+    add_option8="-ra_execution_policy ${option_11} "
+fi
+
+if [[ -n ${option_12} ]]; then
+    add_option9="-string_tag ${option_12} "
+fi
+
+# Mount the DMG
+/usr/bin/hdiutil attach "$dmgFile" -mountpoint "$dmgMount" -nobrowse -noverify -noautoopen
+
+# Install the NexThink Collector software
+
+# Define the parameters for csi.app for installing the Collector from the command line interface
+"$csiAppPath"/csi ${add_option1}${add_option2}${add_option3}${add_option4}${add_option5}${add_option6}${add_option7}${add_option8}${add_option9}${add_option10}${add_option11}${add_option12}
+
+# Disable/Enable Coordinator Service
+launchctl bootout system /Library/LaunchDaemons/com.nexthink.collector.nxtcoordinator.plist
+launchctl bootstrap system /Library/LaunchDaemons/com.nexthink.collector.nxtcoordinator.plist
+
+# Unmount the DMG
+hdiutil detach "$dmgMount" -force
+
+exit "$ERROR"</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>PkgCreator</string>
+            <key>Arguments</key>
+            <dict>
+               <key>pkg_request</key>
+               <dict>
+                  <key>pkgroot</key>
+                  <string>%RECIPE_CACHE_DIR%/pkgroot</string>
+                  <key>pkgname</key>
+                  <string>%VENDOR%_%SOFTWARETITLE%_%version%</string>
+                  <key>pkgtype</key>
+                  <string>flat</string>
+                  <key>id</key>
+                  <string>com.nexthink.nexthinkcollector</string>
+                  <key>version</key>
+                  <string>%version%</string>
+                  <key>scripts</key>
+                  <string>Scripts</string>
+               </dict>
+            </dict>
+         </dict>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>path_list</key>
+               <array>
+                  <string>%RECIPE_CACHE_DIR%/Scripts</string>
+               </array>
+            </dict>
+            <key>Processor</key>
+            <string>PathDeleter</string>
+         </dict>
+      </array>
+   </dict>
+</plist>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the latest version of NexThink Collector.</string>
+    <key>Identifier</key>
+    <string>com.github.rtrouton.download.NexThinkCollector</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>NexThink Collector</string>
+        <key>DOWNLOAD_URL</key>
+        <string>https://download.nexthink.com/releases/latest/OSX_Collector/Nexthink_Collector.dmg</string>
+         <key>VENDOR</key>
+         <string>NexThink</string>
+         <key>SOFTWARETITLE</key>
+         <string>Collector</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>2.0.0</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>filename</key>
+                <string>%VENDOR%%SOFTWARETITLE%.dmg</string>
+                <key>url</key>
+                <string>%DOWNLOAD_URL%</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+         <dict>
+            <key>Comment</key>
+            <string>Get version from the installer application</string>
+            <key>Processor</key>
+            <string>Versioner</string>
+            <key>Arguments</key>
+            <dict>
+               <key>input_plist_path</key>
+               <string>%pathname%/csi.app/Contents/Info.plist</string>
+               <key>plist_version_key</key>
+               <string>CFBundleVersion</string>
+            </dict>
+         </dict>
+        <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>expected_authority_names</key>
+                <array>
+                    <string>Developer ID Installer: Nexthink SA (PDEKAZ43QL)</string>
+                    <string>Developer ID Certification Authority</string>
+                    <string>Apple Root CA</string>
+                </array>
+                <key>input_path</key>
+                <string>%pathname%/Nexthink_Collector.pkg</string>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>
