@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the latest Microsoft OpenJDK JDK 11 for Intel macOS.</string>
+    <key>Identifier</key>
+    <string>com.github.rtrouton.download.microsoftapplesiliconopenjdk11</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>Microsoft OpenJDK JDK 11</string>
+        <key>VENDOR</key>
+        <string>Microsoft</string>
+        <key>DISTRIBUTION</key>
+        <string>OpenJDK</string>
+        <key>SOFTWARETITLE</key>
+        <string>Java</string>
+        <key>SOFTWARETYPE</key>
+        <string>JDK</string>
+        <key>SEARCH_URL</key>
+        <string>https://learn.microsoft.com/en-us/java/openjdk/download</string>
+        <key>SEARCH_PATTERN</key>
+        <string>(?P&lt;url&gt;https.*?microsoft-jdk-11.*?\-aarch64.pkg)</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>1.0.0</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%SEARCH_URL%</string>
+                <key>re_pattern</key>
+                <string>%SEARCH_PATTERN%</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%url%</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%SEARCH_URL%</string>
+                <key>re_pattern</key>
+                <string>microsoft-jdk-11(?P&lt;version&gt;.*?)-macOS-aarch64.pkg</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+         <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+               <key>input_path</key>
+               <string>%pathname%</string>
+               <key>expected_authority_names</key>
+               <array>
+                  <string>Developer ID Installer: Microsoft Corporation (UBF8T346G9)</string>
+                  <string>Developer ID Certification Authority</string>
+                  <string>Apple Root CA</string>
+               </array>
+            </dict>
+         </dict>
+    </array>
+</dict>
+</plist>
