@@ -10,12 +10,8 @@
     <dict>
         <key>NAME</key>
         <string>Fiji</string>
-        <key>SEARCH_URL</key>
-        <string>https://downloads.imagej.net/fiji/releases/?C=N;O=D</string>
-        <key>SEARCH_REGEX</key>
-        <string>\d*\.\d*\.\d*</string>
-        <key>BASE_DOWNLOAD_URL</key>
-        <string>https://downloads.imagej.net/fiji/releases</string>
+        <key>DOWNLOAD_URL</key>
+        <string>https://downloads.imagej.net/fiji/latest/fiji-macosx.zip</string>
     </dict>
     <key>MinimumVersion</key>
     <string>0.2.0</string>
@@ -27,11 +23,9 @@
             <key>Arguments</key>
             <dict>
                 <key>url</key>
-                <string>%SEARCH_URL%</string>
+                <string>https://wsr.imagej.net/notes.html</string>
                 <key>re_pattern</key>
-                <string>%SEARCH_REGEX%</string>
-                <key>result_output_var_name</key>
-                <string>version</string>
+                <string>Version (&amp;gt;)?(?P&lt;version&gt;[0-9a-z\.]*)</string>
             </dict>
         </dict>
         <dict>
@@ -40,7 +34,7 @@
             <key>Arguments</key>
             <dict>
                 <key>url</key>
-                <string>%BASE_DOWNLOAD_URL%/%version%/fiji-%version%-macosx.zip</string>
+                <string>%DOWNLOAD_URL%</string>
                 <key>filename</key>
                 <string>%NAME%-%version%.zip</string>
             </dict>
