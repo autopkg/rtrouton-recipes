@@ -1,8 +1,0 @@
-#!/bin/sh
-
-# Remove previous version of VMware Horizon Client.app from /Applications
-
-if [ -d "$3/Applications/VMware Horizon Client.app" ]; then
-   rm -rf "$3/Applications/VMware Horizon Client.app"
-fi
-
