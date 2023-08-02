@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the current release version of Busylight for Microsoft Teams on macOS and renames the package.</string>
+    <key>Identifier</key>
+    <string>com.github.rtrouton.pkg.Busylight4MSTeams</string>
+    <key>Input</key>
+    <dict>
+         <key>NAME</key>
+         <string>Busylight4MSTeams</string>
+         <key>VENDOR</key>
+         <string>Plenom</string>
+         <key>SOFTWARETITLE1</key>
+         <string>Busylight</string>
+         <key>SOFTWARETITLE2</key>
+         <string>for</string>
+         <key>SOFTWARETITLE3</key>
+         <string>Microsoft</string>
+         <key>SOFTWARETITLE4</key>
+         <string>Teams</string>
+    </dict>
+    <key>ParentRecipe</key>
+    <string>com.github.rtrouton.download.Busylight4MSTeams</string>
+    <key>MinimumVersion</key>
+    <string>1.0.0</string>
+    <key>Process</key>
+      <array>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>pattern</key>
+               <string>%RECIPE_CACHE_DIR%/%VENDOR%/*/*.pkg</string>
+            </dict>
+            <key>Processor</key>
+            <string>FileFinder</string>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>PkgCopier</string>
+            <key>Arguments</key>
+            <dict>
+               <key>source_pkg</key>
+               <string>%found_filename%</string>
+               <key>pkg_path</key>
+               <string>%RECIPE_CACHE_DIR%/%VENDOR%_%SOFTWARETITLE1%_%SOFTWARETITLE2%_%SOFTWARETITLE3%_%SOFTWARETITLE4%_%version%.pkg</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>path_list</key>
+               <array>
+                  <string>%RECIPE_CACHE_DIR%/%VENDOR%</string>
+               </array>
+            </dict>
+            <key>Processor</key>
+            <string>PathDeleter</string>
+         </dict>
+      </array>
+   </dict>
+</plist>
