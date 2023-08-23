@@ -65,7 +65,7 @@
                   <key>pkgroot</key>
                   <string>%RECIPE_CACHE_DIR%/%VENDOR%</string>
                   <key>pkgname</key>
-                  <string>%PACKAGER%_%VENDOR%_%SOFTWARETITLE%_%version%</string>
+                  <string>%VENDOR%_%SOFTWARETITLE%_%version%</string>
                   <key>pkgdir</key>
                   <string>%RECIPE_CACHE_DIR%</string>
                   <key>id</key>
