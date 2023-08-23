@@ -9,7 +9,7 @@
 	<key>Input</key>
 	<dict>
 		<key>MAJOR_VERSION</key>
-		<string>9</string>
+		<string>10</string>
 		<key>APP_FILENAME</key>
 		<string>Prism %MAJOR_VERSION%</string>
 		<key>DOWNLOAD_BASE_URL</key>
