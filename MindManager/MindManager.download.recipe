@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads latest version of MindManager.</string>
+    <key>Identifier</key>
+    <string>com.github.rtrouton.download.MindManager</string>
+    <key>Input</key>
+    <dict>
+         <key>NAME</key>
+         <string>MindManager</string>
+         <key>VENDOR</key>
+         <string>Mindjet</string>
+         <key>SOFTWARETITLE</key>
+         <string>MindManager</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>1.0.0</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>filename</key>
+                <string>%SOFTWARETITLE%.dmg</string>
+                <key>url</key>
+                <string>https://www.mindmanager.com/mm-mac-dmg</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>input_path</key>
+                <string>%pathname%/*.app</string>
+                <key>requirement</key>
+                <string>identifier "com.mindjet.mindmanager.23" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = ZF6ZZ779N5</string>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>
