@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+   <dict>
+      <key>Description</key>
+      <string>Downloads the current release version of jq for Intel, builds an installer package and signs it.</string>
+      <key>Identifier</key>
+      <string>com.github.rtrouton.sign.JQIntel</string>
+      <key>Input</key>
+      <dict>
+         <key>SIGNINGCERTIFICATE</key>
+         <string>Put_Signing_Certificate_into_AutoPkg_recipe_override</string>
+      </dict>
+      <key>ParentRecipe</key>
+      <string>com.github.rtrouton.pkg.JQIntel</string>
+      <key>Process</key>
+      <array>
+         <dict>
+            <key>Processor</key>
+            <string>com.github.rtrouton.SharedProcessors/PkgSigner</string>
+            <key>Arguments</key>
+            <dict>
+               <key>pkg_path</key>
+               <string>%RECIPE_CACHE_DIR%/%VENDOR%-%SOFTWARETITLE%-x8664-%version%.pkg</string>
+               <key>signing_cert</key>
+               <string>%SIGNINGCERTIFICATE%</string>
+            </dict>
+         </dict>
+      </array>
+   </dict>
+</plist>
