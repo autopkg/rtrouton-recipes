@@ -21,7 +21,7 @@
             <key>Arguments</key>
             <dict>
                 <key>flat_pkg_path</key>
-                <string>%pathname%/packages/*.pkg</string>
+                <string>%pathname%/Install Packages.pkg</string>
                 <key>destination_path</key>
                 <string>%RECIPE_CACHE_DIR%/unpack</string>
             </dict>
@@ -54,7 +54,7 @@
             <key>Arguments</key>
             <dict>
                 <key>source_pkg</key>
-                <string>%pathname%/packages/*.pkg</string>
+                <string>%pathname%/Install Packages.pkg</string>
                 <key>pkg_path</key>
                 <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.pkg</string>
             </dict>
