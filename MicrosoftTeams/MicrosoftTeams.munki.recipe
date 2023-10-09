@@ -45,6 +45,24 @@
     <key>Process</key>
     <array>
         <dict>
+            <key>Processor</key>
+            <string>DeprecationWarning</string>
+            <key>Arguments</key>
+            <dict>
+                <key>warning_message</key>
+                <string>This recipe is now non-functional. Please remove it from your list of recipes. The Microsoft Teams .pkg recipe is broken, which affects the downstream .munki recipe. I do not use Munki and I do not have the knowledge necessary to figure out why this is happening, so I am deprecating this recipe and adding a StopProcessingIf step to prevent it from running.</string>
+            </dict>
+        </dict>
+        <dict>
+          <key>Processor</key>
+          <string>StopProcessingIf</string>
+          <key>Arguments</key>
+          <dict>
+            <key>predicate</key>
+            <string>TRUEPREDICATE</string>
+          </dict>
+        </dict>
+        <dict>
             <key>Arguments</key>
             <dict>
                 <key>additional_makepkginfo_options</key>
