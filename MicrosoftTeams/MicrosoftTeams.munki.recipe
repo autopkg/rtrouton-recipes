@@ -50,7 +50,7 @@
             <key>Arguments</key>
             <dict>
                 <key>warning_message</key>
-                <string>This recipe is now non-functional. Please remove it from your list of recipes. The Microsoft Teams .pkg recipe is broken, which affects the downstream .munki recipe. I do not use Munki and I do not have the knowledge necessary to figure out why this is happening, so I am deprecating this recipe and adding a StopProcessingIf step to prevent it from running.</string>
+                <string>This recipe is now non-functional. Please remove it from your list of recipes. The Microsoft Teams .pkg recipe is broken, which affects the downstream .munki recipe. I do not use Munki and I do not have the knowledge necessary to correctly update it, so I am deprecating this recipe and adding a StopProcessingIf step to prevent it from running.</string>
             </dict>
         </dict>
         <dict>
