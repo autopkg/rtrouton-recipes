@@ -24,8 +24,10 @@
          <string>Or</string>
          <key>SOFTWARETITLE5</key>
          <string>School</string>
+         <key>PRODUCTID</key>
+         <string>2249065</string>
          <key>DOWNLOADURL</key>
-         <string>https://statics.teams.cdn.office.net/production-osx/enterprise/webview2/lkg/MicrosoftTeams.pkg</string>
+         <string>https://go.microsoft.com/fwlink/?linkid=%PRODUCTID%</string>
       </dict>
       <key>Process</key>
       <array>
