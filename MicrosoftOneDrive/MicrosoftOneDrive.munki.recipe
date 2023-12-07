@@ -14,6 +14,8 @@
         <string>MicrosoftOnedrive</string>
         <key>MUNKI_REPO_SUBDIR</key>
         <string>apps/Microsoft</string>
+        <key>DERIVE_MIN_OS</key>
+        <string></string>
         <key>pkginfo</key>
         <dict>
             <key>catalogs</key>
@@ -30,8 +32,6 @@
             <string>Productivity</string>
             <key>name</key>
             <string>%NAME%</string>
-            <key>minimum_os_version</key>
-            <string>10.14.0</string>
         </dict>
     </dict>
     <key>MinimumVersion</key>
@@ -111,6 +111,8 @@
             <string>MunkiInstallsItemsCreator</string>
             <key>Arguments</key>
             <dict>
+                <key>derive_minimum_os_version</key>
+                <string>%DERIVE_MIN_OS%</string>
                 <key>faux_root</key>
                 <string>%RECIPE_CACHE_DIR%/downloads/</string>
                 <key>installs_item_paths</key>
