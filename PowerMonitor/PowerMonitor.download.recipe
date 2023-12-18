@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+   <dict>
+      <key>Description</key>
+      <string>Downloads the current release of Power Monitor.app from the power-monitoring-tool-for-macos release page on Github: https://github.com/SAP/power-monitoring-tool-for-macos/releases</string>
+      <key>Identifier</key>
+      <string>com.github.rtrouton.download.PowerMonitor</string>
+      <key>Input</key>
+      <dict>
+         <key>NAME</key>
+         <string>Power Monitor</string>
+         <key>VENDOR</key>
+         <string>SAP</string>
+         <key>SOFTWARETITLE1</key>
+         <string>Power</string>
+         <key>SOFTWARETITLE2</key>
+         <string>Monitor</string>
+      </dict>
+      <key>MinimumVersion</key>
+      <string>1.0.0</string>
+      <key>Process</key>
+      <array>
+         <dict>
+            <key>Processor</key>
+            <string>GitHubReleasesInfoProvider</string>
+            <key>Arguments</key>
+            <dict>
+               <key>github_repo</key>
+               <string>sap/power-monitoring-tool-for-macos</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+               <key>filename</key>
+               <string>%VENDOR%-%SOFTWARETITLE1%-%SOFTWARETITLE2%-%version%.pkg</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+               <key>input_path</key>
+               <string>%pathname%</string>
+               <key>expected_authority_names</key>
+               <array>
+                  <string>Developer ID Installer: SAP SE (7R5ZEU67FQ)</string>
+                  <string>Developer ID Certification Authority</string>
+                  <string>Apple Root CA</string>
+               </array>
+            </dict>
+         </dict>
+      </array>
+   </dict>
+</plist>
