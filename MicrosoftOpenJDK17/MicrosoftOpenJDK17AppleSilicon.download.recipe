@@ -49,17 +49,6 @@
         </dict>
         <dict>
             <key>Processor</key>
-            <string>URLTextSearcher</string>
-            <key>Arguments</key>
-            <dict>
-                <key>url</key>
-                <string>%SEARCH_URL%</string>
-                <key>re_pattern</key>
-                <string>microsoft-jdk-17(?P&lt;version&gt;.*?)-macOS-aarch64.pkg</string>
-            </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
             <string>EndOfCheckPhase</string>
         </dict>
          <dict>
