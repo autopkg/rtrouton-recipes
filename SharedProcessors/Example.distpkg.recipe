@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+   <dict>
+      <key>Description</key>
+      <string>Converts component installer package to distribution package.</string>
+      <key>Identifier</key>
+      <string>com.github.distpkg.MyGreatApp</string>
+      <key>Input</key>
+      <dict>
+      </dict>
+      <key>ParentRecipe</key>
+      <string>com.github.pkg.MyGreatApp</string>
+      <key>Process</key>
+      <array>
+         <dict>
+            <key>Processor</key>
+            <string>com.github.rtrouton.SharedProcessors/DistributionPackageCreator</string>
+            <key>Arguments</key>
+            <dict>
+               <key>pkg_path</key>
+               <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.pkg</string>
+            </dict>
+         </dict>
+      </array>
+   </dict>
+</plist>
