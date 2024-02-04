@@ -26,11 +26,11 @@ __all__ = ["DistributionPackageCreator"]
 
 
 class DistributionPackageCreator(Processor):
-    description = "Converts an existing component package to a distribution package using ProductBuild."
+    description = "Creates a distribution package from an existing component package using ProductBuild."
     input_variables = {
         "pkg_path": {
             "required": True,
-            "description": "Path to the component package to be converted to a distribution package",
+            "description": "Path to the component package used to create the distribution package",
         },
     }
     output_variables = {
