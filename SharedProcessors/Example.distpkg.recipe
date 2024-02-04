@@ -3,7 +3,7 @@
 <plist version="1.0">
    <dict>
       <key>Description</key>
-      <string>Converts component installer package to distribution package.</string>
+      <string>Creates a distribution package from an existing component package.</string>
       <key>Identifier</key>
       <string>com.github.distpkg.MyGreatApp</string>
       <key>Input</key>
