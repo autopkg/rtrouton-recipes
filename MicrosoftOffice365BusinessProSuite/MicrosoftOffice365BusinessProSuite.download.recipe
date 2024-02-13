@@ -1,68 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-    <key>Description</key>
-    <string>Downloads the latest Microsoft Office 365 Business Pro Suite SKU-less installer package.</string>
-    <key>Identifier</key>
-    <string>com.github.rtrouton.download.MicrosoftOffice365BusinessProSuite</string>
-    <key>Input</key>
-    <dict>
-        <key>NAME</key>
-        <string>Microsoft Office 365 Business Pro Suite</string>
-        <key>VENDOR</key>
-        <string>Microsoft</string>
-        <key>SOFTWARETITLE1</key>
-        <string>Office</string>
-        <key>SOFTWARETITLE2</key>
-        <string>Business</string>
-        <key>SOFTWARETITLE3</key>
-        <string>Pro</string>
-        <key>SOFTWARETITLE4</key>
-        <string>Suite</string>
-        <key>ID</key>
-        <string>2009112</string>
-        <key>DOWNLOAD_URL_BASE</key>
-        <string>https://go.microsoft.com/fwlink/?linkid=</string>
-    </dict>
-    <key>MinimumVersion</key>
-    <string>1.0.0</string>
-    <key>Process</key>
-    <array>
-        <dict>
+   <dict>
+      <key>Description</key>
+      <string>Downloads the latest Microsoft Office 365 Business Pro Suite SKU-less installer package.</string>
+      <key>Identifier</key>
+      <string>com.github.rtrouton.download.MicrosoftOffice365BusinessProSuite</string>
+      <key>Input</key>
+      <dict>
+         <key>NAME</key>
+         <string>Microsoft Office 365 Business Pro Suite</string>
+         <key>VENDOR</key>
+         <string>Microsoft</string>
+         <key>SOFTWARETITLE1</key>
+         <string>Office</string>
+         <key>SOFTWARETITLE2</key>
+         <string>Business</string>
+         <key>SOFTWARETITLE3</key>
+         <string>Pro</string>
+         <key>SOFTWARETITLE4</key>
+         <string>Suite</string>
+         <key>ID</key>
+         <string>2009112</string>
+         <key>DOWNLOAD_URL_BASE</key>
+         <string>https://go.microsoft.com/fwlink/?linkid=</string>
+      </dict>
+      <key>MinimumVersion</key>
+      <string>1.0.0</string>
+      <key>Process</key>
+      <array>
+         <dict>
             <key>Processor</key>
-            <string>com.github.rtrouton.download.MicrosoftOffice365Suite/OfficeSuiteSKULessVersionProvider</string>
-        </dict>
-        <dict>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+               <key>re_pattern</key>
+               <string>Version (\d{1,}\.\d{1,}\.\d{1,})</string>
+               <key>url</key>
+               <string>https://learn.microsoft.com/en-us/officeupdates/release-notes-office-for-mac</string>
+               <key>result_output_var_name</key>
+               <string>version</string>
+            </dict>
+         </dict>
+         <dict>
             <key>Processor</key>
             <string>URLDownloader</string>
             <key>Arguments</key>
             <dict>
-                <key>url</key>
-                <string>%DOWNLOAD_URL_BASE%%ID%</string>
-                <key>filename</key>
-                <string>%VENDOR%_%SOFTWARETITLE1%_%SOFTWARETITLE2%_%SOFTWARETITLE3%_%SOFTWARETITLE4%_%version%.pkg</string>
+               <key>url</key>
+               <string>%DOWNLOAD_URL_BASE%%ID%</string>
+               <key>filename</key>
+               <string>%VENDOR%_%SOFTWARETITLE1%_%SOFTWARETITLE2%_%SOFTWARETITLE3%_%SOFTWARETITLE4%_%version%.pkg</string>
             </dict>
-        </dict>
-        <dict>
+         </dict>
+         <dict>
             <key>Processor</key>
             <string>EndOfCheckPhase</string>
-        </dict>
-        <dict>
+         </dict>
+         <dict>
             <key>Processor</key>
             <string>CodeSignatureVerifier</string>
             <key>Arguments</key>
             <dict>
-                <key>input_path</key>
-                <string>%pathname%</string>
-                <key>expected_authority_names</key>
-                <array>
-                    <string>Developer ID Installer: Microsoft Corporation (UBF8T346G9)</string>
-                    <string>Developer ID Certification Authority</string>
-                    <string>Apple Root CA</string>
-                </array>
+               <key>input_path</key>
+               <string>%pathname%</string>
+               <key>expected_authority_names</key>
+               <array>
+                  <string>Developer ID Installer: Microsoft Corporation (UBF8T346G9)</string>
+                  <string>Developer ID Certification Authority</string>
+                  <string>Apple Root CA</string>
+               </array>
             </dict>
-        </dict>
-    </array>
-</dict>
+         </dict>
+      </array>
+   </dict>
 </plist>
