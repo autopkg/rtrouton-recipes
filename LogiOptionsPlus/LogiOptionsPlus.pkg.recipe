@@ -3,7 +3,7 @@
 <plist version="1.0">
    <dict>
       <key>Description</key>
-      <string>Downloads the latest version of Logitech's Logitech's Logi OptionsPlus installer application and packages it for installation.</string>
+      <string>Downloads the latest version of Logitech's Logi OptionsPlus installer application and packages it for installation.</string>
       <key>Identifier</key>
       <string>com.github.rtrouton.pkg.LogiOptionsPlus</string>
       <key>Input</key>
