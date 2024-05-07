@@ -17,7 +17,7 @@ __all__ = ["VMwareGuestToolsURLProvider"]
 
 FUSION_URL_BASE = "https://softwareupdate.vmware.com/cds/vmw-desktop/"
 DARWIN_TOOLS_URL_APPEND = "com.vmware.fusion.zip.tar"
-DEFAULT_VERSION_SERIES = "12.0.0"
+DEFAULT_VERSION_SERIES = "13.0.0"
 
 
 class VMwareGuestToolsURLProvider(URLGetter):
