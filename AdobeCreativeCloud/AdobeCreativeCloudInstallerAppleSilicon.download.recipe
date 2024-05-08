@@ -19,7 +19,7 @@
 		<key>SEARCH_URL</key>
 		<string>https://helpx.adobe.com/download-install/kb/creative-cloud-desktop-app-download.html</string>
 		<key>SEARCH_PATTERN</key>
-		<string>(?P&lt;url&gt;http.*?://ccmdl.adobe.com/AdobeProducts/KCCC/CCD/.*?/%ARCHITECTURE%/ACCC.*?.dmg)</string>
+		<string>(?P&lt;url&gt;http.*?://ccmdls.adobe.com/AdobeProducts/StandaloneBuilds/ACCC/ESD/.*?/%ARCHITECTURE%/ACCC.*?.dmg)</string>
 		<key>ARCHITECTURE</key>
 		<string>macarm64</string>
 	</dict>
