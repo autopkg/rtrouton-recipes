@@ -23,29 +23,11 @@
       <string>com.github.rtrouton.download.microsoftteams</string>
       <key>Process</key>
       <array>
-        <dict>
-            <key>Processor</key>
-            <string>DeprecationWarning</string>
-            <key>Arguments</key>
-            <dict>
-                <key>warning_message</key>
-                <string>This recipe is now non-functional. Please remove it from your list of recipes. Microsoft introduced changes to the Teams app name, so I'm retiring this recipe until it becomes clear what Microsoft is doing here. I am deprecating this recipe and adding a StopProcessingIf step to prevent it from running.</string>
-            </dict>
-        </dict>
-        <dict>
-          <key>Processor</key>
-          <string>StopProcessingIf</string>
-          <key>Arguments</key>
-          <dict>
-            <key>predicate</key>
-            <string>TRUEPREDICATE</string>
-          </dict>
-        </dict>
          <dict>
             <key>Arguments</key>
             <dict>
                <key>destination_path</key>
-               <string>%RECIPE_CACHE_DIR%/downloads/unpack</string>
+               <string>%RECIPE_CACHE_DIR%/unpack</string>
                <key>flat_pkg_path</key>
                <string>%pathname%</string>
             </dict>
@@ -56,7 +38,7 @@
             <key>Arguments</key>
             <dict>
                <key>pattern</key>
-               <string>%RECIPE_CACHE_DIR%/downloads/unpack/*Teams*.pkg</string>
+               <string>%RECIPE_CACHE_DIR%/unpack/*Teams*.pkg</string>
             </dict>
             <key>Processor</key>
             <string>FileFinder</string>
@@ -65,7 +47,7 @@
             <key>Arguments</key>
             <dict>
                <key>destination_path</key>
-               <string>%RECIPE_CACHE_DIR%/downloads/payload</string>
+               <string>%RECIPE_CACHE_DIR%/payload</string>
                <key>pkg_payload_path</key>
                <string>%found_filename%/Payload</string>
             </dict>
@@ -76,7 +58,7 @@
             <key>Arguments</key>
             <dict>
                <key>input_plist_path</key>
-               <string>%RECIPE_CACHE_DIR%/downloads/payload/Microsoft Teams.app/Contents/Info.plist</string>
+               <string>%RECIPE_CACHE_DIR%/payload/Microsoft Teams.app/Contents/Info.plist</string>
                <key>plist_version_key</key>
                <string>%VERSIONTYPE%</string>
             </dict>
@@ -101,8 +83,8 @@
             <dict>
                <key>path_list</key>
                <array>
-                  <string>%RECIPE_CACHE_DIR%/downloads/unpack</string>
-                  <string>%RECIPE_CACHE_DIR%/downloads/payload</string>
+                  <string>%RECIPE_CACHE_DIR%/unpack</string>
+                  <string>%RECIPE_CACHE_DIR%/payload</string>
                </array>
             </dict>
          </dict>
