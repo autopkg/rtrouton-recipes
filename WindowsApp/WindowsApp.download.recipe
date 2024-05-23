@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+   <dict>
+      <key>Description</key>
+      <string>Downloads the latest version of Windows App.</string>
+      <key>Identifier</key>
+      <string>com.github.rtrouton.download.WindowsApp</string>
+      <key>Input</key>
+      <dict>
+         <key>NAME</key>
+         <string>Windows App</string>
+         <key>VENDOR</key>
+         <string>Microsoft</string>
+         <key>SOFTWARETITLE1</key>
+         <string>Windows</string>
+         <key>SOFTWARETITLE2</key>
+         <string>App</string>
+      </dict>
+      <key>MinimumVersion</key>
+      <string>2.3</string>
+      <key>Process</key>
+      <array>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>appcast_url</key>
+               <string>https://api.appcenter.ms/v0.1/public/sparkle/apps/915c5f27-4ea8-469a-9186-d477a559138a</string>
+               <key>urlencode_path_component</key>
+               <false />
+            </dict>
+            <key>Processor</key>
+            <string>SparkleUpdateInfoProvider</string>
+         </dict>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>filename</key>
+               <string>%VENDOR%-%SOFTWARETITLE1%-%SOFTWARETITLE2%-%version%.zip</string>
+            </dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+         </dict>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>archive_path</key>
+               <string>%pathname%</string>
+               <key>destination_path</key>
+               <string>%RECIPE_CACHE_DIR%/%VENDOR%</string>
+               <key>purge_destination</key>
+               <true />
+            </dict>
+            <key>Processor</key>
+            <string>Unarchiver</string>
+         </dict>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>input_path</key>
+               <string>%RECIPE_CACHE_DIR%/%VENDOR%/Windows App.app</string>
+               <key>requirement</key>
+               <string>identifier "com.microsoft.rdc.macos.beta" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = UBF8T346G9</string>
+            </dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+         </dict>
+      </array>
+   </dict>
+</plist>

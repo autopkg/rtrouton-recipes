@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Windows App and creates a package.</string>
+	<key>Identifier</key>
+	<string>com.github.rtrouton.pkg.WindowsApp</string>
+	<key>Input</key>
+	<dict>
+         <key>NAME</key>
+         <string>Windows App</string>
+         <key>VENDOR</key>
+         <string>Microsoft</string>
+         <key>SOFTWARETITLE1</key>
+         <string>Windows</string>
+         <key>SOFTWARETITLE2</key>
+         <string>App</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>2.3</string>
+	<key>ParentRecipe</key>
+	<string>com.github.rtrouton.download.WindowsApp</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>app_path</key>
+				<string>%RECIPE_CACHE_DIR%/%VENDOR%/Windows App.app</string>
+				<key>pkg_path</key>
+				<string>%RECIPE_CACHE_DIR%/%VENDOR%_%SOFTWARETITLE1%_%SOFTWARETITLE2%_%version%.pkg</string>
+			</dict>
+			<key>Processor</key>
+			<string>AppPkgCreator</string>
+		</dict>
+	</array>
+</dict>
+</plist>
