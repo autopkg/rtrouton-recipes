@@ -60,7 +60,7 @@
                 <key>result_output_var_name</key>
                 <string>match</string>
                 <key>url</key>
-                <string>https://imagej.nih.gov/ij/download.html</string>
+                <string>https://imagej.net/ij/download.html</string>
                 <key>re_pattern</key>
                 <string>https:\/\/wsr\.imagej\.net\/distros\/osx\/ij.*-osx-java8\.zip</string>
             </dict>
