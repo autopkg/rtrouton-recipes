@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+   <dict>
+      <key>Description</key>
+      <string>Downloads the latest version of ChatGPT.</string>
+      <key>Identifier</key>
+      <string>com.github.rtrouton.download.ChatGPT</string>
+      <key>Input</key>
+      <dict>
+         <key>NAME</key>
+         <string>ChatGPT</string>
+         <key>VENDOR</key>
+         <string>OpenAI</string>
+         <key>SOFTWARETITLE</key>
+         <string>ChatGPT</string>
+         <key>DOWNLOADURL</key>
+         <string>https://persistent.oaistatic.com/sidekick/public/ChatGPT_Desktop_public_latest.dmg</string>
+      </dict>
+      <key>MinimumVersion</key>
+      <string>2.0</string>
+      <key>Process</key>
+      <array>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>filename</key>
+               <string>%VENDOR%-%SOFTWARETITLE%.dmg</string>
+               <key>url</key>
+               <string>%DOWNLOADURL%</string>
+            </dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+         </dict>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>input_path</key>
+               <string>%pathname%/ChatGPT.app</string>
+               <key>requirement</key>
+               <string>anchor apple generic and identifier "com.openai.chat" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "2DC432GLL2")</string>
+            </dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+         </dict>
+      </array>
+   </dict>
+</plist>
