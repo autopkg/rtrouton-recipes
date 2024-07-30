@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+   <dict>
+      <key>Description</key>
+      <string>Downloads the current release version of SapMachine Java 21 JDK for Apple Silicon and builds an installer package.</string>
+      <key>Identifier</key>
+      <string>com.github.rtrouton.pkg.SapMachineAppleSiliconJDK21</string>
+      <key>Input</key>
+      <dict>
+         <key>NAME</key>
+         <string>SapMachine</string>
+         <key>VENDOR</key>
+         <string>SAP</string>
+         <key>SOFTWARETITLE</key>
+         <string>SapMachine</string>
+      </dict>
+      <key>ParentRecipe</key>
+      <string>com.github.rtrouton.download.SapMachineAppleSiliconJDK21</string>
+      <key>MinimumVersion</key>
+      <string>1.0.0</string>
+      <key>Process</key>
+      <array>
+         <dict>
+            <key>Processor</key>
+            <string>PkgRootCreator</string>
+            <key>Arguments</key>
+            <dict>
+               <key>pkgroot</key>
+               <string>%RECIPE_CACHE_DIR%/Scripts</string>
+               <key>pkgdirs</key>
+               <dict />
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>PkgRootCreator</string>
+            <key>Arguments</key>
+            <dict>
+               <key>pkgroot</key>
+               <string>%RECIPE_CACHE_DIR%/pkgroot</string>
+               <key>pkgdirs</key>
+               <dict>
+                  <key>Library</key>
+                  <string>0755</string>
+                  <key>Library/Java</key>
+                  <string>0755</string>
+                  <key>Library/Java/JavaVirtualMachines</key>
+                  <string>0755</string>
+               </dict>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>Copier</string>
+            <key>Arguments</key>
+            <dict>
+               <key>source_path</key>
+               <string>%pathname%/</string>
+               <key>destination_path</key>
+               <string>%pkgroot%/Library/Java/JavaVirtualMachines</string>
+               <key>overwrite</key>
+               <true />
+            </dict>
+         </dict>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>pattern</key>
+               <string>%pkgroot%/Library/Java/JavaVirtualMachines/*jdk*/Contents/Info.plist</string>
+            </dict>
+            <key>Processor</key>
+            <string>FileFinder</string>
+         </dict>
+         <dict>
+             <key>Processor</key>
+             <string>PlistReader</string>
+             <key>Arguments</key>
+             <dict>
+                 <key>info_path</key>
+                 <string>%found_filename%</string>
+                 <key>plist_keys</key>
+                 <dict>
+                     <key>CFBundleShortVersionString</key>
+                     <string>version</string>
+                     <key>CFBundleVersion</key>
+                     <string>BUILD_NUMBER</string>
+                 </dict>
+             </dict>
+         </dict>
+
+         <dict>
+            <key>Processor</key>
+            <string>FileCreator</string>
+            <key>Arguments</key>
+            <dict>
+               <key>file_path</key>
+               <string>%RECIPE_CACHE_DIR%/Scripts/preinstall</string>
+               <key>file_mode</key>
+               <string>0755</string>
+               <key>file_content</key>
+               <string>#!/bin/bash
+
+# Remove existing SapMachine JDK %version% installation
+
+version_number="%version%"
+java_directory="$3/Library/Java/JavaVirtualMachines/sapmachine-jdk-$version_number.jdk"
+
+if [[ -d "$java_directory" ]]; then
+  rm -rf "$java_directory"
+fi
+
+exit 0</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>PkgCreator</string>
+            <key>Arguments</key>
+            <dict>
+               <key>pkg_request</key>
+               <dict>
+                  <key>pkgname</key>
+                  <string>%VENDOR%-%SOFTWARETITLE%-AppleSilicon-%version%.%BUILD_NUMBER%</string>
+                  <key>version</key>
+                  <string>%version%.%BUILD_NUMBER%</string>
+                  <key>id</key>
+                  <string>net.java.openjdk.sapmachine.arm64.%version%.%BUILD_NUMBER%</string>
+                  <key>scripts</key>
+                  <string>Scripts</string>
+                  <key>options</key>
+                  <string>purge_ds_store</string>
+                  <key>chown</key>
+                  <array>
+                     <dict>
+                        <key>path</key>
+                        <string>Library</string>
+                        <key>user</key>
+                        <string>root</string>
+                        <key>group</key>
+                        <string>wheel</string>
+                     </dict>
+                     <dict>
+                        <key>path</key>
+                        <string>Library/Java</string>
+                        <key>user</key>
+                        <string>root</string>
+                        <key>group</key>
+                        <string>wheel</string>
+                     </dict>
+                     <dict>
+                        <key>path</key>
+                        <string>Library/Java/JavaVirtualMachines</string>
+                        <key>user</key>
+                        <string>root</string>
+                        <key>group</key>
+                        <string>wheel</string>
+                     </dict>
+                  </array>
+               </dict>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>PathDeleter</string>
+            <key>Arguments</key>
+            <dict>
+               <key>path_list</key>
+               <array>
+                  <string>%RECIPE_CACHE_DIR%/pkgroot</string>
+                  <string>%RECIPE_CACHE_DIR%/Scripts</string>
+               </array>
+            </dict>
+         </dict>
+      </array>
+   </dict>
+</plist>
