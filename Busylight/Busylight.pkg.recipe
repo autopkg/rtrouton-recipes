@@ -31,7 +31,7 @@
             <key>Arguments</key>
             <dict>
                <key>pattern</key>
-               <string>%RECIPE_CACHE_DIR%/%VENDOR%/*/*.pkg</string>
+               <string>%RECIPE_CACHE_DIR%/%VENDOR%/*.pkg</string>
             </dict>
             <key>Processor</key>
             <string>FileFinder</string>
