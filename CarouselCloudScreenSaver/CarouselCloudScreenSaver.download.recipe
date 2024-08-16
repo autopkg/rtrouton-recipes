@@ -59,12 +59,16 @@
          </dict>
          <dict>
             <key>Processor</key>
-            <string>EndOfCheckPhase</string>
+            <string>com.github.rtrouton.SharedProcessors/VariablePlaceholder</string>
             <key>Arguments</key>
             <dict>
                <key>version</key>
                <string>%major_version%.%minor_version%</string>
             </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
          </dict>
       </array>
    </dict>

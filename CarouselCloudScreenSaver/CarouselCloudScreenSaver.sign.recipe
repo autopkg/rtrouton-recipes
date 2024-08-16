@@ -26,7 +26,7 @@
          </dict>
          <dict>
             <key>Processor</key>
-            <string>corp.sap.autopkg.SharedProcessors/PkgSigner</string>
+            <string>com.github.rtrouton.SharedProcessors/PkgSigner</string>
             <key>Arguments</key>
             <dict>
                <key>pkg_path</key>
