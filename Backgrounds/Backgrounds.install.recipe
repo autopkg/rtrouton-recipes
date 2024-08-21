@@ -3,13 +3,15 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the current release version of Backgrounds.app, builds a package and installs it.</string>
+    <string>Downloads the latest version of the Backgrounds installer package and installs it.</string>
     <key>Identifier</key>
     <string>com.github.rtrouton.install.backgrounds</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
         <string>Backgrounds</string>
+         <key>SOFTWARETITLE</key>
+         <string>Backgrounds</string>
     </dict>
     <key>MinimumVersion</key>
     <string>1.0.0</string>
