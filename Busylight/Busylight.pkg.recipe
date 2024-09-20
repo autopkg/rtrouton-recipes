@@ -31,7 +31,7 @@
             <key>Arguments</key>
             <dict>
                <key>pattern</key>
-               <string>%RECIPE_CACHE_DIR%/%VENDOR%/*/*.pkg</string>
+               <string>%RECIPE_CACHE_DIR%/%VENDOR%/*.pkg</string>
             </dict>
             <key>Processor</key>
             <string>FileFinder</string>
@@ -44,7 +44,7 @@
                <key>source_pkg</key>
                <string>%found_filename%</string>
                <key>pkg_path</key>
-               <string>%RECIPE_CACHE_DIR%/%VENDOR%_%SOFTWARETITLE1%_%SOFTWARETITLE2%_%SOFTWARETITLE3%_%SOFTWARETITLE4%_%version%.pkg</string>
+               <string>%RECIPE_CACHE_DIR%/%VENDOR%_%SOFTWARETITLE1%_%SOFTWARETITLE2%_%SOFTWARETITLE3%_%SOFTWARETITLE4%_%major_version%-%minor_version%.pkg</string>
             </dict>
          </dict>
          <dict>

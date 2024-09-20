@@ -3,15 +3,25 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the current release of Backgrounds.app from the backgrounds release page on Github: https://github.com/SAP/backgrounds/releases</string>
+    <string>Downloads the latest Microsoft OpenJDK JDK 21 for Intel macOS.</string>
     <key>Identifier</key>
-    <string>com.github.rtrouton.download.backgrounds</string>
+    <string>com.github.rtrouton.download.microsoftapplesiliconopenjdk21</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>Backgrounds</string>
+        <string>Microsoft OpenJDK JDK 21</string>
+        <key>VENDOR</key>
+        <string>Microsoft</string>
+        <key>DISTRIBUTION</key>
+        <string>OpenJDK</string>
         <key>SOFTWARETITLE</key>
-        <string>Backgrounds</string>
+        <string>Java</string>
+        <key>SOFTWARETYPE</key>
+        <string>JDK</string>
+        <key>SEARCH_URL</key>
+        <string>https://learn.microsoft.com/en-us/java/openjdk/download</string>
+        <key>SEARCH_PATTERN</key>
+        <string>(?P&lt;url&gt;https.*?microsoft-jdk-21.*?\-aarch64.pkg)</string>
     </dict>
     <key>MinimumVersion</key>
     <string>1.0.0</string>
@@ -19,11 +29,13 @@
     <array>
         <dict>
             <key>Processor</key>
-            <string>GitHubReleasesInfoProvider</string>
+            <string>URLTextSearcher</string>
             <key>Arguments</key>
             <dict>
-                <key>github_repo</key>
-                <string>sap/backgrounds</string>
+                <key>url</key>
+                <string>%SEARCH_URL%</string>
+                <key>re_pattern</key>
+                <string>%SEARCH_PATTERN%</string>
             </dict>
         </dict>
         <dict>
@@ -31,8 +43,8 @@
             <string>URLDownloader</string>
             <key>Arguments</key>
             <dict>
-                <key>filename</key>
-                <string>%SOFTWARETITLE%-%version%.pkg</string>
+                <key>url</key>
+                <string>%url%</string>
             </dict>
         </dict>
         <dict>
@@ -48,7 +60,7 @@
                <string>%pathname%</string>
                <key>expected_authority_names</key>
                <array>
-                  <string>Developer ID Installer: SAP SE (7R5ZEU67FQ)</string>
+                  <string>Developer ID Installer: Microsoft Corporation (UBF8T346G9)</string>
                   <string>Developer ID Certification Authority</string>
                   <string>Apple Root CA</string>
                </array>
