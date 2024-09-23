@@ -25,6 +25,24 @@
       </dict>
       <key>Process</key>
       <array>
+        <dict>
+            <key>Processor</key>
+            <string>DeprecationWarning</string>
+            <key>Arguments</key>
+            <dict>
+                <key>warning_message</key>
+                <string>This recipe is now non-functional. Please remove it from your list of recipes. Microsoft introduced changes to the Microsoft Remote Desktop app name, so I am deprecating this recipe and adding a StopProcessingIf step to prevent it from running.</string>
+            </dict>
+        </dict>
+        <dict>
+          <key>Processor</key>
+          <string>StopProcessingIf</string>
+          <key>Arguments</key>
+          <dict>
+            <key>predicate</key>
+            <string>TRUEPREDICATE</string>
+          </dict>
+        </dict>
          <dict>
             <key>Processor</key>
             <string>URLDownloader</string>
