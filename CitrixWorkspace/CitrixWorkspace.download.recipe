@@ -24,6 +24,11 @@
 				<string>https://www.citrix.com/downloads/workspace-app/mac/workspace-app-for-mac-latest.html</string>
 				<key>re_pattern</key>
 				<string>(?P&lt;DYNAMIC_URL&gt;//downloads.citrix.com/[\d]+/CitrixWorkspaceApp\.dmg\?__gda__\=exp\=(\w|\~|\=)+/(\w|\*|\~|\=)+)</string>
+				<key>request_headers</key>
+				<dict>
+					<key>user-agent</key>
+					<string>Mozilla/5.0 (Macintosh; Intel Mac OS X 14_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15</string>
+				</dict>
 			</dict>
 		</dict>
 		<dict>
