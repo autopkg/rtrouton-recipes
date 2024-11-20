@@ -1,66 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-    <key>Description</key>
-    <string>Downloads the current release of Privileges.app from the release page on Github: https://github.com/SAP/mac-enterprise-privileges/releases</string>
-    <key>Identifier</key>
-    <string>com.github.rtrouton.download.privileges</string>
-    <key>Input</key>
-    <dict>
-        <key>NAME</key>
-        <string>Privileges</string>
-    </dict>
-    <key>MinimumVersion</key>
-    <string>1.0.0</string>
-    <key>Process</key>
-    <array>
-        <dict>
+   <dict>
+      <key>Description</key>
+      <string>Downloads the current release of Privileges.app from the release page on Github: https://github.com/SAP/macOS-enterprise-privileges/releases</string>
+      <key>Identifier</key>
+      <string>com.github.rtrouton.download.privileges</string>
+      <key>Input</key>
+      <dict>
+         <key>NAME</key>
+         <string>Privileges</string>
+         <key>SOFTWARETITLE</key>
+         <string>Privileges</string>
+      </dict>
+      <key>MinimumVersion</key>
+      <string>1.0.0</string>
+      <key>Process</key>
+      <array>
+         <dict>
             <key>Processor</key>
             <string>GitHubReleasesInfoProvider</string>
             <key>Arguments</key>
             <dict>
-                <key>github_repo</key>
-                <string>sap/macos-enterprise-privileges</string>
+               <key>github_repo</key>
+               <string>sap/macOS-enterprise-privileges</string>
             </dict>
-        </dict>
-        <dict>
+         </dict>
+         <dict>
             <key>Processor</key>
             <string>URLDownloader</string>
             <key>Arguments</key>
             <dict>
-                <key>filename</key>
-                <string>%NAME%-%version%.zip</string>
+               <key>filename</key>
+               <string>%SOFTWARETITLE%-%version%.pkg</string>
             </dict>
-        </dict>
-        <dict>
+         </dict>
+         <dict>
             <key>Processor</key>
             <string>EndOfCheckPhase</string>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>Unarchiver</string>
-            <key>Arguments</key>
-            <dict>
-                <key>archive_path</key>
-                <string>%pathname%</string>
-                <key>destination_path</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%</string>
-                <key>purge_destination</key>
-                <true/>
-            </dict>
-        </dict>
-        <dict>
+         </dict>
+         <dict>
             <key>Processor</key>
             <string>CodeSignatureVerifier</string>
             <key>Arguments</key>
             <dict>
-                <key>input_path</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%/Privileges.app</string>
-                <key>requirement</key>
-                <string>anchor apple generic and identifier "corp.sap.privileges" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "7R5ZEU67FQ")</string>
+               <key>input_path</key>
+               <string>%pathname%</string>
+               <key>expected_authority_names</key>
+               <array>
+                  <string>Developer ID Installer: SAP SE (7R5ZEU67FQ)</string>
+                  <string>Developer ID Certification Authority</string>
+                  <string>Apple Root CA</string>
+               </array>
             </dict>
-        </dict>
-    </array>
-</dict>
+         </dict>
+      </array>
+   </dict>
 </plist>
