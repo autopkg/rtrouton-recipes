@@ -48,7 +48,7 @@ appends the version to the end of the filename, and imports into Munki.
             <key>category</key>
             <string>Productivity</string>
             <key>minimum_os_version</key>
-            <string>10.15.0</string>
+            <string>13.0</string>
             <key>name</key>
             <string>%NAME%</string>
         </dict>
