@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+   <dict>
+      <key>Description</key>
+      <string>Downloads the latest version of Logitech's Logi OptionsPlus offline installer application and package it to create an uninstaller for the software.</string>
+      <key>Identifier</key>
+      <string>com.github.rtrouton.pkg.LogiOptionsPlusOfflineUninstaller</string>
+      <key>Input</key>
+      <dict>
+         <key>NAME</key>
+         <string>Logi OptionsPlus Offline</string>
+         <key>VENDOR</key>
+         <string>Logitech</string>
+         <key>SOFTWARETITLE1</key>
+         <string>Logi</string>
+         <key>SOFTWARETITLE2</key>
+         <string>OptionsPlus</string>
+         <key>SOFTWARETITLE3</key>
+         <string>Offline</string>
+         <key>SOFTWARETITLE4</key>
+         <string>Uninstaller</string>
+      </dict>
+      <key>MinimumVersion</key>
+      <string>1.0.0</string>
+      <key>ParentRecipe</key>
+      <string>com.github.rtrouton.download.LogiOptionsPlusOffline</string>
+      <key>Process</key>
+      <array>
+         <dict>
+            <key>Processor</key>
+            <string>FileFinder</string>
+            <key>Arguments</key>
+            <dict>
+               <key>pattern</key>
+               <string>%RECIPE_CACHE_DIR%/%VENDOR%/*.app</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>PlistReader</string>
+            <key>Arguments</key>
+            <dict>
+               <key>info_path</key>
+               <string>%found_filename%/Contents/Info.plist</string>
+               <key>plist_keys</key>
+               <dict>
+                  <key>CFBundleVersion</key>
+                  <string>version</string>
+                  <key>CFBundleIdentifier</key>
+                  <string>BUNDLE_ID</string>
+               </dict>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>PkgRootCreator</string>
+            <key>Arguments</key>
+            <dict>
+               <key>pkgroot</key>
+               <string>%RECIPE_CACHE_DIR%/pkgroot</string>
+               <key>pkgdirs</key>
+               <dict />
+            </dict>
+         </dict>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>pkgdirs</key>
+               <dict />
+               <key>pkgroot</key>
+               <string>%RECIPE_CACHE_DIR%/Scripts</string>
+            </dict>
+            <key>Processor</key>
+            <string>PkgRootCreator</string>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>Copier</string>
+            <key>Arguments</key>
+            <dict>
+               <key>source_path</key>
+               <string>%found_filename%</string>
+               <key>destination_path</key>
+               <string>%RECIPE_CACHE_DIR%/Scripts/%SOFTWARETITLE1%%SOFTWARETITLE2%%SOFTWARETITLE3%.app</string>
+               <key>overwrite</key>
+               <true />
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>FileCreator</string>
+            <key>Arguments</key>
+            <dict>
+               <key>file_path</key>
+               <string>%RECIPE_CACHE_DIR%/Scripts/postinstall</string>
+               <key>file_mode</key>
+               <string>0755</string>
+               <key>file_content</key>
+               <string>#!/bin/bash
+				
+# Determine working directory
+installDir=$(dirname $0)
+installApp=("${installDir}"/*\.app)
+
+# Install the software
+"$installApp"/Contents/MacOS/logioptionsplus_installer --uninstall
+
+# Get the exit code so we can fail properly
+exitcode=$?
+
+# Exit according to whether the install succeeded or not
+exit "${exitcode}"</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>PkgCreator</string>
+            <key>Arguments</key>
+            <dict>
+               <key>pkg_request</key>
+               <dict>
+                  <key>pkgroot</key>
+                  <string>%RECIPE_CACHE_DIR%/pkgroot</string>
+                  <key>pkgname</key>
+                  <string>%VENDOR%_%SOFTWARETITLE1%_%SOFTWARETITLE2%_%SOFTWARETITLE3%_%SOFTWARETITLE4%_%version%</string>
+                  <key>pkgtype</key>
+                  <string>flat</string>
+                  <key>id</key>
+                  <string>%BUNDLE_ID%</string>
+                  <key>version</key>
+                  <string>%version%</string>
+                  <key>scripts</key>
+                  <string>Scripts</string>
+               </dict>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>PathDeleter</string>
+            <key>Arguments</key>
+            <dict>
+               <key>path_list</key>
+               <array>
+                  <string>%RECIPE_CACHE_DIR%/pkgroot</string>
+                  <string>%RECIPE_CACHE_DIR%/Scripts</string>
+                  <string>%RECIPE_CACHE_DIR%/%VENDOR%</string>
+               </array>
+            </dict>
+         </dict>
+      </array>
+   </dict>
+</plist>
