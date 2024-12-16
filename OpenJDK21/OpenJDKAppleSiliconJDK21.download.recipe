@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the current release version of OpenJDK 21 for Apple Silicon</string>
+    <key>Identifier</key>
+    <string>com.github.rtrouton.download.OpenJDKAppleSilicon21</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>OpenJDK 21 Apple Silicon</string>
+        <key>VENDOR</key>
+        <string>OpenJDK</string>
+        <key>SOFTWARETITLE1</key>
+        <string>Java</string>
+        <key>SOFTWARETITLE2</key>
+        <string>AppleSilicon</string>
+        <key>SOFTWARETYPE</key>
+        <string>JDK</string>
+        <key>SEARCH_URL</key>
+        <string>https://jdk.java.net/archive</string>
+        <key>SEARCH_PATTERN</key>
+        <string>(?P&lt;url&gt;https://download.java.net/java/GA/jdk21.*?/.*?/openjdk-21.*?macos-aarch64_bin\.tar\.gz)</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>1.0.0</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%SEARCH_URL%</string>
+                <key>re_pattern</key>
+                <string>%SEARCH_PATTERN%</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%url%</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+    </array>
+</dict>
+</plist>

@@ -3,22 +3,24 @@
 <plist version="1.0">
    <dict>
       <key>Description</key>
-      <string>Downloads the current release version of OpenJDK 13 and builds a package.</string>
+      <string>Downloads the current release version of OpenJDK 17 for Intel and builds a package.</string>
       <key>Identifier</key>
-      <string>com.github.rtrouton.pkg.OpenJDK13</string>
+      <string>com.github.rtrouton.pkg.OpenJDKIntel17</string>
       <key>Input</key>
       <dict>
          <key>NAME</key>
-         <string>OpenJDK 13</string>
+         <string>OpenJDK 17 Intel</string>
          <key>VENDOR</key>
          <string>OpenJDK</string>
-         <key>SOFTWARETITLE</key>
+         <key>SOFTWARETITLE1</key>
          <string>Java</string>
+         <key>SOFTWARETITLE2</key>
+         <string>Intel</string>
          <key>SOFTWARETYPE</key>
          <string>JDK</string>
       </dict>
       <key>ParentRecipe</key>
-      <string>com.github.rtrouton.download.OpenJDK13</string>
+      <string>com.github.rtrouton.download.OpenJDKIntel17</string>
       <key>MinimumVersion</key>
       <string>1.0.0</string>
       <key>Process</key>
@@ -80,7 +82,7 @@
                <key>input_plist_path</key>
                <string>%found_filename%</string>
                <key>plist_version_key</key>
-               <string>CFBundleVersion</string>
+               <string>CFBundleShortVersionString</string>
             </dict>
             <key>Processor</key>
             <string>Versioner</string>
@@ -97,7 +99,7 @@
                <key>file_content</key>
                <string>#!/bin/bash
 
-# Remove existing OpenJDK %version% installation
+# Remove existing OpenJDK JDK %version% installation
 
 version_number="%version%"
 java_directory="$3/Library/Java/JavaVirtualMachines/jdk-$version_number.jdk"
@@ -109,7 +111,6 @@ fi
 exit 0</string>
             </dict>
          </dict>
-
          <dict>
             <key>Processor</key>
             <string>PkgCreator</string>
@@ -118,11 +119,11 @@ exit 0</string>
                <key>pkg_request</key>
                <dict>
                   <key>pkgname</key>
-                  <string>%VENDOR%-%version%</string>
+                  <string>%VENDOR%-%SOFTWARETITLE1%-%SOFTWARETITLE2%-%SOFTWARETYPE%-%version%</string>
                   <key>version</key>
                   <string>%version%</string>
                   <key>id</key>
-                  <string>net.java.openjdk</string>
+                  <string>net.java.openjdk.jdk</string>
                   <key>scripts</key>
                   <string>Scripts</string>
                   <key>options</key>

@@ -3,25 +3,25 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the latest OpenJDK 13 for macOS.</string>
+    <string>Downloads the current release version of OpenJDK 17 for Intel</string>
     <key>Identifier</key>
-    <string>com.github.rtrouton.download.OpenJDK13</string>
+    <string>com.github.rtrouton.download.OpenJDKIntel17</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>OpenJDK 13</string>
-        <key>MAJOR_VERSION</key>
-        <string>13</string>
+        <string>OpenJDK 17 Intel</string>
         <key>VENDOR</key>
         <string>OpenJDK</string>
-        <key>SOFTWARETITLE</key>
+        <key>SOFTWARETITLE1</key>
         <string>Java</string>
+        <key>SOFTWARETITLE2</key>
+        <string>Intel</string>
         <key>SOFTWARETYPE</key>
         <string>JDK</string>
         <key>SEARCH_URL</key>
-        <string>https://jdk.java.net/%MAJOR_VERSION%/index.html</string>
+        <string>https://jdk.java.net/archive</string>
         <key>SEARCH_PATTERN</key>
-        <string>(?P&lt;url&gt;https://download.java.net/java/GA/jdk%MAJOR_VERSION%.*?/GPL/openjdk-%MAJOR_VERSION%.*?_osx-x64_bin\.tar\.gz)</string>
+        <string>(?P&lt;url&gt;https://download.java.net/java/GA/jdk17.*?/.*?/openjdk-17.*?macos-x64_bin\.tar\.gz)</string>
     </dict>
     <key>MinimumVersion</key>
     <string>1.0.0</string>
