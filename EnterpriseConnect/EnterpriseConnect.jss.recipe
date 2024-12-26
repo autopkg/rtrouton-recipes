@@ -32,6 +32,15 @@
         <key>Process</key>
         <array>
             <dict>
+                <key>Processor</key>
+                <string>DeprecationWarning</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>warning_message</key>
+                    <string>JSSImporter, which this recipe requires, is no longer maintained. Consider switching to an equivalent JamfUploader recipe (https://github.com/grahampugh/jamf-upload/wiki/JamfUploader-AutoPkg-Processors). This JSS recipe will be removed in the future.</string>
+                </dict>
+            </dict>
+            <dict>
                 <key>Arguments</key>
                 <dict>
                     <key>prod_name</key>
