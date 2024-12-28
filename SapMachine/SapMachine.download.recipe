@@ -3,7 +3,12 @@
 <plist version="1.0">
    <dict>
       <key>Description</key>
-      <string>Downloads the current release of SapMachine Java JDK from the SapMachine release page on Github: https://github.com/SAP/SapMachine/releases</string>
+      <string>Downloads the current release of SapMachine Java JDK from the SapMachine release page on Github: https://github.com/SAP/SapMachine/releases
+      
+Valid values for ARCH include:
+- "x64" (default, Intel)
+- "aarch64" (Apple Silicon)
+</string>
       <key>Identifier</key>
       <string>com.github.rtrouton.download.SapMachine</string>
       <key>Input</key>
@@ -14,6 +19,8 @@
          <string>SAP</string>
          <key>SOFTWARETITLE</key>
          <string>SapMachine</string>
+         <key>ARCH</key>
+         <string>x64</string>
       </dict>
       <key>MinimumVersion</key>
       <string>1.0.0</string>
@@ -25,7 +32,7 @@
             <key>Arguments</key>
             <dict>
                <key>asset_regex</key>
-               <string>sapmachine-jdk-[\S]+\_osx-x64_bin.dmg</string>
+               <string>.+_macos\-%ARCH%_bin\.dmg</string>
                <key>github_repo</key>
                <string>sap/sapmachine</string>
             </dict>
