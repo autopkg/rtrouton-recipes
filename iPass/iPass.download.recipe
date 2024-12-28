@@ -18,9 +18,18 @@
          <string>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.2 Safari/605.1.15</string>
       </dict>
       <key>MinimumVersion</key>
-      <string>1.0.0</string>
+      <string>1.1</string>
       <key>Process</key>
       <array>
+         <dict>
+            <key>Processor</key>
+            <string>DeprecationWarning</string>
+            <key>Arguments</key>
+            <dict>
+               <key>warning_message</key>
+               <string>iPass for Mac is no longer available for download. This recipe is deprecated and will be removed in the future.</string>
+            </dict>
+         </dict>
          <dict>
             <key>Processor</key>
             <string>URLDownloader</string>
