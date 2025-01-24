@@ -20,7 +20,7 @@
       <key>MinimumVersion</key>
       <string>1.0.0</string>
       <key>ParentRecipe</key>
-      <string>com.github.scriptingosx.download.VMwareHorizonClient</string>
+      <string>com.github.dataJAR-recipes.download.Omnissa Horizon Client</string>
       <key>Process</key>
       <array>
          <dict>
