@@ -3,15 +3,17 @@
 <plist version="1.0">
    <dict>
       <key>Description</key>
-      <string>Downloads the latest VMware Horizon Client disk image, extracts the installer package and prepares it for deployment.</string>
+      <string>Downloads the latest Omnissa Horizon Client disk image, extracts the installer package and prepares it for deployment.</string>
       <key>Identifier</key>
-      <string>com.github.rtrouton.pkg.VMwareHorizonClient</string>
+      <string>com.github.rtrouton.pkg.OmnissaHorizonClient</string>
       <key>Input</key>
       <dict>
          <key>NAME</key>
-         <string>VMwareHorizonClient</string>
+         <string>Omnissa Horizon Client</string>
+         <key>APPNAME</key>
+         <string>Omnissa Horizon Client</string>
          <key>VENDOR</key>
-         <string>VMware</string>
+         <string>Omnissa</string>
          <key>SOFTWARETITLE1</key>
          <string>Horizon</string>
          <key>SOFTWARETITLE2</key>
@@ -20,32 +22,14 @@
       <key>MinimumVersion</key>
       <string>1.0.0</string>
       <key>ParentRecipe</key>
-      <string>com.github.scriptingosx.download.VMwareHorizonClient</string>
+      <string>com.github.dataJAR-recipes.download.Omnissa Horizon Client</string>
       <key>Process</key>
       <array>
-         <dict>
-            <key>Processor</key>
-            <string>DeprecationWarning</string>
-            <key>Arguments</key>
-            <dict>
-               <key>warning_message</key>
-               <string>This recipe is now non-functional. Please remove it from your list of recipes. If you need the Horizon client, please use the OmnissaHorizonClient recipes elsewhere in this repo.</string>
-            </dict>
-         </dict>
-         <dict>
-            <key>Processor</key>
-            <string>StopProcessingIf</string>
-            <key>Arguments</key>
-            <dict>
-               <key>predicate</key>
-               <string>TRUEPREDICATE</string>
-            </dict>
-         </dict>
          <dict>
             <key>Arguments</key>
             <dict>
                <key>flat_pkg_path</key>
-               <string>%pathname%/VMware Horizon Client.pkg</string>
+               <string>%pathname%/Omnissa Horizon Client.pkg</string>
                <key>destination_path</key>
                <string>%RECIPE_CACHE_DIR%/unpack</string>
             </dict>
@@ -56,7 +40,7 @@
             <key>Arguments</key>
             <dict>
                <key>pkg_payload_path</key>
-               <string>%RECIPE_CACHE_DIR%/unpack/VMware.Horizon.Client.pkg/Payload</string>
+               <string>%RECIPE_CACHE_DIR%/unpack/Omnissa.Horizon.Client.pkg/Payload</string>
                <key>destination_path</key>
                <string>%RECIPE_CACHE_DIR%/payload</string>
             </dict>
@@ -64,14 +48,12 @@
             <string>PkgPayloadUnpacker</string>
          </dict>
          <dict>
-            <key>Comment</key>
-            <string>Get version from the pkg</string>
             <key>Processor</key>
             <string>Versioner</string>
             <key>Arguments</key>
             <dict>
                <key>input_plist_path</key>
-               <string>%RECIPE_CACHE_DIR%/payload/VMware Horizon Client.app/Contents/Info.plist</string>
+               <string>%RECIPE_CACHE_DIR%/payload/%APPNAME%.app/Contents/Info.plist</string>
                <key>plist_version_key</key>
                <string>CFBundleShortVersionString</string>
             </dict>
@@ -82,9 +64,9 @@
             <key>Arguments</key>
             <dict>
                <key>source_pkg</key>
-               <string>%pathname%/VMware Horizon Client.pkg</string>
+               <string>%pathname%/Omnissa Horizon Client.pkg</string>
                <key>pkg_path</key>
-               <string>%RECIPE_CACHE_DIR%/%VENDOR%%SOFTWARETITLE1%%SOFTWARETITLE2%-%version%.pkg</string>
+               <string>%RECIPE_CACHE_DIR%/%VENDOR%-%SOFTWARETITLE1%-%SOFTWARETITLE2%-%version%.pkg</string>
             </dict>
          </dict>
          <dict>
