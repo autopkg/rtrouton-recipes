@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of Poly Lens and creates a package.</string>
+	<string>Downloads the latest version of Poly Lens and renames its installer package.</string>
 	<key>Identifier</key>
 	<string>com.github.rtrouton.pkg.polylens</string>
 	<key>Input</key>
@@ -23,73 +23,71 @@
 	<array>
         <dict>
             <key>Processor</key>
-            <string>PkgRootCreator</string>
+            <string>FlatPkgUnpacker</string>
             <key>Arguments</key>
             <dict>
-                <key>pkgroot</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%</string>
-                <key>pkgdirs</key>
-                <dict>
-                    <key>Applications</key>
-                    <string>0775</string>
-                </dict>
-            </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>Copier</string>
-            <key>Arguments</key>
-            <dict>
-                <key>source_path</key>
-                <string>%pathname%/Poly Lens.app</string>
+                <key>flat_pkg_path</key>
+                <string>%pathname%/*.pkg</string>
                 <key>destination_path</key>
-                <string>%pkgroot%/Applications/Poly Lens.app</string>
-                <key>purge_destination</key>
-                <true/>
+                <string>%RECIPE_CACHE_DIR%/unpack</string>
+            </dict>
+        </dict>
+        <dict>
+        	<key>Processor</key>
+        	<string>FileFinder</string>
+        	<key>Arguments</key>
+        	<dict>
+        		<key>pattern</key>
+        		<string>%RECIPE_CACHE_DIR%/unpack/*.pkg</string>
+        	</dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>PkgPayloadUnpacker</string>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_payload_path</key>
+                <string>%found_filename%/Payload</string>
+                <key>extract_root</key>
+                <string>%RECIPE_CACHE_DIR%/unpack/Payload</string>
             </dict>
         </dict>
         <dict>
             <key>Processor</key>
-            <string>Versioner</string>
+            <string>PlistReader</string>
             <key>Arguments</key>
             <dict>
-                <key>input_plist_path</key>
-                <string>%pkgroot%/Applications/Poly Lens.app/Contents/Info.plist</string>
-                <key>plist_version_key</key>
-                <string>CFBundleShortVersionString</string>
-            </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>PkgCreator</string>
-            <key>Arguments</key>
-            <dict>
-                <key>pkg_request</key>
+                <key>info_path</key>
+                <string>%RECIPE_CACHE_DIR%/unpack/Applications/Lens Desktop.app/Contents/Info.plist</string>
+                <key>plist_keys</key>
                 <dict>
-                    <key>pkgname</key>
-                    <string>%VENDOR%_%SOFTWARETITLE%_%version%</string>
-                    <key>version</key>
-                    <string>%version%</string>
-                    <key>id</key>
-                    <string>com.poly.lens.client.app</string>
-                    <key>options</key>
-                    <string>purge_ds_store</string>
-                    <key>chown</key>
-                    <array>
-                        <dict>
-                            <key>path</key>
-                            <string>Applications</string>
-                            <key>user</key>
-                            <string>root</string>
-                            <key>group</key>
-                            <string>wheel</string>
-                            <key>mode</key>
-                            <string>0755</string>
-                        </dict>
-                    </array>
+                    <key>CFBundleVersion</key>
+                    <string>version</string>
                 </dict>
             </dict>
         </dict>
+        <dict>
+            <key>Processor</key>
+            <string>PkgCopier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>source_pkg</key>
+                <string>%pathname%/*.pkg</string>
+                <key>pkg_path</key>
+                <string>%RECIPE_CACHE_DIR%/%VENDOR%_%SOFTWARETITLE%_%version%.pkg</string>
+            </dict>
+        </dict>
+        <dict>
+        <key>Arguments</key>
+        <dict>
+            <key>path_list</key>
+            <array>
+                <string>%RECIPE_CACHE_DIR%/unpack</string>
+            </array>
+        </dict>
+        <key>Processor</key>
+        <string>PathDeleter</string>
+	</dict>
 	</array>
 </dict>
 </plist>
