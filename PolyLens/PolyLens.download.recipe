@@ -19,7 +19,7 @@
          <key>DATA_BINARY_CONTENT</key>
          <string>{"query":"\n          query {\n            availableProductSoftwareByPid(pid:\"lens-desktop-mac\") {\n              name\n              version\n              publishDate\n              productBuild {\n                archiveUrl\n              }\n            }\n        }"}</string>
          <key>SEARCH_PATTERN</key>
-         <string>https://swupdate\.lens\.poly\.com/lens-desktop-mac/.*?/.*?/PolyLens-.*?.dmg</string>
+         <string>https://swupdate\.lens\.poly\.com/lens-desktop-mac/.*?/.*?/LensDesktop-.*?.dmg</string>
       </dict>
       <key>MinimumVersion</key>
       <string>1.0.0</string>
@@ -57,6 +57,21 @@
             <key>Processor</key>
             <string>URLDownloader</string>
          </dict>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>input_path</key>
+                <string>%pathname%/LensDesktop-*.pkg</string>
+                <key>expected_authority_names</key>
+                <array>
+                    <string>Developer ID Installer: Polycom (WJCM3F7AQ4)</string>
+                    <string>Developer ID Certification Authority</string>
+                    <string>Apple Root CA</string>
+                </array>
+            </dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+        </dict>
       </array>
    </dict>
 </plist>
