@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the latest RStudio disk image and builds a package. The installer package includes a preinstall script that will check for an existing RStudio.app in /Applications and remove it if found.</string>
+    <string>Downloads the latest RStudio disk image and builds a package.</string>
     <key>Identifier</key>
     <string>com.github.rtrouton.pkg.RStudio</string>
     <key>Input</key>
@@ -14,7 +14,7 @@
     <key>MinimumVersion</key>
     <string>1.0.0</string>
     <key>ParentRecipe</key>
-    <string>com.github.rtrouton.download.RStudio</string>
+    <string>com.github.hansen-m.download.RStudio</string>
     <key>Process</key>
     <array>
         <dict>
