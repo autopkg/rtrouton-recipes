@@ -61,12 +61,48 @@
 				<dict>
 					<key>Applications</key>
 					<string>0775</string>
+					<key>Scripts</key>
+					<string>0775</string>
 				</dict>
 				<key>pkgroot</key>
 				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
 			</dict>
 			<key>Processor</key>
 			<string>PkgRootCreator</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>FileMover</string>
+			<key>Comment</key>
+			<string>Move the Scripts folder created as part of the pkgroot out to the root of the RECIPE_CACHE_DIR so we can use it in the PkgCreator processor.</string>
+			<key>Arguments</key>
+			<dict>
+				<key>source</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Scripts</string>
+				<key>target</key>
+				<string>%RECIPE_CACHE_DIR%/Scripts</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>FileCreator</string>
+			<key>Comment</key>
+			<string>Create postinstall script to install the Cite While You Write plugin bundle, using wildcards to try and future-proof against EndNote changing the bundle name and different versions of Office.</string>
+			<key>Arguments</key>
+			<dict>
+				<key>file_path</key>
+				<string>%RECIPE_CACHE_DIR%/Scripts/postinstall</string>
+				<key>file_mode</key>
+				<string>0755</string>
+				<key>file_content</key>
+				<string>#!/bin/sh
+
+CWYW=$(ls -d "/Applications/EndNote 20/Cite While You Write/EndNote CWYW"*.bundle)
+PluginDir=$(ls -d "/Library/Application Support/Microsoft/Office"*"/User Content.localized/Startup.localized/Word")
+
+echo "Copying '$CWYW' to '$PluginDir/' ..."
+cp -R "$CWYW" "$PluginDir/"</string>
+			</dict>
 		</dict>
 		<dict>
 			<key>Arguments</key>
@@ -106,6 +142,8 @@
 					<string>flat</string>
 					<key>version</key>
 					<string>%version%</string>
+					<key>scripts</key>
+					<string>Scripts</string>
 				</dict>
 			</dict>
 			<key>Processor</key>
@@ -121,6 +159,7 @@
 					<string>%RECIPE_CACHE_DIR%/EndNote.zip</string>
 					<string>%RECIPE_CACHE_DIR%/unarchive</string>
 					<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+					<string>%RECIPE_CACHE_DIR%/Scripts</string>
 				</array>
 			</dict>
 		</dict>
