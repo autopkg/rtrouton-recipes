@@ -20,9 +20,9 @@
 		<key>SEARCH_URL</key>
 		<string>https://helpx.adobe.com/download-install/kb/creative-cloud-desktop-app-download.html</string>
 		<key>INTEL_SEARCH_PATTERN</key>
-		<string>(?P&lt;url&gt;http.*?://ccmdls.adobe.com/AdobeProducts/StandaloneBuilds/ACCC/ESD/.*?/%INTEL_ARCHITECTURE%/ACCC.*?.dmg)</string>
+		<string>(?P&lt;url&gt;http.*?://ccmdls.adobe.com/AdobeProducts/StandaloneBuilds/ACCC/ESD/.*?/.*?/%INTEL_ARCHITECTURE%/ACCC.*?.dmg)</string>
 		<key>APPLE_SILICON_SEARCH_PATTERN</key>
-		<string>(?P&lt;url&gt;http.*?://ccmdls.adobe.com/AdobeProducts/StandaloneBuilds/ACCC/ESD/.*?/%APPLE_SILICON_ARCHITECTURE%/ACCC.*?.dmg)</string>
+		<string>(?P&lt;url&gt;http.*?://ccmdls.adobe.com/AdobeProducts/StandaloneBuilds/ACCC/ESD/.*?/.*?/%APPLE_SILICON_ARCHITECTURE%/ACCC.*?.dmg)</string>
 		<key>INTEL_ARCHITECTURE</key>
 		<string>osx10</string>
 		<key>APPLE_SILICON_ARCHITECTURE</key>
