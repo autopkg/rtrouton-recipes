@@ -42,7 +42,7 @@
                 <key>input_path</key>
                 <string>%pathname%/*.app</string>
                 <key>requirement</key>
-                <string>identifier "com.mindjet.mindmanager.23" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = ZF6ZZ779N5</string>
+                <string>identifier "com.mindjet.mindmanager.24" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = ZF6ZZ779N5</string>
             </dict>
         </dict>
     </array>
