@@ -22,7 +22,9 @@
          <string>Teams</string>
          <key>DOWNLOADURL</key>
          <string>https://www.plenom.com/download/154724</string>
-      </dict>
+		 <key>DOWNLOAD_USERAGENT</key>
+		 <string>Mozilla/5.0 (Macintosh; Intel Mac OS X 14_7_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.4 Safari/605.1.15</string>
+	   </dict>
       <key>MinimumVersion</key>
       <string>1.0.0</string>
       <key>Process</key>
@@ -36,7 +38,12 @@
                <string>%DOWNLOADURL%</string>
                <key>filename</key>
                <string>%VENDOR%-%SOFTWARETITLE1%-%SOFTWARETITLE2%-%SOFTWARETITLE3%-%SOFTWARETITLE4%.zip</string>
-            </dict>
+			   <key>request-headers</key>
+			   <dict>
+				   <key>user-agent</key>
+				   <string>%DOWNLOAD_USERAGENT%</string>
+			   </dict>
+		   </dict>
          </dict>
          <dict>
             <key>Processor</key>
