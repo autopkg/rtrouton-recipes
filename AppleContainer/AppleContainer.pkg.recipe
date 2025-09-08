@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Uses parent download recipe to download the Apple Container installer package.</string>
+	<key>Identifier</key>
+	<string>com.github.rtrouton.pkg.AppleContainer</string>
+	<key>Input</key>
+      <dict>
+         <key>NAME</key>
+         <string>Apple Container</string>
+         <key>VENDOR</key>
+         <string>Apple</string>
+         <key>SOFTWARETITLE</key>
+         <string>Container</string>
+      </dict>
+	<key>MinimumVersion</key>
+	<string>1.0.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.rtrouton.download.AppleContainer</string>
+	<key>Process</key>
+	<array>
+        <dict>
+            <key>Processor</key>
+            <string>PkgCopier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>source_pkg</key>
+                <string>%pathname%</string>
+               <key>pkg_path</key>
+               <string>%RECIPE_CACHE_DIR%/%VENDOR%_%SOFTWARETITLE%_%version%.pkg</string>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>
