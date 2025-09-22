@@ -1,66 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>Description</key>
-	<string>Downloads the latest Citrix Workspace disk image.</string>
-	<key>Identifier</key>
-	<string>com.github.rtrouton.download.citrixworkspace</string>
-	<key>Input</key>
-	<dict>
-		<key>NAME</key>
-		<string>CitrixWorkspace</string>
-	</dict>
-	<key>MinimumVersion</key>
-	<string>1.0.0</string>
-	<key>Process</key>
-	<array>
-		<dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
-			<key>Arguments</key>
-			<dict>
-				<key>url</key>
-				<string>https://www.citrix.com/downloads/workspace-app/mac/workspace-app-for-mac-latest.html</string>
-				<key>re_pattern</key>
-				<string>(?P&lt;DYNAMIC_URL&gt;//downloads.citrix.com/[\d]+/CitrixWorkspaceApp\.dmg\?__gda__\=exp\=(\w|\~|\=)+/(\w|\*|\~|\=)+)</string>
-				<key>request_headers</key>
-				<dict>
-					<key>user-agent</key>
-					<string>Mozilla/5.0 (Macintosh; Intel Mac OS X 14_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15</string>
-				</dict>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
-			<key>Arguments</key>
-			<dict>
-				<key>url</key>
-				<string>https:%DYNAMIC_URL%</string>
-				<key>filename</key>
-				<string>%NAME%.dmg</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>EndOfCheckPhase</string>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>CodeSignatureVerifier</string>
-			<key>Arguments</key>
-			<dict>
-				<key>input_path</key>
-				<string>%pathname%/Install Citrix Workspace.pkg</string>
-				<key>expected_authority_names</key>
-				<array>
-					<string>Developer ID Installer: Citrix Systems, Inc. (S272Y5R93J)</string>
-					<string>Developer ID Certification Authority</string>
-					<string>Apple Root CA</string>
-				</array>
-			</dict>
-		</dict>
-	</array>
-</dict>
+   <dict>
+      <key>Description</key>
+      <string>Downloads the latest Citrix Workspace disk image.</string>
+      <key>Identifier</key>
+      <string>com.github.rtrouton.download.citrixworkspace</string>
+      <key>Input</key>
+      <dict>
+         <key>NAME</key>
+         <string>CitrixWorkspace</string>
+         <key>VENDOR</key>
+         <string>Citrix</string>
+         <key>SOFTWARETITLE</key>
+         <string>Workspace</string>
+         <key>ARCHITECHTURE</key>
+         <string>Universal</string>
+         <key>DOWNLOAD_URL</key>
+         <string>https://downloadplugins.citrix.com/ReceiverUpdates/Prod/Receiver/Mac</string>
+         <key>SEARCH_URL</key>
+         <string>https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_macos.xml</string>
+         <key>SEARCH_PATTERN</key>
+         <string>(&lt;Version&gt;(?P&lt;version&gt;\d+\.\d+\.\d+\.\d+)&lt;/Version&gt;)</string>
+      </dict>
+      <key>MinimumVersion</key>
+      <string>1.0.0</string>
+      <key>Process</key>
+      <array>
+         <dict>
+            <key>Processor</key>
+            <string>URLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+               <key>url</key>
+               <string>%SEARCH_URL%</string>
+               <key>re_pattern</key>
+               <string>%SEARCH_PATTERN%</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+               <key>url</key>
+               <string>%DOWNLOAD_URL%/CitrixWorkspaceApp%ARCHITECHTURE%%version%.pkg</string>
+               <key>filename</key>
+               <string>Install Citrix Workspace.pkg</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+               <key>input_path</key>
+               <string>%pathname%</string>
+               <key>expected_authority_names</key>
+               <array>
+                  <string>Developer ID Installer: Citrix Systems, Inc. (S272Y5R93J)</string>
+                  <string>Developer ID Certification Authority</string>
+                  <string>Apple Root CA</string>
+               </array>
+            </dict>
+         </dict>
+      </array>
+   </dict>
 </plist>
