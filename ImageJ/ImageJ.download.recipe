@@ -21,7 +21,7 @@
             <key>Arguments</key>
             <dict>
                 <key>url</key>
-                <string>http://wsr.imagej.net/jars/ij.jar</string>
+                <string>https://wsr.imagej.net/jars/ij.jar</string>
             </dict>
         </dict>
         <dict>
