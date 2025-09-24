@@ -7,7 +7,7 @@
       <key>Identifier</key>
       <string>com.github.rtrouton.download.microsoftoutlook365</string>
       <key>MinimumVersion</key>
-      <string>1.0.0</string>
+      <string>1.4</string>
       <key>Input</key>
       <dict>
          <key>NAME</key>
