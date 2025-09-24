@@ -16,20 +16,29 @@
          <string>Microsoft</string>
          <key>SOFTWARETITLE</key>
          <string>Outlook</string>
-         <key>PRODUCTID</key>
-         <string>525137</string>
-         <key>DOWNLOADURL</key>
-         <string>https://go.microsoft.com/fwlink/?linkid=%PRODUCTID%</string>
       </dict>
       <key>Process</key>
       <array>
+         <dict>
+            <key>Processor</key>
+            <string>CURLTextSearcher</string>
+            <key>Arguments</key>
+            <dict>
+               <key>url</key>
+               <string>https://learn.microsoft.com/en-us/officeupdates/update-history-office-for-mac</string>
+               <key>re_pattern</key>
+               <string>(https?://officecdn\.microsoft\.com/pr/[^/]+/MacAutoupdate/Microsoft_Outlook_[0-9.]+_Updater\.pkg)</string>
+               <key>result_output_var_name</key>
+               <string>url</string>
+            </dict>
+         </dict>
          <dict>
             <key>Processor</key>
             <string>URLDownloader</string>
             <key>Arguments</key>
             <dict>
                <key>url</key>
-               <string>%DOWNLOADURL%</string>
+               <string>%url%</string>
                <key>filename</key>
                <string>%VENDOR%_%SOFTWARETITLE%.pkg</string>
             </dict>
