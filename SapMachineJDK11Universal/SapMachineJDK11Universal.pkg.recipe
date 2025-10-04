@@ -134,8 +134,6 @@ exit 0</string>
                   <string>net.java.openjdk.sapmachine.x8664.%version%</string>
                   <key>scripts</key>
                   <string>%RECIPE_CACHE_DIR%/Intel/Scripts</string>
-                  <key>options</key>
-                  <string>purge_ds_store</string>
                   <key>chown</key>
                   <array>
                      <dict>
@@ -280,8 +278,6 @@ exit 0</string>
                   <string>net.java.openjdk.sapmachine.arm64.%version%</string>
                   <key>scripts</key>
                   <string>%RECIPE_CACHE_DIR%/AppleSilicon/Scripts</string>
-                  <key>options</key>
-                  <string>purge_ds_store</string>
                   <key>chown</key>
                   <array>
                      <dict>
@@ -413,8 +409,6 @@ exit 0</string>
                   <string>net.java.openjdk.sapmachine.universal.%version%</string>
                   <key>scripts</key>
                   <string>%RECIPE_CACHE_DIR%/Universal/Scripts</string>
-                  <key>options</key>
-                  <string>purge_ds_store</string>
                </dict>
             </dict>
          </dict>

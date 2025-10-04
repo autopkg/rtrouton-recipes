@@ -89,8 +89,6 @@
                   <string>net.java.openjdk</string>
                   <key>scripts</key>
                   <string>Scripts</string>
-                  <key>options</key>
-                  <string>purge_ds_store</string>
                   <key>chown</key>
                   <array>
                      <dict>
