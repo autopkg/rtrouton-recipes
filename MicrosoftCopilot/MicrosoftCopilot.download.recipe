@@ -16,8 +16,10 @@
          <string>Microsoft</string>
          <key>SOFTWARETITLE</key>
          <string>Copilot</string>
+         <key>PRODUCTID</key>
+         <string>2325438</string>
          <key>DOWNLOADURL</key>
-         <string>https://go.microsoft.com/fwlink/?linkid=2325438</string>
+         <string>https://go.microsoft.com/fwlink/?linkid=%PRODUCTID%</string>
       </dict>
       <key>Process</key>
       <array>
