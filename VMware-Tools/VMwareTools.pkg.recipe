@@ -1,71 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-    <dict>
-        <key>Description</key>
-        <string>Downloads the current release version of VMware Tools and extracts the installer package.</string>
-        <key>Identifier</key>
-        <string>com.github.rtrouton.pkg.VMwareTools</string>
-        <key>Input</key>
-        <dict>
-        </dict>
-        <key>MinimumVersion</key>
-        <string>1.4</string>
-        <key>ParentRecipe</key>
-        <string>com.github.rtrouton.download.VMwareTools</string>
-        <key>Process</key>
-        <array>
+   <dict>
+      <key>Description</key>
+      <string>Downloads the current release version of VMware Tools and extracts the installer package.</string>
+      <key>Identifier</key>
+      <string>com.github.rtrouton.pkg.VMwareTools</string>
+      <key>Input</key>
+      <dict>
+         <key>NAME</key>
+         <string>VMwareTools</string>
+         <key>DOWNLOAD_FILE</key>
+         <string>darwin.iso</string>
+      </dict>
+      <key>MinimumVersion</key>
+      <string>1.4</string>
+      <key>ParentRecipe</key>
+      <string>com.github.rtrouton.download.VMwareTools</string>
+      <key>Process</key>
+      <array>
+         <dict>
+            <key>Processor</key>
+            <string>Copier</string>
+            <key>Arguments</key>
             <dict>
-                <key>Processor</key>
-                <string>Copier</string>
-                <key>Arguments</key>
-                <dict>
-                    <key>source_path</key>
-                    <string>%RECIPE_CACHE_DIR%/%NAME%.iso/Install VMware Tools.app</string>
-                    <key>destination_path</key>
-                    <string>%RECIPE_CACHE_DIR%/%NAME%-app</string>
-                </dict>
+               <key>source_path</key>
+               <string>%pathname%/Install VMware Tools.app</string>
+               <key>destination_path</key>
+               <string>%RECIPE_CACHE_DIR%/%NAME%-app</string>
             </dict>
+         </dict>
+         <dict>
+            <key>Arguments</key>
             <dict>
-                <key>Processor</key>
-                <string>PkgCopier</string>
-                <key>Arguments</key>
-                <dict>
-                    <key>source_pkg</key>
-                    <string>%RECIPE_CACHE_DIR%/%NAME%-app/Contents/Resources/VMware Tools.pkg</string>
-                    <key>pkg_path</key>
-                    <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.pkg</string>
-                </dict>
+               <key>pattern</key>
+               <string>%RECIPE_CACHE_DIR%/%NAME%-app/Contents/Info.plist</string>
             </dict>
+            <key>Processor</key>
+            <string>FileFinder</string>
+         </dict>
+         <dict>
+            <key>Arguments</key>
             <dict>
-                <key>Processor</key>
-                <string>CodeSignatureVerifier</string>
-                <key>Arguments</key>
-                <dict>
-                    <key>input_path</key>
-                    <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.pkg</string>
-                    <key>expected_authority_names</key>
-                    <array>
-                        <string>Developer ID Installer: VMware, Inc. (EG7KH642X6)</string>
-                        <string>Developer ID Certification Authority</string>
-                        <string>Apple Root CA</string>
-                    </array>
-                </dict>
+               <key>input_plist_path</key>
+               <string>%found_filename%</string>
+               <key>plist_version_key</key>
+               <string>CFBundleShortVersionString</string>
             </dict>
+            <key>Processor</key>
+            <string>Versioner</string>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>PkgCopier</string>
+            <key>Arguments</key>
             <dict>
-                <key>Processor</key>
-                <string>PathDeleter</string>
-                <key>Arguments</key>
-                <dict>
-                    <key>path_list</key>
-                    <array>
-                        <string>%RECIPE_CACHE_DIR%/%NAME%</string>
-                        <string>%RECIPE_CACHE_DIR%/%NAME%-app</string>
-                        <string>%RECIPE_CACHE_DIR%/%NAME%-untar</string>
-                        <string>%RECIPE_CACHE_DIR%/%NAME%.iso</string>
-                    </array>
-                </dict>
+               <key>source_pkg</key>
+               <string>%RECIPE_CACHE_DIR%/%NAME%-app/Contents/Resources/VMware Tools.pkg</string>
+               <key>pkg_path</key>
+               <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.pkg</string>
             </dict>
-        </array>
-    </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+               <key>input_path</key>
+               <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.pkg</string>
+               <key>expected_authority_names</key>
+               <array>
+                  <string>Developer ID Installer: VMware, Inc. (EG7KH642X6)</string>
+                  <string>Developer ID Certification Authority</string>
+                  <string>Apple Root CA</string>
+               </array>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>PathDeleter</string>
+            <key>Arguments</key>
+            <dict>
+               <key>path_list</key>
+               <array>
+                  <string>%RECIPE_CACHE_DIR%/%NAME%-app</string>
+               </array>
+            </dict>
+         </dict>
+      </array>
+   </dict>
 </plist>
