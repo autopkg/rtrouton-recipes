@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+   <dict>
+      <key>Description</key>
+      <string>Downloads the latest version of ChatGPT Atlas and creates a package.</string>
+      <key>Identifier</key>
+      <string>com.github.rtrouton.pkg.ChatGPTAtlas</string>
+      <key>Input</key>
+      <dict>
+         <key>NAME</key>
+         <string>ChatGPT Atlas</string>
+         <key>VENDOR</key>
+         <string>OpenAI</string>
+         <key>SOFTWARETITLE1</key>
+         <string>ChatGPT</string>
+         <key>SOFTWARETITLE2</key>
+         <string>Atlas</string>
+      </dict>
+      <key>MinimumVersion</key>
+      <string>2.0</string>
+      <key>ParentRecipe</key>
+      <string>com.github.rtrouton.download.ChatGPTAtlas</string>
+      <key>Process</key>
+      <array>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>input_plist_path</key>
+               <string>%pathname%/ChatGPT Atlas.app/Contents/Info.plist</string>
+               <key>plist_version_key</key>
+               <string>CFBundleShortVersionString</string>
+            </dict>
+            <key>Processor</key>
+            <string>Versioner</string>
+         </dict>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>app_path</key>
+               <string>%pathname%/ChatGPT Atlas.app</string>
+               <key>pkg_path</key>
+               <string>%RECIPE_CACHE_DIR%/%VENDOR%_%SOFTWARETITLE1%_%SOFTWARETITLE2%_%version%.pkg</string>
+            </dict>
+            <key>Processor</key>
+            <string>AppPkgCreator</string>
+         </dict>
+      </array>
+   </dict>
+</plist>
