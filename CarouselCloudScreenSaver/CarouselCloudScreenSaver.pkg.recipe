@@ -117,8 +117,6 @@ exit $ERROR</string>
                   <string>%version%</string>
                   <key>id</key>
                   <string>com.trms.Carousel-Cloud-Screensaver</string>
-                  <key>options</key>
-                  <string>purge_ds_store</string>
                   <key>scripts</key>
                   <string>Scripts</string>
                   <key>chown</key>
