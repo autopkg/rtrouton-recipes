@@ -50,7 +50,7 @@
                 <string>%pathname%</string>
                 <key>expected_authority_names</key>
                 <array>
-                    <string>Developer ID Installer: Stuart Ashenbrenner (6PV5YF2UES)</string>
+                    <string>Developer ID Installer: JAMF Software (483DWKW443)</string>
                     <string>Developer ID Certification Authority</string>
                     <string>Apple Root CA</string>
                 </array>
