@@ -64,10 +64,10 @@
             <string>PkgCreator</string>
             <key>Arguments</key>
             <dict>
-               <key>pkgname</key>
-               <string>%SOFTWARETITLE%_%version%</string>
                <key>pkg_request</key>
                <dict>
+                  <key>pkgname</key>
+                  <string>%SOFTWARETITLE%_%version%</string>
                   <key>version</key>
                   <string>%version%</string>
                   <key>id</key>
