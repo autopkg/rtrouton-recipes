@@ -18,7 +18,7 @@
 	<key>MinimumVersion</key>
 	<string>1.0.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.rtrouton.download.AppleContainer</string>
+	<string>com.github.kevinmcox.download.AppleContainer</string>
 	<key>Process</key>
 	<array>
         <dict>
