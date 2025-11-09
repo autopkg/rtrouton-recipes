@@ -16,9 +16,18 @@
         <string>https://dl.google.com/chrome/mac/universal/stable/GGRO/googlechrome.dmg</string>
     </dict>
     <key>MinimumVersion</key>
-    <string>0.2.0</string>
+    <string>1.1</string>
     <key>Process</key>
     <array>
+        <dict>
+            <key>Processor</key>
+            <string>DeprecationWarning</string>
+            <key>Arguments</key>
+            <dict>
+                <key>warning_message</key>
+                <string>Consider switching to the GoogleChrome recipes in the autopkg/recipes repo, which also download the Universal dmg for Chrome. This recipe is deprecated and will be removed in the future.</string>
+            </dict>
+        </dict>
         <dict>
             <key>Processor</key>
             <string>URLDownloader</string>
