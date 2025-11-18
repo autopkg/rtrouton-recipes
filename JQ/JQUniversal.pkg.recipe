@@ -87,8 +87,6 @@
                   <string>%version%</string>
                   <key>id</key>
                   <string>org.jqlang.jq.x8664.%version%</string>
-                  <key>options</key>
-                  <string>purge_ds_store</string>
                   <key>chown</key>
                   <array>
                      <dict>
@@ -182,8 +180,6 @@
                   <string>%version%</string>
                   <key>id</key>
                   <string>org.jqlang.jq.arm64.%version%</string>
-                  <key>options</key>
-                  <string>purge_ds_store</string>
                   <key>chown</key>
                   <array>
                      <dict>
@@ -325,8 +321,6 @@ exit 0</string>
                   <string>org.jqlang.jq.universal.%version%</string>
                   <key>scripts</key>
                   <string>%RECIPE_CACHE_DIR%/Universal/Scripts</string>
-                  <key>options</key>
-                  <string>purge_ds_store</string>
                </dict>
             </dict>
          </dict>
