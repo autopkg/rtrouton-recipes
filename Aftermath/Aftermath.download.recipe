@@ -30,7 +30,7 @@
                <string>jamf/aftermath</string>
             </dict>
          </dict>
-        <dict>
+         <dict>
             <key>Processor</key>
             <string>URLDownloader</string>
             <key>Arguments</key>
@@ -38,6 +38,10 @@
                 <key>filename</key>
                 <string>%VENDOR%_%SOFTWARETITLE%_%version%.pkg</string>
             </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
          </dict>
          <dict>
             <key>Processor</key>
@@ -53,10 +57,6 @@
                     <string>Apple Root CA</string>
                 </array>
             </dict>
-         </dict>
-         <dict>
-            <key>Processor</key>
-            <string>EndOfCheckPhase</string>
          </dict>
       </array>
    </dict>
