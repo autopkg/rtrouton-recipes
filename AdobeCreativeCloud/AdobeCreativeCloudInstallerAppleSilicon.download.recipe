@@ -16,10 +16,6 @@
 		<string>Creative Cloud Installer</string>
 		<key>NAMEWITHOUTSPACES</key>
 		<string>CreativeCloudInstaller</string>
-		<key>SEARCH_URL</key>
-		<string>https://helpx.adobe.com/download-install/apps/download-install-apps/creative-cloud-apps/download-creative-cloud-desktop-app-using-direct-links.html</string>
-		<key>SEARCH_PATTERN</key>
-		<string>(?P&lt;url&gt;http.*?://ccmdls?.adobe.com/AdobeProducts/StandaloneBuilds/ACCC/ESD/.*?/%ARCHITECTURE%/ACCC.*?.dmg)</string>
 		<key>ARCHITECTURE</key>
 		<string>macarm64</string>
 	</dict>
@@ -33,9 +29,9 @@
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>%SEARCH_URL%</string>
+				<string>https://helpx.adobe.com/download-install/apps/download-install-apps/creative-cloud-apps/download-creative-cloud-desktop-app-using-direct-links.html</string>
 				<key>re_pattern</key>
-				<string>%SEARCH_PATTERN%</string>
+				<string>(?P&lt;url&gt;http.*?://ccmdls?.adobe.com/AdobeProducts/StandaloneBuilds/ACCC/ESD/.*?/%ARCHITECTURE%/ACCC.*?.dmg)</string>
 			</dict>
 		</dict>
 		<dict>

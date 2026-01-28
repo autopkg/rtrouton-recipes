@@ -17,16 +17,6 @@
 		<string>Creative Cloud Installer</string>
 		<key>NAMEWITHOUTSPACES</key>
 		<string>CreativeCloudInstaller</string>
-		<key>SEARCH_URL</key>
-		<string>https://helpx.adobe.com/download-install/apps/download-install-apps/creative-cloud-apps/download-creative-cloud-desktop-app-using-direct-links.html</string>
-		<key>INTEL_SEARCH_PATTERN</key>
-		<string>(?P&lt;url&gt;http.*?://ccmdls?.adobe.com/AdobeProducts/StandaloneBuilds/ACCC/ESD/.*?/%INTEL_ARCHITECTURE%/ACCC.*?.dmg)</string>
-		<key>APPLE_SILICON_SEARCH_PATTERN</key>
-		<string>(?P&lt;url&gt;http.*?://ccmdls?.adobe.com/AdobeProducts/StandaloneBuilds/ACCC/ESD/.*?/%APPLE_SILICON_ARCHITECTURE%/ACCC.*?.dmg)</string>
-		<key>INTEL_ARCHITECTURE</key>
-		<string>osx10</string>
-		<key>APPLE_SILICON_ARCHITECTURE</key>
-		<string>macarm64</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.0.0</string>
@@ -38,9 +28,9 @@
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>%SEARCH_URL%</string>
+				<string>https://helpx.adobe.com/download-install/apps/download-install-apps/creative-cloud-apps/download-creative-cloud-desktop-app-using-direct-links.html</string>
 				<key>re_pattern</key>
-				<string>%INTEL_SEARCH_PATTERN%</string>
+				<string>(?P&lt;url&gt;http.*?://ccmdls?.adobe.com/AdobeProducts/StandaloneBuilds/ACCC/ESD/.*?/osx10/ACCC.*?.dmg)</string>
 			</dict>
 		</dict>
 		<dict>
@@ -117,9 +107,9 @@
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>%SEARCH_URL%</string>
+				<string>https://helpx.adobe.com/download-install/apps/download-install-apps/creative-cloud-apps/download-creative-cloud-desktop-app-using-direct-links.html</string>
 				<key>re_pattern</key>
-				<string>%APPLE_SILICON_SEARCH_PATTERN%</string>
+				<string>(?P&lt;url&gt;http.*?://ccmdls?.adobe.com/AdobeProducts/StandaloneBuilds/ACCC/ESD/.*?/macarm64/ACCC.*?.dmg)</string>
 			</dict>
 		</dict>
 		<dict>
