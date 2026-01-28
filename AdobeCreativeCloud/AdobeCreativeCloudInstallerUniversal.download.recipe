@@ -11,12 +11,6 @@
 	<dict>
 		<key>NAME</key>
 		<string>Creative Cloud Installer</string>
-		<key>VENDOR</key>
-		<string>Adobe</string>
-		<key>SOFTWARETITLE</key>
-		<string>Creative Cloud Installer</string>
-		<key>NAMEWITHOUTSPACES</key>
-		<string>CreativeCloudInstaller</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.0.0</string>
