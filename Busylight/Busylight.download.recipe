@@ -34,7 +34,7 @@
 			<dict>
 				<key>filename</key>
 				<string>%VENDOR%-%SOFTWARETITLE1%-%SOFTWARETITLE2%-%SOFTWARETITLE3%-%SOFTWARETITLE4%.zip</string>
-				<key>request-headers</key>
+				<key>request_headers</key>
 				<dict>
 					<key>user-agent</key>
 					<string>%DOWNLOAD_USERAGENT%</string>
