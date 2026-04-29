@@ -56,6 +56,11 @@ appends the version to the end of the filename, and imports into Munki.</string>
         <dict>
             <key>Arguments</key>
             <dict>
+                <key>additional_makepkginfo_options</key>
+                <array>
+                    <string>--pkgvers</string>
+                    <string>%version%</string>
+                </array>                
                 <key>pkg_path</key>
                 <string>%pathname%</string>
                 <key>repo_subdirectory</key>
