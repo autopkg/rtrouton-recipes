@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of MacDown 3000 and creates a package.</string>
+	<key>Identifier</key>
+	<string>com.github.rtrouton.pkg.MacDown3000</string>
+	<key>Input</key>
+	<dict>
+         <key>NAME</key>
+         <string>MacDown 3000</string>
+         <key>SOFTWARETITLE1</key>
+         <string>MacDown</string>
+         <key>SOFTWARETITLE2</key>
+         <string>3000</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>2.3</string>
+	<key>ParentRecipe</key>
+	<string>com.github.rtrouton.download.MacDown3000</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>app_path</key>
+				<string>%pathname%/MacDown 3000.app</string>
+				<key>pkg_path</key>
+				<string>%RECIPE_CACHE_DIR%/%SOFTWARETITLE1%_%SOFTWARETITLE2%_%version%.pkg</string>
+			</dict>
+			<key>Processor</key>
+			<string>AppPkgCreator</string>
+		</dict>
+	</array>
+</dict>
+</plist>

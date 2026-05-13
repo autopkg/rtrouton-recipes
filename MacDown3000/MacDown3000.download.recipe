@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+   <dict>
+      <key>Description</key>
+      <string>Downloads the current release of MacDown 3000 for macOS from Github: https://github.com/schuyler/macdown3000/releases</string>
+      <key>Identifier</key>
+      <string>com.github.rtrouton.download.MacDown3000</string>
+      <key>Input</key>
+      <dict>
+         <key>NAME</key>
+         <string>MacDown 3000</string>
+         <key>SOFTWARETITLE1</key>
+         <string>MacDown</string>
+         <key>SOFTWARETITLE2</key>
+         <string>3000</string>
+      </dict>
+      <key>MinimumVersion</key>
+      <string>1.0.0</string>
+      <key>Process</key>
+      <array>
+         <dict>
+            <key>Processor</key>
+            <string>GitHubReleasesInfoProvider</string>
+            <key>Arguments</key>
+            <dict>
+               <key>asset_regex</key>
+               <string>MacDown[\S]+\.dmg</string>
+               <key>github_repo</key>
+               <string>schuyler/macdown3000</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+               <key>input_path</key>
+               <string>%pathname%/MacDown 3000.app</string>
+               <key>requirement</key>
+               <string>identifier "app.macdown.macdown3000" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = EDUS6QCV5X</string>
+            </dict>
+         </dict>
+      </array>
+   </dict>
+</plist>
