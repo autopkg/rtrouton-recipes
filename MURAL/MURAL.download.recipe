@@ -51,6 +51,10 @@
             </dict>
         </dict>
 		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>input_path</key>
