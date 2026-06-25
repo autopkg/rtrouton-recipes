@@ -1,93 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>Description</key>
-	<string>Downloads the latest version of Poly Lens and renames its installer package.</string>
-	<key>Identifier</key>
-	<string>com.github.rtrouton.pkg.polylens</string>
-	<key>Input</key>
-	<dict>
-        <key>NAME</key>
-        <string>Poly Lens</string>
-        <key>VENDOR</key>
-        <string>Poly</string>
-        <key>SOFTWARETITLE</key>
-        <string>Lens</string>
-	</dict>
-	<key>MinimumVersion</key>
-	<string>1.0.0</string>
-	<key>ParentRecipe</key>
-	<string>com.github.rtrouton.download.polylens</string>
-	<key>Process</key>
-	<array>
-        <dict>
+   <dict>
+      <key>Description</key>
+      <string>Downloads the latest version of HP Poly Studio Desktop for macOS and renames its installer package.</string>
+      <key>Identifier</key>
+      <string>com.github.rtrouton.pkg.polylens</string>
+      <key>Input</key>
+      <dict>
+         <key>NAME</key>
+         <string>HP Poly Studio Desktop</string>
+         <key>VENDOR</key>
+         <string>HP</string>
+         <key>SOFTWARETITLE1</key>
+         <string>Poly</string>
+         <key>SOFTWARETITLE2</key>
+         <string>Studio</string>
+         <key>SOFTWARETITLE3</key>
+         <string>Desktop</string>
+      </dict>
+      <key>MinimumVersion</key>
+      <string>1.0.0</string>
+      <key>ParentRecipe</key>
+      <string>com.github.rtrouton.download.polylens</string>
+      <key>Process</key>
+      <array>
+         <dict>
             <key>Processor</key>
             <string>FlatPkgUnpacker</string>
             <key>Arguments</key>
             <dict>
-                <key>flat_pkg_path</key>
-                <string>%pathname%/*.pkg</string>
-                <key>destination_path</key>
-                <string>%RECIPE_CACHE_DIR%/unpack</string>
+               <key>flat_pkg_path</key>
+               <string>%pathname%/*.pkg</string>
+               <key>destination_path</key>
+               <string>%RECIPE_CACHE_DIR%/unpack</string>
             </dict>
-        </dict>
-        <dict>
-        	<key>Processor</key>
-        	<string>FileFinder</string>
-        	<key>Arguments</key>
-        	<dict>
-        		<key>pattern</key>
-        		<string>%RECIPE_CACHE_DIR%/unpack/*.pkg</string>
-        	</dict>
-        </dict>
-        <dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>FileFinder</string>
+            <key>Arguments</key>
+            <dict>
+               <key>pattern</key>
+               <string>%RECIPE_CACHE_DIR%/unpack/*.pkg</string>
+            </dict>
+         </dict>
+         <dict>
             <key>Processor</key>
             <string>PkgPayloadUnpacker</string>
             <key>Arguments</key>
             <dict>
-                <key>pkg_payload_path</key>
-                <string>%found_filename%/Payload</string>
-                <key>extract_root</key>
-                <string>%RECIPE_CACHE_DIR%/unpack/Payload</string>
+               <key>pkg_payload_path</key>
+               <string>%found_filename%/Payload</string>
+               <key>extract_root</key>
+               <string>%RECIPE_CACHE_DIR%/unpack/Payload</string>
             </dict>
-        </dict>
-        <dict>
+         </dict>
+         <dict>
             <key>Processor</key>
             <string>PlistReader</string>
             <key>Arguments</key>
             <dict>
-                <key>info_path</key>
-                <string>%RECIPE_CACHE_DIR%/unpack/Applications/Lens Desktop.app/Contents/Info.plist</string>
-                <key>plist_keys</key>
-                <dict>
-                    <key>CFBundleVersion</key>
-                    <string>version</string>
-                </dict>
+               <key>info_path</key>
+               <string>%RECIPE_CACHE_DIR%/unpack/Applications/Poly Studio.app/Contents/Info.plist</string>
+               <key>plist_keys</key>
+               <dict>
+                  <key>CFBundleVersion</key>
+                  <string>version</string>
+               </dict>
             </dict>
-        </dict>
-        <dict>
+         </dict>
+         <dict>
             <key>Processor</key>
             <string>PkgCopier</string>
             <key>Arguments</key>
             <dict>
-                <key>source_pkg</key>
-                <string>%pathname%/*.pkg</string>
-                <key>pkg_path</key>
-                <string>%RECIPE_CACHE_DIR%/%VENDOR%_%SOFTWARETITLE%_%version%.pkg</string>
+               <key>source_pkg</key>
+               <string>%pathname%/*.pkg</string>
+               <key>pkg_path</key>
+               <string>%RECIPE_CACHE_DIR%/%VENDOR%_%SOFTWARETITLE1%_%SOFTWARETITLE3%_%SOFTWARETITLE3%_%version%.pkg</string>
             </dict>
-        </dict>
-        <dict>
-        <key>Arguments</key>
-        <dict>
-            <key>path_list</key>
-            <array>
-                <string>%RECIPE_CACHE_DIR%/unpack</string>
-            </array>
-        </dict>
-        <key>Processor</key>
-        <string>PathDeleter</string>
-	</dict>
-	</array>
-</dict>
+         </dict>
+         <dict>
+            <key>Arguments</key>
+            <dict>
+               <key>path_list</key>
+               <array>
+                  <string>%RECIPE_CACHE_DIR%/unpack</string>
+               </array>
+            </dict>
+            <key>Processor</key>
+            <string>PathDeleter</string>
+         </dict>
+      </array>
+   </dict>
 </plist>
