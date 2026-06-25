@@ -78,7 +78,7 @@
                <key>source_pkg</key>
                <string>%pathname%/*.pkg</string>
                <key>pkg_path</key>
-               <string>%RECIPE_CACHE_DIR%/%VENDOR%_%SOFTWARETITLE1%_%SOFTWARETITLE3%_%SOFTWARETITLE3%_%version%.pkg</string>
+               <string>%RECIPE_CACHE_DIR%/%VENDOR%_%SOFTWARETITLE1%_%SOFTWARETITLE2%_%SOFTWARETITLE3%_%version%.pkg</string>
             </dict>
          </dict>
          <dict>
