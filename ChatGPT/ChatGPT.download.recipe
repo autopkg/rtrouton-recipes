@@ -15,7 +15,7 @@
          <key>SOFTWARETITLE</key>
          <string>ChatGPT</string>
          <key>DOWNLOADURL</key>
-         <string>https://persistent.oaistatic.com/sidekick/public/ChatGPT_Desktop_public_latest.dmg</string>
+         <string>https://persistent.oaistatic.com/codex-app-prod/ChatGPT.dmg</string>
       </dict>
       <key>MinimumVersion</key>
       <string>2.0</string>
@@ -42,7 +42,7 @@
                <key>input_path</key>
                <string>%pathname%/ChatGPT.app</string>
                <key>requirement</key>
-               <string>anchor apple generic and identifier "com.openai.chat" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "2DC432GLL2")</string>
+               <string>identifier "com.openai.codex" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "2DC432GLL2"</string>
             </dict>
             <key>Processor</key>
             <string>CodeSignatureVerifier</string>
