@@ -27,7 +27,7 @@
                <key>download_dir</key>
                <string>%RECIPE_CACHE_DIR%/%VENDOR%</string>
                <key>url</key>
-               <string>https://officecdnmac.microsoft.com/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/0409TEAMS21-chk.xml</string>
+               <string>https://res.public.onecdn.static.microsoft/mro1cdnstorage/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/0409TEAMS21-chk.xml</string>
             </dict>
             <key>Processor</key>
             <string>URLDownloader</string>
@@ -54,7 +54,7 @@
                 <key>download_dir</key>
                 <string>%RECIPE_CACHE_DIR%/downloads</string>
                <key>url</key>
-               <string>https://statics.teams.cdn.office.net/production-osx/%DOWNLOAD_VERSION%/MicrosoftTeams.pkg</string>
+               <string>https://teamsinstaller.public.onecdn.static.microsoft/production-osx/%DOWNLOAD_VERSION%/MicrosoftTeams.pkg</string>
             </dict>
             <key>Processor</key>
             <string>URLDownloader</string>
