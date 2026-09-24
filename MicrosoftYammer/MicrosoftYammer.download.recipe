@@ -7,7 +7,7 @@
       <key>Identifier</key>
       <string>com.github.rtrouton.download.microsoftyammer</string>
       <key>MinimumVersion</key>
-      <string>1.0.0</string>
+      <string>1.1</string>
       <key>Input</key>
       <dict>
          <key>NAME</key>
@@ -21,6 +21,15 @@
       </dict>
       <key>Process</key>
       <array>
+        <dict>
+            <key>Processor</key>
+            <string>DeprecationWarning</string>
+            <key>Arguments</key>
+            <dict>
+                <key>warning_message</key>
+                <string>Microsoft Yammer is no longer downloadable with the transition to the web-based Viva Engage product (details: https://www.microsoft.com/en-us/microsoft-365/blog/2023/02/13/yammer-is-evolving-to-microsoft-viva-engage-with-new-experiences-rolling-out-today/). This recipe is deprecated and will be removed in the future.</string>
+            </dict>
+        </dict>
          <dict>
             <key>Processor</key>
             <string>URLDownloader</string>

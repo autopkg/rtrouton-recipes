@@ -10,9 +10,11 @@
       <dict>
          <key>SIGNINGCERTIFICATE</key>
          <string>Put_Signing_Certificate_into_AutoPkg_recipe_override</string>
+         <key>PLATFORM_ARCH</key>
+         <string>amd64</string>
       </dict>
       <key>ParentRecipe</key>
-      <string>com.github.rtrouton.pkg.JQIntel</string>
+      <string>com.github.gerardkok.pkg.jq</string>
       <key>Process</key>
       <array>
          <dict>

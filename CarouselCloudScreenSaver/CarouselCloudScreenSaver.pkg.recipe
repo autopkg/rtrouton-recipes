@@ -109,16 +109,14 @@ exit $ERROR</string>
             <string>PkgCreator</string>
             <key>Arguments</key>
             <dict>
-               <key>pkgname</key>
-               <string>%VENDOR%_%SOFTWARETITLE1%_%SOFTWARETITLE2%_%version%</string>
                <key>pkg_request</key>
                <dict>
+                  <key>pkgname</key>
+                  <string>%VENDOR%_%SOFTWARETITLE1%_%SOFTWARETITLE2%_%version%</string>
                   <key>version</key>
                   <string>%version%</string>
                   <key>id</key>
                   <string>com.trms.Carousel-Cloud-Screensaver</string>
-                  <key>options</key>
-                  <string>purge_ds_store</string>
                   <key>scripts</key>
                   <string>Scripts</string>
                   <key>chown</key>

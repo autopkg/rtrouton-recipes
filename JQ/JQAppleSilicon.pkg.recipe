@@ -87,8 +87,6 @@
                   <string>%version%</string>
                   <key>id</key>
                   <string>org.jqlang.jq.arm64.%version%</string>
-                  <key>options</key>
-                  <string>purge_ds_store</string>
                   <key>chown</key>
                   <array>
                      <dict>

@@ -64,16 +64,14 @@
             <string>PkgCreator</string>
             <key>Arguments</key>
             <dict>
-               <key>pkgname</key>
-               <string>%SOFTWARETITLE%_%version%</string>
                <key>pkg_request</key>
                <dict>
+                  <key>pkgname</key>
+                  <string>%SOFTWARETITLE%_%version%</string>
                   <key>version</key>
                   <string>%version%</string>
                   <key>id</key>
                   <string>org.p0deje.Maccy</string>
-                  <key>options</key>
-                  <string>purge_ds_store</string>
                   <key>chown</key>
                   <array>
                      <dict>

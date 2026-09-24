@@ -122,8 +122,6 @@ exit 0</string>
                   <string>net.java.openjdk.sapmachine</string>
                   <key>scripts</key>
                   <string>Scripts</string>
-                  <key>options</key>
-                  <string>purge_ds_store</string>
                   <key>chown</key>
                   <array>
                      <dict>

@@ -66,8 +66,6 @@
                     <string>%RECIPE_CACHE_DIR%</string>
                     <key>id</key>
                     <string>com.biomatters.geneious</string>
-                    <key>options</key>
-                    <string>purge_ds_store</string>
                     <key>scripts</key>
                     <string>Scripts</string>
                     <key>chown</key>

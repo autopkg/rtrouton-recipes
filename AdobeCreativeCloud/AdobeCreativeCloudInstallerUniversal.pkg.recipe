@@ -360,8 +360,6 @@ exit 0</string>
                   <string>com.adobe.AdobeCreativeCloudInstallerUniversal</string>
                   <key>scripts</key>
                   <string>%RECIPE_CACHE_DIR%/Universal/Scripts</string>
-                  <key>options</key>
-                  <string>purge_ds_store</string>
                </dict>
             </dict>
          </dict>
