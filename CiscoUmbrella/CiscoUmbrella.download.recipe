@@ -45,6 +45,10 @@
                 <string>%DOWNLOAD_URL%/RoamingClient_MAC_%version%.pkg.zip</string>
             </dict>
         </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>
@@ -67,10 +71,6 @@
                <string>%RECIPE_CACHE_DIR%/%NAME%/*.pkg</string>
             </dict>
          </dict>
-        <dict>
-            <key>Processor</key>
-            <string>EndOfCheckPhase</string>
-        </dict>
          <dict>
             <key>Processor</key>
             <string>CodeSignatureVerifier</string>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+   <dict>
+      <key>Description</key>
+      <string>Downloads the current installer for Patcher from the macos-app-patcher release page on Github: https://github.com/SAP/macos-app-patcher/releases</string>
+      <key>Identifier</key>
+      <string>com.github.rtrouton.download.Patcher</string>
+      <key>Input</key>
+      <dict>
+         <key>NAME</key>
+         <string>Patcher</string>
+         <key>SOFTWARETITLE</key>
+         <string>Patcher</string>
+      </dict>
+      <key>MinimumVersion</key>
+      <string>1.0.0</string>
+      <key>Process</key>
+      <array>
+         <dict>
+            <key>Processor</key>
+            <string>GitHubReleasesInfoProvider</string>
+            <key>Arguments</key>
+            <dict>
+               <key>github_repo</key>
+               <string>sap/macos-app-patcher</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+               <key>filename</key>
+               <string>%SOFTWARETITLE%-%version%.pkg</string>
+            </dict>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+         </dict>
+         <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+               <key>input_path</key>
+               <string>%pathname%</string>
+               <key>expected_authority_names</key>
+               <array>
+                  <string>Developer ID Installer: SAP SE (7R5ZEU67FQ)</string>
+                  <string>Developer ID Certification Authority</string>
+                  <string>Apple Root CA</string>
+               </array>
+            </dict>
+         </dict>
+      </array>
+   </dict>
+</plist>

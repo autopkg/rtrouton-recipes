@@ -13,7 +13,7 @@
          <key>SOFTWARETITLE</key>
          <string>Fiji</string>
          <key>DOWNLOAD_URL</key>
-         <string>https://downloads.imagej.net/fiji/latest/fiji-latest-macos64-jdk.zip</string>
+         <string>https://downloads.imagej.net/fiji/latest/fiji-latest-macos-arm64-jdk.zip</string>
       </dict>
       <key>MinimumVersion</key>
       <string>0.2.0</string>

@@ -43,6 +43,10 @@
          </dict>
          <dict>
             <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+         </dict>
+         <dict>
+            <key>Processor</key>
             <string>CodeSignatureVerifier</string>
             <key>Arguments</key>
             <dict>
@@ -50,15 +54,11 @@
                 <string>%pathname%</string>
                 <key>expected_authority_names</key>
                 <array>
-                    <string>Developer ID Installer: JAMF Software (483DWKW443)</string>
+                    <string>Developer ID Installer: Jaron Bradley (C793NB2B2B)</string>
                     <string>Developer ID Certification Authority</string>
                     <string>Apple Root CA</string>
                 </array>
             </dict>
-         </dict>
-         <dict>
-            <key>Processor</key>
-            <string>EndOfCheckPhase</string>
          </dict>
       </array>
    </dict>
