@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads latest version of MindManager.</string>
+    <string>Downloads a version of MindManager.</string>
     <key>Identifier</key>
     <string>com.github.rtrouton.download.MindManager</string>
     <key>Input</key>
@@ -11,9 +11,15 @@
          <key>NAME</key>
          <string>MindManager</string>
          <key>VENDOR</key>
-         <string>Mindjet</string>
+         <string>Corel</string>
          <key>SOFTWARETITLE</key>
          <string>MindManager</string>
+         <key>PRODUCT_DOWNLOAD_URL</key>
+         <string>https://www.mindmanager.com/mm-mac-dmg</string>
+         <key>PRODUCT_RELEASE</key>
+         <string>26</string>
+         <key>PRODUCT_RELEASE_CODESIGNATURE</key>
+         <string>identifier "com.mindjet.mindmanager.26" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = ZF6ZZ779N5</string>
     </dict>
     <key>MinimumVersion</key>
     <string>1.0.0</string>
@@ -27,7 +33,7 @@
                 <key>filename</key>
                 <string>%SOFTWARETITLE%.dmg</string>
                 <key>url</key>
-                <string>https://www.mindmanager.com/mm-mac-dmg</string>
+                <string>%DOWNLOAD_URL%</string>
             </dict>
         </dict>
         <dict>
@@ -42,7 +48,7 @@
                 <key>input_path</key>
                 <string>%pathname%/*.app</string>
                 <key>requirement</key>
-                <string>identifier "com.mindjet.mindmanager.25" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = ZF6ZZ779N5</string>
+                <string>%PRODUCT_RELEASE_CODESIGNATURE%</string>
             </dict>
         </dict>
     </array>
